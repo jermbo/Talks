@@ -12,7 +12,7 @@ In this talk I will provide you with some tactics I utilize to help keep things 
 
 ## The Question
 
-| How do I create a solid foundation for the HTML and CSS that is flexible, maintainable, and extensible?
+> How do I create a solid foundation for the HTML and CSS that is flexible, maintainable, and extensible?
 
 ## The Answers
 
@@ -89,3 +89,125 @@ There are a lot of great features, but here are a few that I use most often.
 7. Interpolation
 
 ### Nesting
+
+Nesting is a powerful tool but use it wisely, things can get out of hand if you are not paying attention to the output. The way I think about nesting is, I try to predict the outcome. If I can read the Sass and figure out what the output CSS will be, then that is probably ok to use. ( As long as it does not violate a rule in my specificity outline )
+
+#### Proper Nesting in Scss
+
+![Nesting Good Scss](images/Nesting-SCSS-Good.png)
+
+#### Proper Nesting in CSS
+
+![Nesting Good CSS](images/Nesting-CSS-Good.png)
+
+#### Bad Nesting in Scss
+
+![Nesting Bad Css](images/Nesting-SCSS-Bad.png)
+
+#### Bad Nesting in CSS
+
+![Nesting Bad Css](images/Nesting-CSS-Bad.png)
+
+Remember to keep things as shallow as possible. If you cannot give something a class name, it can be wrapped in a parent, but be aware of the output that will be created. If that output is more than three selectors deep, this should be rethought.
+
+### Preprocessor Variables
+
+Preprocessor variables are a great tool to help enforce consistency in you site. By giving things a meaningful name an utilizing them throughout the site you help ensure the correct colors, fonts, spacing, and other design decisions are the same across the board.
+
+With the introduction of CSS Custom Properties, aka CSS Variables, we get the more functionality with these by hooking in to JavaScript. How I choose which one to use is simple. Can all of my browsers support this, and will I utilize the JavaScript features? If yes to both of these questions, they why not utilize the latest and greatest. If not, then stick with Scss variables a little longer.
+
+![Preprocessor Variables](images/variables.png)
+
+![Preprocessor Variables](images/variables-output.png)
+
+### Preprocessor Mixins and Includes
+
+Much like variables, mixins allow me to have a single place of truth for broader design decisions. For example, I want to make sure my container elements have the same box shadow and transition on hover. In stead of writing that in every box, I write it in a mixin and include it where I what that to be applied.
+
+![Preprocessor Mixins and Includes](images/mixing-include.png)
+
+![Preprocessor Mixins and Includes](images/mixing-include-output.png)
+
+### Preprocessor Loops, Lists, & Interpolation
+
+When building a web app, often times I have some UI that is very close in the design, but there are subtle things that change. Maybe it's an icon, color, badge, something that doesn't require a new block of CSS but different enough for the users to notice. This is where Looping comes into play.
+
+![Preprocessor List Loops and Interpolation](images/list-loops.png)
+
+![Preprocessor List Loops and Interpolation](images/list-loops-output.png)
+
+### Preprocessor Extends
+
+@extends is one tool in a preprocessor that is available that I do not use. The main reason is unpredictability of what the output will be. I also do not like the grouping of some items that I may not have intended originally.
+
+This article does a decent job diving into the details as to why is potentially bad. [Don’t Over-@extend Yourself in Sass (or: There’s a class for That!)](https://pressupinc.com/blog/2014/11/dont-overextend-yourself-in-sass/)
+
+I would 100% opt for the @include over @extends every time. Yes, this does make your CSS output a little heavier. Your site is not going slow because of CSS, and GZip favors repetition in its compression algorithm.
+
+## Adopt a naming convention
+
+There are plenty of naming conventions out in the wild. After utilizing them all in various projects, the one I have chosen to stick with is B.E.M..
+
+The reason I like B.E.M. is for its straight forwardness, its low specificity, and its malleability. When using other systems, they tended to fall short for what I was needing or they were to complicated for the simplicity of the project.
+
+> BEM — Block Element Modifier is a methodology that helps you to create reusable components and code sharing in front-end development” -- [BEM Website](http://getbem.com/)
+
+1. Easy
+   - To use BEM, you only need employ BEM's naming convention.
+2. Modular
+   - Independent blocks and CSS selectors make you code reusable and modular
+3. Flexible
+   - Using BEM methodologies and tools can be recomposed to configured the way you like.
+
+### BEM Breakdown
+
+#### Standard Implementation
+
+![BEM Breakdown HTML](images/BEM-Standard-HTML.png)
+
+![BEM Breakdown SCSS](images/BEM-Standard-SCSS.png)
+
+![BEM Breakdown CSS](images/BEM-Standard-CSS.png)
+
+#### Standard Modifier Implementation
+
+![BEM Breakdown Modified HTML](images/BEM-Standard-Modifier-HTML.png)
+
+![BEM Breakdown Modified SCSS](images/BEM-Standard-Modifier-SCSS.png)
+
+![BEM Breakdown Modified CSS](images/BEM-Standard-Modifier-CSS.png)
+
+#### Modified Implementation
+
+BEM is a great tool, though I have two complaints.
+
+1. As it stands now, the HTML can get bloated with class names.
+2. Adding a modifier to the parent means I have to make a modifier to the children.
+
+I have modified how BEM works with my projects. The general idea is that the children should know what parent it is in and update accordingly. The reason I do this is to help reduce the complexity for the HTML and give the back end developers a fighting chance to keep up with the front end structure.
+
+Here are the rules that I have utilized in my projects.
+
+1. The modifier that requires children to update lives on the parent element.
+2. Don't include the parent name in the modifier.
+3. Indicate it's a modifier with a single dash.
+
+![Modified BEM HTML](images/BEM-Modified-HTML.png)
+
+![Modified BEM SCSS](images/BEM-Modified-SCSS.png)
+
+![Modified BEM CSS](images/BEM-Modified-CSS.png)
+
+## Example Time!
+
+Taking time to look at the design and figuring out some high level structure is an often overlooked and underrated step in the process.
+Let’s walk through how I go about starting a project. Some things I start off with are;
+
+1. What are the major sections of the page?
+2. What are the components that are being reused?
+   - Things like buttons, forms, paragraph size / spacing, icons, etc.
+3. What are components and their variations?
+   - Things like “featured articles” vs “articles” or “callout” vs “callout inverted”
+4. What variables can be created?
+   - Things like “padding”, “title-size-xl”, “primary-color”
+5. What is my file breakdown going to look like?
