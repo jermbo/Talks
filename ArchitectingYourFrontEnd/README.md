@@ -198,7 +198,7 @@ Here are the rules that I have utilized in my projects.
 
 ![Modified BEM CSS](images/BEM-Modified-CSS.png)
 
-## Example Time!
+## Example Time
 
 Taking time to look at the design and figuring out some high level structure is an often overlooked and underrated step in the process.
 Let’s walk through how I go about starting a project. Some things I start off with are;
@@ -211,3 +211,104 @@ Let’s walk through how I go about starting a project. Some things I start off 
 4. What variables can be created?
    - Things like “padding”, “title-size-xl”, “primary-color”
 5. What is my file breakdown going to look like?
+
+### Brochure Website
+
+[App Landing Page Design](https://dribbble.com/shots/2643400-App-Landing-Page-Design) - by : Shekh Al Raihan
+
+![App Landing Page ](images/brochure/brochureWebsite-01.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-02.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-03.jpg)
+
+---
+
+![App Landing Page ](images/brochure/brochureWebsite-01-sections.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-01-headings.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-01-content-block.jpg)
+
+---
+
+![App Landing Page ](images/brochure/brochureWebsite-02-sections.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-02-headings.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-02-infocards.jpg)
+
+---
+
+![App Landing Page ](images/brochure/brochureWebsite-03-sections.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-03-headings.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-03-icons.jpg)
+![App Landing Page ](images/brochure/brochureWebsite-03-infocards.jpg)
+
+#### CodePen Example
+
+Check out my CodePen Project for live examples. Feel free to fork and play with the files to get a better understanding of what is going on.
+
+[CodePen.io/jermbo/projects](https://CodePen.io/jermbo/projects)
+[Architecting your Front End - Brochure Website](https://codepen.io/jermbo/project/editor/ArMmkn)
+
+Let’s break down what we just saw into files.
+
+- `styles.scss` ( This will import everything. We should have one entry point. )
+- `_vars.scss`
+- `_helpers.scss`
+- `_base.scss`
+- `_sections.scss`
+- `_section-heading.scss`
+- `_content-blocks.scss`
+- `_info-blocks.scss`
+- `_icons.scss`
+
+![Brochure Base](images/brochure-code/00a-base.png)
+![Brochure Vars](images/brochure-code/00-vars.png)
+![Brochure Section](images/brochure-code/01-section.png)
+![Brochure Section Muted](images/brochure-code/02-section-muted.png)
+![Brochure Section Colored](images/brochure-code/03-section-colored.png)
+![Brochure Section Scss](images/brochure-code/04-section-scss.png)
+![Brochure Section CSS](images/brochure-code/05-section-css.png)
+![Brochure Section Heading](images/brochure-code/06-section-heading.png)
+![Brochure Section Heading Stacked](images/brochure-code/07-section-heading-stacked.png)
+![Brochure Section Heading Stacked Large](images/brochure-code/08-section-heading-stacked-large.png)
+![Brochure Section Heading Scss](images/brochure-code/09-section-heading-scss.png)
+![Brochure Section Heading Scss](images/brochure-code/10-section-heading-scss.png)
+![Brochure Content Block](images/brochure-code/11-content-block.png)
+![Brochure Content Block Flip](images/brochure-code/12-content-block-flip.png)
+![Brochure Content Block Scss](images/brochure-code/13-content-block-scss.png)
+![Brochure Content Block Scss](images/brochure-code/14-content-block-scss.png)
+
+## Example - Web App
+
+Check out my CodePen Project for live examples. Feel free to fork and play with the files to get a better understanding of what is going on.
+[CodePen.io/jermbo/projects](https://CodePen.io/jermbo/projects)
+[Architecting your Front End - Web Apps](https://codepen.io/jermbo/project/editor/AwGdNo)
+
+![Campaign Monitor](images/web-app/01-campaign_monitor.jpg)
+![Campaign Monitor Sections](images/web-app/02-campaign_monitor-sections.jpg)
+![Campaign Monitor Headings](images/web-app/03-campaign_monitor-headings.jpg)
+![Campaign Monitor Content](images/web-app/04-campaign_monitor-content.jpg)
+![Campaign Monitor Buttons](images/web-app/05-campaign_monitor-buttons.jpg)
+![Campaign Monitor Stats](images/web-app/06-campaign_monitor-stats.jpg)
+![Campaign Monitor Stats Stuff](images/web-app/07-campaign_monitor-stats-stuff.jpg)
+
+The base file break down is similar to what we saw with the brochure website.
+
+- `styles.scss`
+- `_vars.scss`
+- `_helpers.scss`
+- `_base.scss`
+- `_sections.scss`
+- `_section-heading.scss`
+- `_content-blocks.scss`
+- `_info-blocks.scss`
+- `_icons.scss`
+
+![Web App Vars](images/web-app-code/00-vars.png)
+
+![Web App Base](images/web-app-code/01-base.png)
+
+![Web App Stats](images/web-app-code/02-stats.png)
+
+![Web App Stats Mods](images/web-app-code/03-stats-mods.png)
+
+![Web App Stats Scss](images/web-app-code/04-stats-scss.png)
+
+![Web App Stats Scss Interpolation](images/web-app-code/05-stats-scss-interpolation.png)
