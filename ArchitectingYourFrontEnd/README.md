@@ -214,30 +214,30 @@ Let’s walk through how I go about starting a project. Some things I start off 
 
 ### Brochure Website
 
-[App Landing Page Design](https://dribbble.com/shots/2643400-App-Landing-Page-Design) - by : Shekh Al Raihan
+[Brochure Website Design](https://dribbble.com/shots/2643400-App-Landing-Page-Design) - by : Shekh Al Raihan
 
-![App Landing Page ](images/brochure/brochureWebsite-01.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-02.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-03.jpg)
-
----
-
-![App Landing Page ](images/brochure/brochureWebsite-01-sections.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-01-headings.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-01-content-block.jpg)
+![Brochure Website Design](images/brochure/brochureWebsite-01.jpg)
+![Brochure Website Design](images/brochure/brochureWebsite-02.jpg)
+![Brochure Website Design](images/brochure/brochureWebsite-03.jpg)
 
 ---
 
-![App Landing Page ](images/brochure/brochureWebsite-02-sections.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-02-headings.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-02-infocards.jpg)
+![Brochure Website Sections](images/brochure/brochureWebsite-01-sections.jpg)
+![Brochure Website Headings](images/brochure/brochureWebsite-01-headings.jpg)
+![Brochure Website Content Block](images/brochure/brochureWebsite-01-content-block.jpg)
 
 ---
 
-![App Landing Page ](images/brochure/brochureWebsite-03-sections.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-03-headings.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-03-icons.jpg)
-![App Landing Page ](images/brochure/brochureWebsite-03-infocards.jpg)
+![Brochure Website Sections](images/brochure/brochureWebsite-02-sections.jpg)
+![Brochure Website Headings](images/brochure/brochureWebsite-02-headings.jpg)
+![Brochure Website Info Cards](images/brochure/brochureWebsite-02-infocards.jpg)
+
+---
+
+![Brochure Website Sections](images/brochure/brochureWebsite-03-sections.jpg)
+![Brochure Website Headings](images/brochure/brochureWebsite-03-headings.jpg)
+![Brochure Website Icons](images/brochure/brochureWebsite-03-icons.jpg)
+![Brochure Website Info Cards](images/brochure/brochureWebsite-03-infocards.jpg)
 
 #### CodePen Example
 
@@ -301,14 +301,14 @@ The base file break down is similar to what we saw with the brochure website.
 - `_info-blocks.scss`
 - `_icons.scss`
 
-![Web App Vars](images/web-app-code/00-vars.png)
+![Campaign Monitor Vars](images/web-app-code/00-vars.png)
 
-![Web App Base](images/web-app-code/01-base.png)
+![Campaign Monitor Base](images/web-app-code/01-base.png)
 
-![Web App Stats](images/web-app-code/02-stats.png)
+![Campaign Monitor Stats](images/web-app-code/02-stats.png)
 
-![Web App Stats Mods](images/web-app-code/03-stats-mods.png)
+![Campaign Monitor Stats Mods](images/web-app-code/03-stats-mods.png)
 
-![Web App Stats Scss](images/web-app-code/04-stats-scss.png)
+![Campaign Monitor Stats Scss](images/web-app-code/04-stats-scss.png)
 
-![Web App Stats Scss Interpolation](images/web-app-code/05-stats-scss-interpolation.png)
+![Campaign Monitor Stats Scss Interpolation](images/web-app-code/05-stats-scss-interpolation.png)
