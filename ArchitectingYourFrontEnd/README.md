@@ -216,37 +216,37 @@ Let’s walk through how I go about starting a project. Some things I start off 
 
 [Brochure Website Design](https://dribbble.com/shots/2643400-App-Landing-Page-Design) - by : Shekh Al Raihan
 
-![Brochure Website Design](images/brochure/brochureWebsite-01.jpg)
+![Brochure Website Design](images/brochure-site/brochureWebsite-01.jpg)
 
-![Brochure Website Design](images/brochure/brochureWebsite-02.jpg)
+![Brochure Website Design](images/brochure-site/brochureWebsite-02.jpg)
 
-![Brochure Website Design](images/brochure/brochureWebsite-03.jpg)
-
----
-
-![Brochure Website Sections](images/brochure/brochureWebsite-01-sections.jpg)
-
-![Brochure Website Headings](images/brochure/brochureWebsite-01-headings.jpg)
-
-![Brochure Website Content Block](images/brochure/brochureWebsite-01-content-block.jpg)
+![Brochure Website Design](images/brochure-site/brochureWebsite-03.jpg)
 
 ---
 
-![Brochure Website Sections](images/brochure/brochureWebsite-02-sections.jpg)
+![Brochure Website Sections](images/brochure-site/brochureWebsite-01-sections.jpg)
 
-![Brochure Website Headings](images/brochure/brochureWebsite-02-headings.jpg)
+![Brochure Website Headings](images/brochure-site/brochureWebsite-01-headings.jpg)
 
-![Brochure Website Info Cards](images/brochure/brochureWebsite-02-infocards.jpg)
+![Brochure Website Content Block](images/brochure-site/brochureWebsite-01-content-block.jpg)
 
 ---
 
-![Brochure Website Sections](images/brochure/brochureWebsite-03-sections.jpg)
+![Brochure Website Sections](images/brochure-site/brochureWebsite-02-sections.jpg)
 
-![Brochure Website Headings](images/brochure/brochureWebsite-03-headings.jpg)
+![Brochure Website Headings](images/brochure-site/brochureWebsite-02-headings.jpg)
 
-![Brochure Website Icons](images/brochure/brochureWebsite-03-icons.jpg)
+![Brochure Website Info Cards](images/brochure-site/brochureWebsite-02-infocards.jpg)
 
-![Brochure Website Info Cards](images/brochure/brochureWebsite-03-infocards.jpg)
+---
+
+![Brochure Website Sections](images/brochure-site/brochureWebsite-03-sections.jpg)
+
+![Brochure Website Headings](images/brochure-site/brochureWebsite-03-headings.jpg)
+
+![Brochure Website Icons](images/brochure-site/brochureWebsite-03-icons.jpg)
+
+![Brochure Website Info Cards](images/brochure-site/brochureWebsite-03-infocards.jpg)
 
 #### CodePen Example
 
