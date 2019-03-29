@@ -217,26 +217,35 @@ Let’s walk through how I go about starting a project. Some things I start off 
 [Brochure Website Design](https://dribbble.com/shots/2643400-App-Landing-Page-Design) - by : Shekh Al Raihan
 
 ![Brochure Website Design](images/brochure/brochureWebsite-01.jpg)
+
 ![Brochure Website Design](images/brochure/brochureWebsite-02.jpg)
+
 ![Brochure Website Design](images/brochure/brochureWebsite-03.jpg)
 
 ---
 
 ![Brochure Website Sections](images/brochure/brochureWebsite-01-sections.jpg)
+
 ![Brochure Website Headings](images/brochure/brochureWebsite-01-headings.jpg)
+
 ![Brochure Website Content Block](images/brochure/brochureWebsite-01-content-block.jpg)
 
 ---
 
 ![Brochure Website Sections](images/brochure/brochureWebsite-02-sections.jpg)
+
 ![Brochure Website Headings](images/brochure/brochureWebsite-02-headings.jpg)
+
 ![Brochure Website Info Cards](images/brochure/brochureWebsite-02-infocards.jpg)
 
 ---
 
 ![Brochure Website Sections](images/brochure/brochureWebsite-03-sections.jpg)
+
 ![Brochure Website Headings](images/brochure/brochureWebsite-03-headings.jpg)
+
 ![Brochure Website Icons](images/brochure/brochureWebsite-03-icons.jpg)
+
 ![Brochure Website Info Cards](images/brochure/brochureWebsite-03-infocards.jpg)
 
 #### CodePen Example
@@ -259,20 +268,35 @@ Let’s break down what we just saw into files.
 - `_icons.scss`
 
 ![Brochure Base](images/brochure-code/00a-base.png)
+
 ![Brochure Vars](images/brochure-code/00-vars.png)
+
 ![Brochure Section](images/brochure-code/01-section.png)
+
 ![Brochure Section Muted](images/brochure-code/02-section-muted.png)
+
 ![Brochure Section Colored](images/brochure-code/03-section-colored.png)
+
 ![Brochure Section Scss](images/brochure-code/04-section-scss.png)
+
 ![Brochure Section CSS](images/brochure-code/05-section-css.png)
+
 ![Brochure Section Heading](images/brochure-code/06-section-heading.png)
+
 ![Brochure Section Heading Stacked](images/brochure-code/07-section-heading-stacked.png)
+
 ![Brochure Section Heading Stacked Large](images/brochure-code/08-section-heading-stacked-large.png)
+
 ![Brochure Section Heading Scss](images/brochure-code/09-section-heading-scss.png)
+
 ![Brochure Section Heading Scss](images/brochure-code/10-section-heading-scss.png)
+
 ![Brochure Content Block](images/brochure-code/11-content-block.png)
+
 ![Brochure Content Block Flip](images/brochure-code/12-content-block-flip.png)
+
 ![Brochure Content Block Scss](images/brochure-code/13-content-block-scss.png)
+
 ![Brochure Content Block Scss](images/brochure-code/14-content-block-scss.png)
 
 ## Example - Web App
@@ -282,11 +306,17 @@ Check out my CodePen Project for live examples. Feel free to fork and play with 
 [Architecting your Front End - Web Apps](https://codepen.io/jermbo/project/editor/AwGdNo)
 
 ![Campaign Monitor](images/web-app/01-campaign_monitor.jpg)
+
 ![Campaign Monitor Sections](images/web-app/02-campaign_monitor-sections.jpg)
+
 ![Campaign Monitor Headings](images/web-app/03-campaign_monitor-headings.jpg)
+
 ![Campaign Monitor Content](images/web-app/04-campaign_monitor-content.jpg)
+
 ![Campaign Monitor Buttons](images/web-app/05-campaign_monitor-buttons.jpg)
+
 ![Campaign Monitor Stats](images/web-app/06-campaign_monitor-stats.jpg)
+
 ![Campaign Monitor Stats Stuff](images/web-app/07-campaign_monitor-stats-stuff.jpg)
 
 The base file break down is similar to what we saw with the brochure website.
