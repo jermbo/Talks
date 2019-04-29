@@ -81,4 +81,90 @@ The output will display the data passed in, instead of same text in the example 
 
 ## How does a parent know something changed? Emit an event.
 
-## How does a sibling know data has changed? Emit an event, then pass it via a prop.
+Now that we have data flowing to a child, we probably need to interact with that data. If the component is self contained, how can we change it and let the parent know about that change?
+
+Through emitters, that's how.
+
+Let's take a look at that button example, but get the data from the parent instead.
+
+```JavaScript
+Vue.component('button-counter', {
+  props: ['count'],
+  template: '<button @click="addOne">You clicked me {{ count }} times.</button>',
+  methods: {
+    addOne(){
+      this.count++;
+    }
+  }
+})
+```
+
+You could implement it like this.
+
+```HTML
+<div id="app">
+  <button-counter :count="globalCount"></button-counter>
+  <p>Global Counter: {{globalCounter}}</p>
+</div>
+```
+
+```JavaScript
+new Vue({
+  el: "#app",
+  data() {
+    return {
+        globalCount: 0
+    }
+  },
+  components: [
+    'button-counter',
+  ]
+})
+```
+
+The end result will be [ INSERT PICTURE HERE ]
+
+The problem we are presented with is, the parent doesn't know the child changed. The paragraph outside the `button-counter` does not update as we expect it to. We need to update the child component to emit and event.
+
+```JavaScript
+Vue.component('button-counter', {
+  props: ['count'],
+  template: `<button @click="$emit('incrementGlobal')">You clicked me {{ count }} times.</button>`
+})
+```
+
+Adjust our html a little bit.
+
+```HTML
+<div id="app">
+  <button-counter :count="globalCount" @:incrementGlobal="onIncrement"></button-counter>
+  <p>Global Counter: {{globalCounter}}</p>
+</div>
+```
+
+Finally, create a method that listens to the change.
+
+```JavaScript
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      globalCount: 0
+    }
+  },
+  components: [
+    'button-counter',
+  ],
+  methods: {
+    onIncrement(){
+      this.globalCount++;
+    }
+  }
+})
+```
+
+## Example architecture
+
+So far the examples have been one level deep and not very complex. What about deeply nested components or unrelated components that need information. Let's take an example of a shopping cart as an example. Without any code we can picture some a simple cart that needs a lot of information.
+
+[ INSERT CHART OF CART ]
