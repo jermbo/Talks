@@ -168,3 +168,4 @@ new Vue({
 So far the examples have been one level deep and not very complex. What about deeply nested components or unrelated components that need information. Let's take an example of a shopping cart as an example. Without any code we can picture some a simple cart that needs a lot of information.
 
 [ INSERT CHART OF CART ]
+
