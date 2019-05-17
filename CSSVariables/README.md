@@ -1,18 +1,17 @@
-# CSS Custom Properties
+# CSS Custom Properties | What, How, and why
 
 ---
 
-- History of CSS
-  - CSS 3 evolution
+- Brief History of CSS
+  - CSS Evolution
   - Flexbox
   - Grid
   - Quick Side Note
-- CSS Variables
-  - Define
-  - Scope
-  - Cascade
-  - Benefits
-- But, Preprocessor's already do that
+- CSS Custom Properties
+  - Syntax
+  - Scope and Cascade
+- But, Preprocessor's though
+  - Advantages
   - Sass Variables
   - Media Queries
 - Start using them today
@@ -23,13 +22,13 @@
 
 ---
 
-## History of CSS
+## Brief History of CSS
 
 Users demand a lot more from their experiences on the web. Shorter load times, more immersive interactions, better interactivity, consumable on any device, anywhere, any time. Fortunately, the languages of the web have been evolving to address these demands. CSS is no exception.
 
-### CSS 3
+### CSS Evolution
 
-With the ever growing fraction of screen size, aspect ratios, and device capabilities we can no longer use static units or layout content in "traditional" ways. CSS 3 brought us a plethora of new measurement units, ways to respond to screens and devices, and ability to calculate dynamic values. We got things like;
+With the ever growing fraction of screen size, aspect ratios, and device capabilities we can no longer use static units or layout content in "traditional" ways. CSS 3 has brought us a plethora of new measurement units, ways to respond to screens and devices, and ability to calculate dynamic values. We got things like;
 
 - `@media()`
 - `calc()`
@@ -41,27 +40,24 @@ With the ever growing fraction of screen size, aspect ratios, and device capabil
 
 ### Flexbox
 
-Flexbox is a great tool for creating flexible layouts that solved a lot of common issues as well as introduced new ways of solving hard problems. ( I'm talking about making aligned boxes have the same height. ) This also gives you different ways to order your visuals without having to change the source order of your HTML.
+Flexbox is a great tool for creating flexible layouts that solved a lot of common issues as well as introduced new ways of solving hard problems. ( I'm talking about making aligned boxes have the same height. ) This also gives you different ways to order your visuals without having to change the source order of your HTML. [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 ### CSS Grid
 
-While flexbox gave us a lot of control, it only gave us control over one dimension at a time. Either the x or the y. CSS Grid comes along and gives the ability to control our layout on both axes at the same time.
+While flexbox gave us a lot of control, it only gave us control over one dimension at a time. Either the x or the y. CSS Grid comes along and gives the ability to control our layout on both axes at the same time. [A Complete Guide to CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 ### Side note
 
-It's important to take a small detour and mention the numbering of CSS. There will be no CSS 4 or 5 or 6. Instead of doing big releases and adding a bunch of new items, CSS will instead be focused on the feature versioning. For example, CSS Grid is getting an update and that is known as CSS Grid 2. This numbering will be happening for all features in and coming to CSS. This allows the browsers to adopt updates quicker and help ease the burden of learning all the new changes.
+It's important to take a small detour and mention the numbering of CSS. There will be no CSS 4 or 5 or 6. Instead of doing big releases and adding a bunch of new items, CSS will instead be focused on the feature versioning. For example, CSS Grid is getting an update and that is known as CSS Grid 2. This numbering will be happening for all features is CSS from now on. This allows the browsers to adopt updates quicker and help ease the burden of learning all the new changes.
+[CSS Wiki](https://en.wikipedia.org/wiki/Cascading_Style_Sheets#CSS_4) | [Why there is no CSS4](https://rachelandrew.co.uk/archives/2016/09/13/why-there-is-no-css4-explaining-css-levels/)
 
-## CSS Variables
+## CSS Custom Properties
 
-Just like any other programming language a variable is used to store and update values. Historically, CSS is a static declarative language. Now, with CSS Variables the language is dynamic.
+Historically, CSS is a static declarative language. Now, with Custom properties the language is dynamic. Just like any other programming language a variable is used to store and update values.
 
-As sites and applications grow, large amounts of your CSS will have repeated code. For example, the same color might be used in different places, requiring global search and replace if that color needs to change. Same issue for font sizes, or global spacing, or anything that is a pattern.
+Custom properties allow a value to be stored in one place, then referenced in multiple other places. An additional benefit is semantic identifiers. For example, `--main-text-color` is easier to understand than #12da4a, especially if this same color is also used in other contexts.
 
-Custom properties allow a value to be stored in one place, then referenced in multiple other places. An additional benefit is semantic identifiers. For example, `--main-text-color` is easier to understand than #00ff00, especially if this same color is also used in other contexts.
-
----
-
-## Why use CSS Variables
+### Syntax
 
 In CSS, you have the necessity of utilizing the same values in multiple places. For example;
 
@@ -75,7 +71,7 @@ In CSS, you have the necessity of utilizing the same values in multiple places. 
 }
 ```
 
-This can start to get hard to manage as the project grows. How many of you have ever had multiple variations of grays, or slightly different font sizes for title fonts on different pages, or different values for box shadows, the list goes on and on.
+Over time as your project grows, keeping track of all the colors and its variations can be difficult. How many of you have ever had multiple variations of grays, or slightly different font sizes for title fonts on different pages, or different values for box shadows, the list goes on and on.
 
 We can utilize variables to help manage that mess. Let's look at the previous example, but with a variable declared.
 
@@ -93,7 +89,28 @@ We can utilize variables to help manage that mess. Let's look at the previous ex
 }
 ```
 
-## Advantages and differences over a preprocessor
+### Scope and Cascade
+
+Being these are valid CSS properties, the scoping and cascade work as they do with any other property.
+
+```CSS
+:root {
+    --color-primary: #f3220a;
+}
+
+body {
+    color: var(--color-primary)
+}
+
+.box {
+    --color-bg: #f0af0a;
+    background: var(--color-bg);
+}
+```
+
+## But, Preprocessors though
+
+We've had these features in Preprocessors for a while now, why should I care?
 
 ### Advantages
 
@@ -139,19 +156,7 @@ body {
 }
 ```
 
-## Defining a variable
-
-```CSS
-:root {
-    --color-primary: #f3220a;
-}
-
-body {
-    color: var(--color-primary)
-}
-```
-
-## Scope
+---
 
 ```CSS
 :root {
@@ -168,44 +173,44 @@ body {
 }
 ```
 
-## Benefits
+## Examples
+
+Let's see some examples already!
 
 ### Media queries
 
 ```Scss
-:root {
-  --font-size-body-large: 1rem;
-  --font-size-h1-large: 3rem;
-  --font-size-h2-large: 1.5rem;
+$font-size-body-large: 1rem;
+$font-size-h1-large: 3rem;
+$font-size-h2-large: 1.5rem;
 
-  --font-size-body-small: .8rem;
-  --font-size-h1-small: 2rem;
-  --font-size-h2-small: 1.2rem;
-}
+$font-size-body-small: .8rem;
+$font-size-h1-small: 2rem;
+$font-size-h2-small: 1.2rem;
 
 h1 {
-  font-size: var(--font-size-h1-small);
+  font-size: $font-size-h1-small;
 }
 
 h2 {
-  font-size: var(--font-size-h2-sm);
+  font-size: $font-size-h2-sm;
 }
 
 body {
-  font-size: var(--font-size-body-small);
+  font-size: $font-size-body-small;
 }
 
 @media (min-width: 800px) {
   h1 {
-    font-size: var(--font-size-h1-large);
+    font-size: $font-size-h1-large;
   }
 
   h2 {
-    font-size: var(--font-size-h2-large);
+    font-size: $font-size-h2-large;
   }
 
   body {
-    font-size: var(--font-size-body-large);
+    font-size: $font-size-body-large;
   }
 }
 ```
@@ -238,9 +243,79 @@ h3 {
 }
 ```
 
+### Alert System
+
+```HTML
+<div class="alerts">
+  <div class="alert -info">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, laudantium?</p>
+  </div><!-- -info -->
+
+  <div class="alert -success">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, laudantium?</p>
+  </div><!-- -success -->
+
+  <div class="alert -error">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, laudantium?</p>
+  </div><!-- -error -->
+
+  <div class="alert -warning">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, laudantium?</p>
+  </div><!-- -warning -->
+</div>
+```
+
+```CSS
+.alerts {
+  width: 75vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.alert {
+  --theme: #eee;
+  --darkTheme: #aaa;
+  background: var(--theme);
+  color: var(--darkTheme);
+  padding: 1.15rem;
+  border: 2px solid var(--darkTheme);
+}
+.alert.-info {
+  --theme: #58A4B0;
+  --darkTheme: #2B5056;
+}
+.alert.-success {
+  --theme: #1FAF6A;
+  --darkTheme: #004926;
+}
+.alert.-error {
+  --theme: #B23A48;
+  --darkTheme: #5E1F26;
+}
+.alert.-warning {
+  --theme: #DDC508;
+  --darkTheme: #706304;
+}
+```
+
+[CSS Variables - Alert System Test](https://codepen.io/jermbo/pen/PvmmpO)
+
+Please read the original article on CSS Tricks, as that goes into more detail about the differences between Sass Loops and CSS Custom Properties. [CSS Tricks](https://css-tricks.com/do-css-custom-properties-beat-sass-loops/)
+
+### CodePen Examples
+
+- [Using CSS Vars for Themes](https://codepen.io/emoreno911/pen/gxwGwN)
+- [Update CSS Variables with JS](https://codepen.io/wesbos/pen/adQjoY)
+- [Stripe like menu - CSS Vars & VueJS](https://codepen.io/nkCreation/pen/oqopjY)
+- [Vars in CSS & Filters](https://codepen.io/Volosnikov/pen/NjrxWq)
+
 ## Resources
 
-This technology is widely supported and has [CanIUse](https://caniuse.com/#search=css%20variables)
+This technology is widely supported [CanIUse](https://caniuse.com/#search=css%20variables)
 
---- https://www.youtube.com/watch?v=U9UU_fgpmO8
---- https://scrimba.com/g/gcssvariables
+- [The Strategy Guide to CSS Custom Properties](https://www.youtube.com/watch?v=U9UU_fgpmO8)
+- [Learn CSS Variables for free - Scrimba](https://scrimba.com/g/gcssvariables)
+- [CSS Custom Properties Sample](https://googlechrome.github.io/samples/css-custom-properties/index.html)
+- [Custom Props - MicroSoft example](https://developer.microsoft.com/en-us/microsoft-edge/testdrive/demos/custom-props/)
