@@ -62,16 +62,26 @@ Custom properties allow a value to be stored in one place, then referenced in mu
 In CSS, you have the necessity of utilizing the same values in multiple places. For example;
 
 ```CSS
+body {
+    background: #e6e6e6;
+}
+
 .title {
+    background: #6faaf6;
     color: #f08a00;
 }
 
 .quote {
     color: #f08a00;
 }
+
+.heading {
+    border-bottom: #6faaf6;
+    color: #f08a00;
+}
 ```
 
-Over time as your project grows, keeping track of all the colors and its variations can be difficult. How many of you have ever had multiple variations of grays, or slightly different font sizes for title fonts on different pages, or different values for box shadows, the list goes on and on.
+As your project grows, keeping track of all the colors and its variations can be difficult. How many of you have ever had multiple variations of grays, or slightly different font sizes for title fonts on different pages, or different values for box shadows, the list goes on and on.
 
 We can utilize variables to help manage that mess. Let's look at the previous example, but with a variable declared.
 
@@ -99,7 +109,7 @@ Being these are valid CSS properties, the scoping and cascade work as they do wi
 }
 
 body {
-    color: var(--color-primary)
+    color: var(--color-primary);
 }
 
 .box {
@@ -304,12 +314,54 @@ h3 {
 
 Please read the original article on CSS Tricks, as that goes into more detail about the differences between Sass Loops and CSS Custom Properties. [CSS Tricks](https://css-tricks.com/do-css-custom-properties-beat-sass-loops/)
 
+### Light and Dark Modes
+
+```HTML
+<div>
+  <h1>Light / Dark Mode</h1>
+</div>
+```
+
+```Scss
+html {
+   --lightBtn: #fe016c
+   --lightBg: #fff;
+   --lightColor: #232323;
+
+   width: 100%;
+   height: 100vh;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: var(--lightBg);
+
+}
+
+html[data-theme="dark"] {
+   --lightBtn: #ffbd07;
+   --lightBg: #232323;
+   --lightColor: #fff;
+
+   background: var(--lightBg);
+}
+
+h1 {
+  color: var(--lightColor);
+}
+```
+
+[Easy Dark Mode with SASS](https://codepen.io/KaioRocha/pen/MdvWmg)
+
 ### CodePen Examples
 
+- [CSS Vars Element Showcase](https://codepen.io/purtuga/pen/ReowqX)
 - [Using CSS Vars for Themes](https://codepen.io/emoreno911/pen/gxwGwN)
 - [Update CSS Variables with JS](https://codepen.io/wesbos/pen/adQjoY)
 - [Stripe like menu - CSS Vars & VueJS](https://codepen.io/nkCreation/pen/oqopjY)
 - [Vars in CSS & Filters](https://codepen.io/Volosnikov/pen/NjrxWq)
+- [No library emoji slider](https://codepen.io/thebabydino/pen/vwJeJN)
 
 ## Resources
 
