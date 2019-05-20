@@ -24,7 +24,7 @@
 
 ## Brief History of CSS
 
-Users demand a lot more from their experiences on the web. Shorter load times, more immersive interactions, better interactivity, consumable on any device, anywhere, any time. Fortunately, the languages of the web have been evolving to address these demands. CSS is no exception.
+Users demand a lot more from their experiences on the web. Shorter load times, more immersive experiences, better interactivity, consumable on any device, anywhere, any time. Fortunately, the languages of the web have been evolving to address these demands. CSS is no exception.
 
 ### CSS Evolution
 
@@ -115,6 +115,7 @@ body {
 .box {
     --color-bg: #f0af0a;
     background: var(--color-bg);
+    color: var(--color-primary);
 }
 ```
 
@@ -371,3 +372,5 @@ This technology is widely supported [CanIUse](https://caniuse.com/#search=css%20
 - [Learn CSS Variables for free - Scrimba](https://scrimba.com/g/gcssvariables)
 - [CSS Custom Properties Sample](https://googlechrome.github.io/samples/css-custom-properties/index.html)
 - [Custom Props - MicroSoft example](https://developer.microsoft.com/en-us/microsoft-edge/testdrive/demos/custom-props/)
+- [CSS Variables Tutorial (CSS Custom Properties) - Traversy Media](https://www.youtube.com/watch?v=sQUB039MG0I)
+- [CSS Variables - Kevin Powell](https://www.youtube.com/playlist?list=PL4-IK0AVhVjOT2KBB5TSbD77OmfHvtqUi)
