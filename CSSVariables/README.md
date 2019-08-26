@@ -67,8 +67,8 @@ body {
 }
 
 .title {
-    background: #6faaf6;
-    color: #f08a00;
+    background: #6faff6;
+    color: #f08b00;
 }
 
 .quote {
@@ -77,7 +77,7 @@ body {
 
 .heading {
     border-bottom: #6faaf6;
-    color: #f08a00;
+    color: #f08c00;
 }
 ```
 
