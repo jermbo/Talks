@@ -133,3 +133,119 @@ console.table(arr);
 // | 3         | 'hard'        |
 // ----------------------------
 ```
+
+## LowDash APIs
+
+Much like jQuery, Lodash was born out of necessity. simply put, working with data can be tricky. Lodash offers a simple api that makes difficult tasks easy and performant.
+
+From Lodash's website, Lodash is :
+
+> A modern JavaScript utility library delivering modularity, performance & extras.
+
+With the advancements of ES6+, there are some things we can do that do not require a utiliity library like Lodash.
+
+### Array methods
+
+Map, reduce, filter are easily the three most common use cases of Lodash. This now exist on the `Array` prototype.
+
+```JavaScript
+// Lodash
+_.map([1,2,3], n => n * 2); // [2, 4, 6]
+_.reduce([1,2,3], (acc, item) => acc + item, 0); // 6
+_.filter([1,2,3], n => n <= 2); // [1, 2]
+
+// ES6 +
+[1,2,3].map(n => n * 2); // [2, 4, 6]
+[1,2,3].reduce((acc, item) => acc + item, 0); // 6
+[1,2,3].filter(n => n <= 2); // [1, 2]
+```
+
+One cool thing about the `reduce` method is it can work on objects as well as arrays. Checkout my [CodePen](https://codepen.io/jermbo/pen/zPVdpE) for a working example.
+
+```JavaScript
+let finalObj = {};
+
+const keys = 'name.first'.split('.'); // ['name', 'first']
+const lastKey = keys.pop(); // 'first'
+const lastObj = keys.reduce((obj, key) => {
+    return obj[key] = obj[key] || {}
+}, finalObj); // {name: {first: '' }}
+
+lastObj[lastKey] = input.value; // {name: {first: 'jermbo' }}
+```
+
+### Destructuring
+
+This was a difficult concept for me to get, until I got it. Now, I don't know how I lived without it. Essentially, destructuring allows you to get specific items out of an object or an array in a more concise way.
+
+```JavaScript
+// Old Way
+function getUserFullName(user) {
+    const first = user.first;
+    const last = user.last;
+    return `${first} ${last}`;
+}
+
+// ES6 +
+function getUserFullName(user) {
+    const {first, last} = user;
+    return `${first} ${last}`;
+}
+```
+
+### Spread
+
+The spread operator allows you to duplicate an array or object into another array or object.
+
+```JavaScript
+// Problem
+const names = ['Fry', 'Bender', 'Leela'];
+const names2 = ['Professor', 'Hermies', 'Amy'];
+const allNames = [names, names2];
+// [['Fry', 'Bender', 'Leela'], ['Professor', 'Hermies', 'Amy']]
+
+// Correct
+const names = ['Fry', 'Bender', 'Leela'];
+const names2 = ['Professor', 'Hermies', 'Amy'];
+const allNames = [...names, ...names2];
+// ['Fry', 'Bender', 'Leela', 'Professor', 'Hermies', 'Amy']
+```
+
+```JavaScript
+function mainApp(userOpts) {
+    const defaults = {
+        isDebug: true,
+        showResults: false,
+        parentElem: ''
+    };
+    const options = {
+        ...defaults,
+        ...userOpts
+    }
+    // {
+    //   isDebug: false,
+    //   showResults: false,
+    //   parentElem: '#parent',
+    //   random: 3.141
+    // }
+}
+
+mainApp({
+    parentElem: '#parent',
+    isDebug: false,
+    random: 3.141
+});
+```
+
+### Rest operator
+
+Rest works in a similar way, but has more to do with the number of options a function or method takes. If you function takes in an unknown number of arguments, the `args` is there but it's not as powerful as the rest operator.
+
+```JavaScript
+function addNumbers(one, two, ...more) {
+    return one + two + more.reduce((acc, m) => acc + m, 0);
+}
+
+console.log(addNumbers(1,2,3,4,5,6,7,8,9,10)); // 55
+console.log(addNumbers(1,2)); // 3
+```
