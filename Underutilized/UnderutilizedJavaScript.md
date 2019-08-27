@@ -55,7 +55,6 @@ function findLIs() {
     const childEl = parentEl.querySelectorAll("li");
     // do something LIs
 }
-
 ```
 
 DOM selection and manipulation is expensive. It's generally best practice to cache as much DOM as possible and use the cache to do you look ups. If you have to traverse the whole DOM tree every time you needed something, and you knew the parent element isn't changing, why not start from there?
@@ -79,3 +78,58 @@ document.querySelector('.myElement').classList.toggle("hideMe");
 ```
 
 There are a few more worth checking out at [MDN ClassList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList#Methods) documentation.
+
+## Console APIs
+
+Even though there are very powerful tools for debugging, stepping through code, and seeing the call stack, I am still a big fan of a simple `console.log()`. In this section, I want to show you a couple of APIs you might not know about that will change the way you look at your console.
+
+### console.dir()
+
+Displays an interactive listing of the properties of a specified JavaScript object. This listing lets you use disclosure triangles to examine the contents of child objects. [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Console/dir)
+
+I use this mostly for looking at what properties and methods I have when working with the DOM.
+
+```JavaScript
+const el = document.querySelector("#myElement");
+console.log(el); // <p id="myElement">What up</p>
+console.dir(el); // >p.myElement
+```
+
+### console.group() and console.groupEnd()
+
+Creates a new inline group, indenting all following output by another level. To move back out a level, call groupEnd(). [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Console/group)
+
+When looping through data sets and needing see specific items together, it's helpful to group them by something more powerful than logging `-------`. This is where `group` and `groupEnd` come into play. ( A cool thing about this is you can give it a name to add to readability )
+
+```JavaScript
+const data = [{...}, {...}]
+
+data.forEach((d, i) => {
+    console.group(`data ${i}`);
+    console.log(d.name);
+    console.log(d.userId);
+    console.groupEnd();
+});
+```
+
+### console.table()
+
+I left the best for last. I cannot tell you how awesome the ability to see structured data in a structure is. This does have its limits, but overall it's very powerful and helpful for getting a sense of how your arrays or objects look.
+
+```JavaScript
+const arr = ['javascript', 'rocks', 'so', 'hard'];
+
+console.table(arr);
+
+// ------ [ OutPut ] -----------
+// | index     | values        |
+// ----------------------------
+// | 0         | 'javascript'  |
+// ----------------------------
+// | 1         | 'rocks'       |
+// ----------------------------
+// | 2         | 'so'          |
+// ----------------------------
+// | 3         | 'hard'        |
+// ----------------------------
+```
