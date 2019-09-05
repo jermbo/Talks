@@ -25,11 +25,31 @@ The items I am going to cover are:
 
 ## Box Sizing
 
+**Broswer Support**
+[CanIUse]()
+
+**Resources**
+
 ## Specificity
+
+**Broswer Support**
+[CanIUse]()
+
+**Resources**
 
 ## Calc
 
+**Broswer Support**
+[CanIUse]()
+
+**Resources**
+
 ## Flexbox
+
+**Broswer Support**
+[CanIUse]()
+
+**Resources**
 
 ## CSS Grids
 
@@ -97,7 +117,7 @@ body {
 ```
 
 **Broswer Support**
-[CanIUse Grid](https://caniuse.com/#search=grid) This is green across the board with the exception of Opera Mini and Blackberry. IE has a couple of quirks but it's usable.
+[CanIUse](https://caniuse.com/#search=grid) This is green across the board with the exception of Opera Mini and Blackberry. IE has a couple of quirks but it's usable.
 
 **Resources**
 
@@ -110,8 +130,119 @@ body {
 
 ## Focus Within
 
+Simply put, `:focus-within` is a CSS pseudo-class that represents itself if matched by the `:focus` pseudo-class or has a descendant that is matched by a `:focus`.
+
+A lot of articles have mentioned this in relation to a form and its inputs. When the input of a form is in focus the form is in focus and you can style against that to make it obvious to the user.
+
+I watched a video a while back that gave another example. [Even More CSS Secrets by Lea Verou](https://youtu.be/vs34f9FiHps?t=1449) A keyboard accessible fly out menu. I have recreated her example in my [Nav Focus Within](https://codepen.io/jermbo/pen/aboEBBG) CodePen, to demonstrate her point.
+
+```HTML
+<nav>
+  <ul>
+    <li>
+      <a href="#">Project</a>
+      <ul>
+        <li><a href="#">Project 1</a></li>
+        <li><a href="#">Project 2</a></li>
+        <li><a href="#">Project 3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Blog</a>
+      <ul>
+        <li><a href="#">Blog 1</a></li>
+        <li><a href="#">Blog 2</a></li>
+        <li><a href="#">Blog 3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">About</a>
+      <ul>
+        <li><a href="#">About 1</a></li>
+        <li><a href="#">About 2</a></li>
+        <li><a href="#">About 3</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+```
+
+```CSS
+// -----------------------------------------------------
+// Old way: Does not address any accessability concerns.
+// -----------------------------------------------------
+nav li ul {
+  display: none;
+}
+
+nav li:hover ul {
+  display: initial;
+}
+
+a:focus {
+  background: black;
+  color: white;
+}
+
+// -----------------------------------------------------
+// Old way: Kind of addresses accessability concerns, but not really.
+// -----------------------------------------------------
+nav li ul {
+  display: none;
+}
+nav li:hover ul,
+a:hover + ul{
+  display: initial;
+}
+
+a:focus {
+  background: black;
+  color: white;
+}
+
+// -----------------------------------------------------
+// New Way - Addresses all accessability concerns
+// -----------------------------------------------------
+nav li ul {
+  display: none;
+}
+
+nav li:hover ul,
+li:focus-within ul {
+  display: initial;
+}
+
+a:focus {
+  background: black;
+  color: white;
+}
+```
+
+**Broswer Support**
+[CanIUse](https://caniuse.com/#search=focus-within)
+
+**Resources**
+
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within)
+- [CSS-Tricks](https://css-tricks.com/almanac/selectors/f/focus-within/)
+
 ## Not
+
+**Broswer Support**
+[CanIUse]()
+
+**Resources**
 
 ## Empty
 
+**Broswer Support**
+[CanIUse]()
+
+**Resources**
+
 ## Position Sticky
+
+**Broswer Support**
+[CanIUse]()
+
+**Resources**
