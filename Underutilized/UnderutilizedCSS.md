@@ -26,28 +26,33 @@ The items I am going to cover are:
 ## Box Sizing
 
 **Broswer Support**
-[CanIUse]()
+[CanIUse](https://caniuse.com/#search=box-sizing) Green across the board.
 
 **Resources**
+
+- [CSS-Tricks](https://css-tricks.com/box-sizing/)
+- [CSS-Tricks](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/)
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
+- [Paul Irish](https://www.paulirish.com/2012/box-sizing-border-box-ftw/)
 
 ## Specificity
 
-**Broswer Support**
-[CanIUse]()
-
 **Resources**
+
+- [Specificity Calculator](https://specificity.keegan.st/)
+- [Alligator IO](https://alligator.io/css/understanding-specificity-in-css/)
 
 ## Calc
 
 **Broswer Support**
-[CanIUse]()
+[CanIUse](https://caniuse.com/#search=calc) Green across the board, except for Opera mini and some bugs in IE.
 
 **Resources**
 
 ## Flexbox
 
 **Broswer Support**
-[CanIUse]()
+[CanIUse](https://caniuse.com/#search=flexbox%20layout) Green across the board, some issues to be aware of in IE.
 
 **Resources**
 
@@ -229,20 +234,33 @@ a:focus {
 ## Not
 
 **Broswer Support**
-[CanIUse]()
+[CanIUse](https://caniuse.com/#search=%3Anot%20css3) Green across the board.
 
 **Resources**
+
+- [Codrops](https://tympanus.net/codrops/css_reference/not/)
+- [CSS-Tricks](https://css-tricks.com/almanac/selectors/n/not/)
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:not)
 
 ## Empty
 
 **Broswer Support**
-[CanIUse]()
+[CanIUse](https://caniuse.com/#search=%3Aempty) Green across the board.
 
 **Resources**
+
+- [CodePen](https://codepen.io/ricardozea/pen/rxqqaM/)
+- [CSS-Tricks](https://css-tricks.com/almanac/selectors/e/empty/)
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:empty)
 
 ## Position Sticky
 
+https://codepen.io/jermbo/pen/JgpxZR
+
 **Broswer Support**
-[CanIUse]()
+[CanIUse](https://caniuse.com/#search=sticky) It's got decent support. There are a couple of gotchas with `thead` and `tr`. And needs vendor prefixes most of the time.
 
 **Resources**
+
+- [CSS-Tricks](https://css-tricks.com/position-sticky-2/)
+- [Alligator IO](https://alligator.io/css/position-sticky/)
