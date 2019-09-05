@@ -18,18 +18,26 @@ The items I am going to cover are:
 - Flexbox
 - CSS Grids
 - Custom Properties
+- `:focus-within`
 - `:not()`
 - `:empty`
-- `:place-holder-shown`
 - position sticky
+
+## Box Sizing
+
+## Specificity
+
+## Calc
+
+## Flexbox
 
 ## CSS Grids
 
-We have been trying since the beginning of the web to get print style layouts on the web. Before CSS Grid we had to rely on float trickery, Flex Box magic, and other pure hacks to get something close to print. Now the line between web and print have never been more blurry.
+We have been trying since the beginning of the web to get print style layouts on the web. Before CSS Grid we had to rely on float trickery, Flexbox magic, and other pure hacks to get something close to print. Now the line between web and print have never been more blurry.
 
 CSS Grid is a true layout system on the web. It offers us a 2-dimensional control as well as powerful spacing abilities. You work with a Grid Layout by applying rules to both the parent ( which become Grid Container ) and the child ( which become Grid Items).
 
-One thing to point out is, it's not Grid vs. Flex Box. It's Grid and Flex Box. These are complementary technologies, not competing ones.
+One thing to point out is, it's not Grid vs. Flexbox. It's Grid and Flexbox. These are complementary technologies, not competing ones.
 
 Check out my [CSS Grid Test](https://codepen.io/jermbo/pen/KZZjmB) over on my CodePen.
 
@@ -97,3 +105,13 @@ body {
 - [CSS Grid by Wes Bos](https://cssgrid.io/)
 - [Learn CSS Grid](https://learncssgrid.com/)
 - [CSS Grid Generator](https://cssgrid-generator.netlify.com/)
+
+## Custom Properties
+
+## Focus Within
+
+## Not
+
+## Empty
+
+## Position Sticky
