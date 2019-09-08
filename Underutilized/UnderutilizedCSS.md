@@ -27,6 +27,14 @@ The items I am going to cover are:
 
 ## Box Sizing
 
+The Box Model is a combination of width, height, padding, margin, and border. The real issue being the padding. If I create a box that is 100 by 100 with a padding of 10, what is my overall box size? 120 x 120. No está bueno.
+
+```CSS
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+```
+
 **Browser Support**
 [CanIUse](https://caniuse.com/#search=box-sizing) Green across the board.
 
