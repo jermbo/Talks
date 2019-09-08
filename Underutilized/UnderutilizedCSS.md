@@ -65,16 +65,33 @@ In order from weakest to strongest the browser breaks down the rules like so;
    1. Pronounced "Band Important"
 
 **Resources**
-
+- [CSS-Tricks](https://css-tricks.com/specifics-on-css-specificity/)
 - [Specificity Calculator](https://specificity.keegan.st/)
 - [Alligator IO](https://alligator.io/css/understanding-specificity-in-css/)
 
 ## Calc
 
+Calc is at its core a function that allows developers to preform math functions on different units of measurement. I see this utilized all the time for width and heights. For example, there is a fixed header and the body content needs to fill the rest of the screen.
+
+```CSS
+.fixed-header { 
+  height: 75px;
+}
+
+.main-body {
+  height: calc(100vh - 75px);
+}
+```
+
+This is great! But `calc` can be used for a lot more than that. One of the ways I like to use calc is for fluid type. Check out my [CodePen - Fluid Type](https://codepen.io/jermbo/pen/bRKJJd) for an example. 
+
 **Browser Support**
 [CanIUse](https://caniuse.com/#search=calc) Green across the board, except for Opera mini and some bugs in IE.
 
 **Resources**
+- [CSS-Tricks](https://css-tricks.com/a-couple-of-use-cases-for-calc/)
+- [CSS-Tricks Fun Tip](https://css-tricks.com/fun-tip-use-calc-to-change-the-height-of-a-hero-component/)
+- [Fluid Type](https://codepen.io/jermbo/pen/bRKJJd)
 
 ## Flexbox
 
