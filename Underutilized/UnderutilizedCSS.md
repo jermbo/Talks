@@ -71,7 +71,7 @@ In order from weakest to strongest the browser breaks down the rules like so;
 
 ## Calc
 
-Calc is at its core a function that allows developers to preform math functions on different units of measurement. I see this utilized all the time for width and heights. For example, there is a fixed header and the body content needs to fill the rest of the screen.
+Calc is at its core a function that allows developers to perform math functions on different units of measurement. I see this utilized all the time for width and heights. For example, there is a fixed header that is `75px` tall and the body content needs to fill the rest of the screen.
 
 ```CSS
 .fixed-header { 
@@ -83,7 +83,23 @@ Calc is at its core a function that allows developers to preform math functions 
 }
 ```
 
-This is great! But `calc` can be used for a lot more than that. One of the ways I like to use calc is for fluid type. Check out my [CodePen - Fluid Type](https://codepen.io/jermbo/pen/bRKJJd) for an example. 
+This is great! But `calc` can be used for a lot more than that. One of the ways I like to use calc is for fluid type. Check out my [CodePen - Fluid Type](https://codepen.io/jermbo/pen/bRKJJd) for an example.
+
+```CSS
+html {
+  font-size: 12px;
+}
+@media (min-width: 480px) {
+  html {
+    font-size: calc(12px + 20 * (100vw - 480px) / 1068);
+  }
+}
+@media (min-width: 1548px) {
+  html {
+    font-size: 32px;
+  }
+}
+```
 
 **Browser Support**
 [CanIUse](https://caniuse.com/#search=calc) Green across the board, except for Opera mini and some bugs in IE.
@@ -95,10 +111,15 @@ This is great! But `calc` can be used for a lot more than that. One of the ways 
 
 ## Flexbox
 
+This is starting to be used more and more, but I would like to see this instead of a framework. I think most people, if not every one, are aware of this but have a hard time implementing it into their projects. If you checkout the Can I Use website, you will notice this is green across the board, with minor issues with IE. So, there is no reason not to use this.
+
 **Browser Support**
 [CanIUse](https://caniuse.com/#search=flexbox%20layout) Green across the board, some issues to be aware of in IE.
 
 **Resources**
+- [CSS-Tricks Complete Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Solved by Flexbox](https://philipwalton.github.io/solved-by-flexbox/demos/grids/)
+- [The Flexbox Holy Albatross](https://css-tricks.com/putting-the-flexbox-albatross-to-real-use/)
 
 ## CSS Grids
 
