@@ -47,6 +47,23 @@ The Box Model is a combination of width, height, padding, margin, and border. Th
 
 ## Specificity
 
+In a nutshell, specificity is how the browsers determine the importance, relevance, and "seniority" of a CSS style. Understanding this is key to a clean code base. 
+
+In order from weakest to strongest the browser breaks down the rules like so;
+1. Type Selectors and Pseudo-Elements
+   1. `div` | `h1` | `a`
+   2. `::before` | `::after`
+2. Class selectors, attribute selectors, and pseudo-classes
+   1. `.card` | `.nav` | `.profile_img`
+   2. `[type="text"]` | `[href*="https"]`
+   3. `:hover` | `:focus`
+3. ID selectors
+   1. `#footer` | `#main-content`
+4. Inline styles
+   1. `<p style="color: red">text</p>`
+5. !important
+   1. Pronounced "Band Important"
+
 **Resources**
 
 - [Specificity Calculator](https://specificity.keegan.st/)
