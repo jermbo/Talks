@@ -2,13 +2,13 @@
 
 Haven't we been on CSS3 for a while now? When is CSS4 coming? CSS hasn't gotten any major updates in a while.
 
-Yes, CSS3 has been around for a while. I bet there are a lot of things still to discover from that spec.
+Yes, CSS3 has been around for a while. I would bet there are a lot of things still to discover from the [spec](https://www.w3.org/Style/CSS/specs.en.html). CSS3 brought us a lot of goodness that you might be surprised to find out has been there for a while. 
 
 No, we are not getting a CSS4. [Rachel Andrew](https://rachelandrew.co.uk/archives/2016/09/13/why-there-is-no-css4-explaining-css-levels/) goes into detail about the history of the CSS numbering system, and provides an explanation as to why we will not see a v4 of CSS. TL;DR, Numbering things is hard. Moving forward individual features are getting versioned to help promote browser adoption. For example, selectors level 4 is being finalized and starting to ship.
 
 Things are constantly being added to CSS. Two of my most anticipated features have recently dropped, Grid and Variable Fonts!
 
-In this talk I would like to discuss so features, both old and new, that do not get utilized enough. ( In my opinion and experience. )
+In this talk I would like to discuss some features, both old and new, that do not get utilized enough. ( In my opinion and experience. )
 
 The items I am going to cover are:
 
@@ -23,9 +23,11 @@ The items I am going to cover are:
 - `:empty`
 - position sticky
 
+> These are opinions based on what I have seen doing code reviews, being involved in open source projects, and some things I should be utilizing more.
+
 ## Box Sizing
 
-**Broswer Support**
+**Browser Support**
 [CanIUse](https://caniuse.com/#search=box-sizing) Green across the board.
 
 **Resources**
@@ -44,14 +46,14 @@ The items I am going to cover are:
 
 ## Calc
 
-**Broswer Support**
+**Browser Support**
 [CanIUse](https://caniuse.com/#search=calc) Green across the board, except for Opera mini and some bugs in IE.
 
 **Resources**
 
 ## Flexbox
 
-**Broswer Support**
+**Browser Support**
 [CanIUse](https://caniuse.com/#search=flexbox%20layout) Green across the board, some issues to be aware of in IE.
 
 **Resources**
@@ -121,7 +123,7 @@ body {
 }
 ```
 
-**Broswer Support**
+**Browser Support**
 [CanIUse](https://caniuse.com/#search=grid) This is green across the board with the exception of Opera Mini and Blackberry. IE has a couple of quirks but it's usable.
 
 **Resources**
@@ -223,7 +225,7 @@ a:focus {
 }
 ```
 
-**Broswer Support**
+**Browser Support**
 [CanIUse](https://caniuse.com/#search=focus-within)
 
 **Resources**
@@ -233,7 +235,7 @@ a:focus {
 
 ## Not
 
-**Broswer Support**
+**Browser Support**
 [CanIUse](https://caniuse.com/#search=%3Anot%20css3) Green across the board.
 
 **Resources**
@@ -244,7 +246,7 @@ a:focus {
 
 ## Empty
 
-**Broswer Support**
+**Browser Support**
 [CanIUse](https://caniuse.com/#search=%3Aempty) Green across the board.
 
 **Resources**
@@ -257,7 +259,7 @@ a:focus {
 
 https://codepen.io/jermbo/pen/JgpxZR
 
-**Broswer Support**
+**Browser Support**
 [CanIUse](https://caniuse.com/#search=sticky) It's got decent support. There are a couple of gotchas with `thead` and `tr`. And needs vendor prefixes most of the time.
 
 **Resources**
