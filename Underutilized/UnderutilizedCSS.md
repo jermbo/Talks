@@ -2,7 +2,7 @@
 
 Haven't we been on CSS3 for a while now? When is CSS4 coming? CSS hasn't gotten any major updates in a while.
 
-Yes, CSS3 has been around for a while. I would bet there are a lot of things still to discover from the [spec](https://www.w3.org/Style/CSS/specs.en.html). CSS3 brought us a lot of goodness that you might be surprised to find out has been there for a while. 
+Yes, CSS3 has been around for a while. I would bet there are a lot of things still to discover from the [spec](https://www.w3.org/Style/CSS/specs.en.html). CSS3 brought us a lot of goodness that you might be surprised to find out has been there for a while.
 
 No, we are not getting a CSS4. [Rachel Andrew](https://rachelandrew.co.uk/archives/2016/09/13/why-there-is-no-css4-explaining-css-levels/) goes into detail about the history of the CSS numbering system, and provides an explanation as to why we will not see a v4 of CSS. TL;DR, Numbering things is hard. Moving forward individual features are getting versioned to help promote browser adoption. For example, selectors level 4 is being finalized and starting to ship.
 
@@ -19,7 +19,6 @@ The items I am going to cover are:
 - CSS Grids
 - Custom Properties
 - `:focus-within`
-- `:not()`
 - `:empty`
 - position sticky
 
@@ -47,9 +46,10 @@ The Box Model is a combination of width, height, padding, margin, and border. Th
 
 ## Specificity
 
-In a nutshell, specificity is how the browsers determine the importance, relevance, and "seniority" of a CSS style. Understanding this is key to a clean code base. 
+In a nutshell, specificity is how the browsers determine the importance, relevance, and "seniority" of a CSS style. Understanding this is key to a clean code base.
 
 In order from weakest to strongest the browser breaks down the rules like so;
+
 1. Type Selectors and Pseudo-Elements
    1. `div` | `h1` | `a`
    2. `::before` | `::after`
@@ -65,6 +65,7 @@ In order from weakest to strongest the browser breaks down the rules like so;
    1. Pronounced "Band Important"
 
 **Resources**
+
 - [CSS-Tricks](https://css-tricks.com/specifics-on-css-specificity/)
 - [Specificity Calculator](https://specificity.keegan.st/)
 - [Alligator IO](https://alligator.io/css/understanding-specificity-in-css/)
@@ -74,7 +75,7 @@ In order from weakest to strongest the browser breaks down the rules like so;
 Calc is at its core a function that allows developers to perform math functions on different units of measurement. I see this utilized all the time for width and heights. For example, there is a fixed header that is `75px` tall and the body content needs to fill the rest of the screen.
 
 ```CSS
-.fixed-header { 
+.fixed-header {
   height: 75px;
 }
 
@@ -105,6 +106,7 @@ html {
 [CanIUse](https://caniuse.com/#search=calc) Green across the board, except for Opera mini and some bugs in IE.
 
 **Resources**
+
 - [CSS-Tricks](https://css-tricks.com/a-couple-of-use-cases-for-calc/)
 - [CSS-Tricks Fun Tip](https://css-tricks.com/fun-tip-use-calc-to-change-the-height-of-a-hero-component/)
 - [Fluid Type](https://codepen.io/jermbo/pen/bRKJJd)
@@ -117,6 +119,7 @@ This is starting to be used more and more, but I would like to see this instead 
 [CanIUse](https://caniuse.com/#search=flexbox%20layout) Green across the board, some issues to be aware of in IE.
 
 **Resources**
+
 - [CSS-Tricks Complete Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Solved by Flexbox](https://philipwalton.github.io/solved-by-flexbox/demos/grids/)
 - [The Flexbox Holy Albatross](https://css-tricks.com/putting-the-flexbox-albatross-to-real-use/)
@@ -197,6 +200,143 @@ body {
 - [CSS Grid Generator](https://cssgrid-generator.netlify.com/)
 
 ## Custom Properties
+
+CSS Custom properties, aka CSS Variables, are custom names that can store values to be referenced through out your code. There are some really cool features and key differences between preprocessor variables.
+
+### CSS Custom Property vs Sass Variable
+
+Sass variables simply hold a value and compute down to a know value. When the final `.css` document is read, that variable name is gone and the value is in its place. Most common use case would be for colors.
+
+```CSS
+// - Sass file
+$brand-primary: #bada55;
+
+p {
+  color: $brand-primary;
+}
+
+// - Output
+p {
+  color: #bada55;
+}
+```
+
+CSS Custom properties are living values.
+
+```CSS
+:root {
+  --brand-primary: #bada55;
+}
+
+p {
+  color: var(--brand-primary);
+}
+```
+
+The advantages this gives you is runtime manipulation, adhering to the cascade rules, and no preprocessor step.
+
+### Runtime manipulation
+
+Custom properties are accessable via JavaScript and this is where the fun happens. Just checkout a couple of these examples
+
+- [Intro - by Monty](https://codepen.io/Shokeen/pen/ZWyvmj)
+- [Easy Dark Mode with SASS](https://codepen.io/KaioRocha/pen/MdvWmg)
+- [No library emoji slider](https://codepen.io/thebabydino/pen/vwJeJN)
+- [Update CSS Variables with JS](https://codepen.io/wesbos/pen/adQjoY)
+
+### Adhere to the Cascade
+
+Being these are valid CSS properties, the scoping and cascade work as they do with any other property.
+
+```CSS
+:root {
+    --color-primary: #f3220a;
+}
+
+body {
+    color: var(--color-primary);
+}
+
+.box {
+    --color-bg: #f0af0a;
+    background: var(--color-bg);
+    color: var(--color-primary);
+}
+```
+
+Let's find a better use case, media queries and font sizes.
+
+```Scss
+$font-size-body-large: 1rem;
+$font-size-h1-large: 3rem;
+$font-size-h2-large: 1.5rem;
+
+$font-size-body-small: .8rem;
+$font-size-h1-small: 2rem;
+$font-size-h2-small: 1.2rem;
+
+h1 {
+  font-size: $font-size-h1-small;
+}
+
+h2 {
+  font-size: $font-size-h2-sm;
+}
+
+body {
+  font-size: $font-size-body-small;
+}
+
+@media (min-width: 800px) {
+  h1 {
+    font-size: $font-size-h1-large;
+  }
+
+  h2 {
+    font-size: $font-size-h2-large;
+  }
+
+  body {
+    font-size: $font-size-body-large;
+  }
+}
+```
+
+```CSS
+:root {
+  --fs-b: .8rem;
+  --fs-h1: 2rem;
+  --fs-h2: 1.2rem;
+}
+
+@media(min-width: 800px) {
+  :root {
+    --fs-b: 1rem;
+    --fs-h1: 3rem;
+    --fs-h2: 1.5rem;
+  }
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+```
+
+**Browser Support**
+[CanIUse](https://caniuse.com/#search=custom%20properties) Green across the board, except IE, Opera Mini, Blackberry Browser, IE Mobile.
+
+**Resources**
+
+- [CSS Variable Secrets - Lea Verou](https://www.youtube.com/watch?v=UQRSaG1hQ20)
+- [Alert System Test](https://codepen.io/jermbo/pen/PvmmpO)
 
 ## Focus Within
 
@@ -296,22 +436,11 @@ a:focus {
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within)
 - [CSS-Tricks](https://css-tricks.com/almanac/selectors/f/focus-within/)
 
-## Not
-
-**Browser Support**
-[CanIUse](https://caniuse.com/#search=%3Anot%20css3) Green across the board.
-
-**Resources**
-
-- [Codrops](https://tympanus.net/codrops/css_reference/not/)
-- [CSS-Tricks](https://css-tricks.com/almanac/selectors/n/not/)
-- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:not)
-
 ## Empty
 
 The `:empty` element is a pseudo-class which represents any element that has no children. Children can be any element nodes or text, including white space. Any comments, processing instructions, and CSS content do not affect whether an element is empty.
 
-I find this particularly useful when dealing with a CMS or some sort of auto-generated code. WordPress, for example, loves to inject empty paragraphs into the document. If you are in a situation where you cannot control the output this can be quite hard to deal with. 
+I find this particularly useful when dealing with a CMS or some sort of auto-generated code. WordPress, for example, loves to inject empty paragraphs into the document. If you are in a situation where you cannot control the output this can be quite hard to deal with.
 
 Let's say, you have a global rule that states all paragraphs have `padding-top: 0.5rem;`. With these empty paragraphs, it looks like you have extra space in places you shouldn't. One way to approach this is to turn off that global rule, and then turn it on for all the items individually. But that doesn't quite work due to the maintenance and consistency nightmare.
 
@@ -335,7 +464,7 @@ p:not(:empty) {
 
 ## Position Sticky
 
-Trying to get anything to scroll with the page, then stop once that element has gotten to the top and stay there has been a nightmare of JavaScript and some crazy CSS trickery. Those days are no more, `position: sticky;` to the rescue. 
+Trying to get anything to scroll with the page, then stop once that element has gotten to the top and stay there has been a nightmare of JavaScript and some crazy CSS trickery. Those days are no more, `position: sticky;` to the rescue.
 
 In my [CodePen Example](https://codepen.io/jermbo/pen/JgpxZR), I made a simple list inside a scroll container. Each section of the list has a header, and as I scroll I want to see what section the current items are under. Traditionally, that would not be possible without the forementioned trickery. Now, all we need is a `position: sticky;` on the section headers.
 
