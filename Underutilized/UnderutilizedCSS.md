@@ -309,14 +309,29 @@ a:focus {
 
 ## Empty
 
+The `:empty` element is a pseudo-class which represents any element that has no children. Children can be any element nodes or text, including white space. Any comments, processing instructions, and CSS content do not affect whether an element is empty.
+
+I find this particularly useful when dealing with a CMS or some sort of auto-generated code. WordPress, for example, loves to inject empty paragraphs into the document. If you are in a situation where you cannot control the output this can be quite hard to deal with. 
+
+Let's say, you have a global rule that states all paragraphs have `padding-top: 0.5rem;`. With these empty paragraphs, it looks like you have extra space in places you shouldn't. One way to approach this is to turn off that global rule, and then turn it on for all the items individually. But that doesn't quite work due to the maintenance and consistency nightmare.
+
+With this simple rule you will be able to take care of all the auto-generated woes. Check out my [CodePen](https://codepen.io/jermbo/pen/8b58be73d1c96d9abef2953f8c084964) for a working example.
+
+```CSS
+p:not(:empty) {
+  padding-top: 0.5rem;
+}
+```
+
 **Browser Support**
 [CanIUse](https://caniuse.com/#search=%3Aempty) Green across the board.
 
 **Resources**
 
-- [CodePen](https://codepen.io/ricardozea/pen/rxqqaM/)
+- [CodePen - Ricardo](https://codepen.io/ricardozea/pen/rxqqaM/)
 - [CSS-Tricks](https://css-tricks.com/almanac/selectors/e/empty/)
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:empty)
+- [CodePen - Jermbo](https://codepen.io/jermbo/pen/8b58be73d1c96d9abef2953f8c084964)
 
 ## Position Sticky
 
