@@ -320,12 +320,53 @@ a:focus {
 
 ## Position Sticky
 
-https://codepen.io/jermbo/pen/JgpxZR
+Trying to get anything to scroll with the page, then stop once that element has gotten to the top and stay there has been a nightmare of JavaScript and some crazy CSS trickery. Those days are no more, `position: sticky;` to the rescue. 
+
+In my [CodePen Example](https://codepen.io/jermbo/pen/JgpxZR), I made a simple list inside a scroll container. Each section of the list has a header, and as I scroll I want to see what section the current items are under. Traditionally, that would not be possible without the forementioned trickery. Now, all we need is a `position: sticky;` on the section headers.
+
+```HTML
+<div class="container">
+  <h2>Sticky Column Headers</>
+  <div class="content">
+    <div class="category">
+      <p class="category__title">Title 1</p>
+      <p class="category__item">Item 1</p>
+      <p class="category__item">Item 2</p>
+      ...
+    </div>
+    <div class="category">
+      ...
+    </div>
+  </div>
+</div>
+```
+
+```CSS
+.content {
+  background: white;
+  overflow-y: auto;
+  height: 100%;
+  box-shadow: 1px 1px 13px rgba(0, 0, 0, 0.4);
+}
+
+.category__title {
+  position: -webkit-sticky;
+  position: sticky;
+  background: rgba(255, 255, 255, 0.75);
+  top: 0;
+  padding: 1.1rem;
+  margin: 0;
+  font-weight: bold;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+}
+```
 
 **Browser Support**
 [CanIUse](https://caniuse.com/#search=sticky) It's got decent support. There are a couple of gotchas with `thead` and `tr`. And needs vendor prefixes most of the time.
 
 **Resources**
 
+- [Pollyfill by Dizaina](https://wd.dizaina.net/en/scripts/stickyfill/)
+- [Pollyfill by Phillip](https://philipwalton.github.io/polyfill/demos/position-sticky/)
 - [CSS-Tricks](https://css-tricks.com/position-sticky-2/)
 - [Alligator IO](https://alligator.io/css/position-sticky/)
