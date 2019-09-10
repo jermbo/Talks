@@ -69,6 +69,7 @@ In order from weakest to strongest the browser breaks down the rules like so;
 - [CSS-Tricks](https://css-tricks.com/specifics-on-css-specificity/)
 - [Specificity Calculator](https://specificity.keegan.st/)
 - [Alligator IO](https://alligator.io/css/understanding-specificity-in-css/)
+- [CSS Specificity Explained by Kevin Powell](https://www.youtube.com/watch?v=c0kfcP_nD9E)
 
 ## Calc
 
@@ -113,7 +114,30 @@ html {
 
 ## Flexbox
 
-This is starting to be used more and more, but I would like to see this instead of a framework. I think most people, if not every one, are aware of this but have a hard time implementing it into their projects. If you checkout the Can I Use website, you will notice this is green across the board, with minor issues with IE. So, there is no reason not to use this.
+This is starting to be used more and more, but I would like to see this instead of a framework. I think most people, if not every one, are aware of this but have a hard time implementing it into their projects. If you checkout the [CanIUse](https://caniuse.com/#search=flexbox%20layout) website, you will notice this is green across the board, with minor issues with IE. So, there is no reason not to use this.
+
+Flexbox is used for a variety of issues, mainly aligning items and getting elements to be the same height. There is a powerful [CodePen](https://codepen.io/enxaneta/pen/adLPwv) that shows you all the options in a fun visual way. 
+
+There is a ton of things you can apply flexbox too.
+
+- Vertically center items
+- Equal height divs
+- Fill in remaining space
+- Evenly space items
+- Control the X or Y axis
+- Control the order of items
+- Fix some item widths while other items have a flexible width
+- ... am I forgetting anything?
+
+### Flexbox examples
+
+There are an equal amount of Codepens that demonstrate the power.
+
+- [Masonry Grid](https://codepen.io/jh3y/pen/mPgyqw)
+- [Scalable Tabs](https://codepen.io/jakealbaugh/pen/KBsIo)
+- [Dashboards](https://codepen.io/team/lincolnloop/pen/KwEwZq)
+- [Tournament Bracket](https://codepen.io/jbeason/pen/Wbaedb)
+- [Card Gallery](https://codepen.io/mcraiganthony/pen/NxGxqm)
 
 **Browser Support**
 [CanIUse](https://caniuse.com/#search=flexbox%20layout) Green across the board, some issues to be aware of in IE.
