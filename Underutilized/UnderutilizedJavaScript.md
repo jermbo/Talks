@@ -115,7 +115,6 @@ data.forEach((d, i) => {
 
 Sometimes, there is just to much noise in the console and you want to get rid of it to see only you logs. Thankfully we have `console.clear()`. This does exactly what you think it does. It clears the console. I typically use this at the beginning of my scripts to ensure my logs will be at the top of the heap.
 
-
 ### console.table()
 
 I left the best for last. I cannot tell you how awesome the ability to see structured data in a structure is. This does have its limits, but overall it's very powerful and helpful for getting a sense of how your arrays or objects look.
@@ -279,21 +278,21 @@ myName = "Jermbo";
 
 These are the new ways of declaring variables as of ES6 and they do not act the same way. They are not hoisted in the same way and are executed on the line they were declared on. You will get a Reference error.
 
-`Uncaught ReferenceError: Cannot access 'myName' before initialization at...` 
+`Uncaught ReferenceError: Cannot access 'myName' before initialization at...`
 
 This is stating, you are trying to use a `let` or `const` before it's initialized.
 
 #### Functions
 
-Function declarations are hoisted like the variables, this is why you have the ability to call a function before it was declared. 
+Function declarations are hoisted like the variables, this is why you have the ability to call a function before it was declared.
 
 Note, this does not work if you use a function expression. Meaning a function assigned to a `var`, `let` or `const`.
 
-Check out the examples below and see the resulting logs. This is one reason I like function declarations over function expressions. 
+Check out the examples below and see the resulting logs. This is one reason I like function declarations over function expressions.
 
 ```JavaScript
 console.log(func()); // Results in 'what up';
-function func() { 
+function func() {
   return 'what up';
 }
 
@@ -306,9 +305,9 @@ var func = () =>'what up';
 
 ### Function as a First Class Citizen
 
-This took a while for me to understand in the beginning. I have always been using this feature of JavaScript, just didn't know what it was called or why it's so powerful. 
+This took a while for me to understand in the beginning. I have always been using this feature of JavaScript, just didn't know what it was called or why it's so powerful.
 
-What it means for a function to be a first class citizen, within the world or programming, is that a given entity (the function in this case) supports all operational properties. Properties such as being able to be assigned to a variable, passed as an argument, or returned from a function. Basically, this simply means being able to do what every thing else can do. 
+What it means for a function to be a first class citizen, within the world or programming, is that a given entity (the function in this case) supports all operational properties. Properties such as being able to be assigned to a variable, passed as an argument, returned from a function, and the ability to mutate. Basically, this simply means being able to do what every thing else can do.
 
 #### Assigned to a variable
 
@@ -322,7 +321,7 @@ const multiply = function(num, multiplier) {
 
 #### Passed as an argument
 
-You use this all the time when dealing with callbacks. Callbacks are just variables that are assigned a function and executed at a future time. 
+You use this all the time when dealing with callbacks. Callbacks are just variables that are assigned a function and executed at a future time.
 
 ```JavaScript
 button.addEventListener('click', function(e){
@@ -330,7 +329,11 @@ button.addEventListener('click', function(e){
 });
 ```
 
-`addEventListener()` is a function that accepts two arguments. First, what are you listening for. Second, when desired event has been triggered what do you want to do? You want to execute that callback. Below is another example with a custom function. (This is the foundation of understanding what a closure is, but that is a topic for another day.)
+`addEventListener()` is a function that accepts two arguments. First, what are you listening for. Second, when desired event has been triggered what do you want to do? You want to execute that callback.
+
+Below is another example with a custom function. (This is the foundation of understanding what a closure is, but that is a topic for another day.)
+
+#### Return from function
 
 ```JavaScript
 function someFunc(param1) {
@@ -344,11 +347,42 @@ console.log(example); // function someInnerFunc(param2) {return `${param1} ${par
 console.log(example('World!')); // Hello World!
 ```
 
+#### Ability to mutate
+
+One use-case for mutating a function is extending a function when you don't have access to the source code. Like a third party library you need to mutate to fit your needs.
+
+```JavaScript
+function myCurveFunction(x){
+    let y = x * x / 3;
+    return y;
+}
+
+function thirdParty_getVector(curveFunction, x){
+    return [x, curveFunction(x)];
+}
+
+(function(){
+    console.log("Mutating a function");
+    var oldFunction = thirdParty_getVector;
+    thirdParty_getVector = function (curve, values){
+        if(typeof(values) == typeof(0)) {
+            return oldFunction(curve, values);
+        }
+        if( typeof(values)== typeof([])) {
+            return values.map(value=>oldFunction(curve, value));
+        }
+
+        console.log(thridParty_getVector(myCurveFunction,1));
+        console.log(thridParty_getVector(myCurveFunction,[1,2,3]));
+    }
+})();
+```
+
 ### Coercion
 
 Have you ever wondered why `3 + '3'` results in `'33'` instead of 6, but the opposite `3 - '3'` results in `0`. Or `+'3' + +'3'` results in `6`, but `'3' + +'3'` results in `'33'`
 
-What about `1 == true` is true, but `0 == true` is false? 
+What about `1 == true` is true, but `0 == true` is false?
 
 This one got me a lot early on. `3 == '3'` is true, but `3 === '3'` is false. ( It took me way to long to realize there were three equal signs, let alone understanding what it was doing. )
 
@@ -356,4 +390,4 @@ This is all called Coercion. This is JavaScripts way of trying to be helpful. I 
 
 > Type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers). Type conversion is similar to type coercion because they both convert values from one data type to another with one key difference -- type coercion is implicit where as type conversion is either implicit or explicit. - [MDN](https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion)
 
-There is a cool [Equality Table](https://dorey.github.io/JavaScript-Equality-Table/) that shows  off different items that result in a truthy statement with double equals.
+There is a cool [Equality Table](https://dorey.github.io/JavaScript-Equality-Table/) that shows off different items that result in a truthy statement with double equals.
