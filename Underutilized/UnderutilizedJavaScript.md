@@ -306,4 +306,42 @@ var func = () =>'what up';
 
 ### Function as a First Class Citizen
 
-### Bind / Call / Apply
+This took a while for me to understand in the beginning. I have always been using this feature of JavaScript, just didn't know what it was called or why it's so powerful. 
+
+What it means for a function to be a first class citizen, within the world or programming, is that a given entity (the function in this case) supports all operational properties. Properties such as being able to be assigned to a variable, passed as an argument, or returned from a function. Basically, this simply means being able to do what every thing else can do. 
+
+#### Assigned to a variable
+
+The first example was being able to be assigned to a variable. We do this all the time in JavaScript.
+
+```JavaScript
+const multiply = function(num, multiplier) {
+    return num * multiplier;
+}
+```
+
+#### Passed as an argument
+
+You use this all the time when dealing with callbacks. Callbacks are just variables that are assigned a function and executed at a future time. 
+
+```JavaScript
+button.addEventListener('click', function(e){
+    console.log('do something');
+});
+```
+
+`addEventListener()` is a function that accepts two arguments. First, what are you listening for. Second, when desired event has been triggered what do you want to do? You want to execute that callback. Below is another example with a custom function. (This is the foundation of understanding what a closure is, but that is a topic for another day.)
+
+```JavaScript
+function someFunc(param1) {
+  return function someInnerFunc(param2) {
+    return `${param1} ${param2}`;
+  }
+}
+
+const example = someFunc('Hello');
+console.log(example); // function someInnerFunc(param2) {return `${param1} ${param2}
+console.log(example('World!')); // Hello World!
+```
+
+### Coercion
