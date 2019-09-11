@@ -154,9 +154,9 @@ We have been trying since the beginning of the web to get print style layouts on
 
 CSS Grid is a true layout system on the web. It offers us a 2-dimensional control as well as powerful spacing abilities. You work with a Grid Layout by applying rules to both the parent ( which become Grid Container ) and the child ( which become Grid Items).
 
-One thing to point out is, it's not Grid vs. Flexbox. It's Grid and Flexbox. These are complementary technologies, not competing ones.
+One thing to point out is, it's not Grid vs. Flexbox. It's Grid and Flexbox. These are complementary technologies, not competing ones, meant  to be used together.
 
-Check out my [CSS Grid Test](https://codepen.io/jermbo/pen/KZZjmB) over on my CodePen.
+Check out my [CSS Grid Test](https://codepen.io/jermbo/pen/KZZjmB) over on CodePen.
 
 ```HTML
 <div class="container">
@@ -176,7 +176,6 @@ body {
   height: 100vh;
   background: goldenrod;
 }
-
 .container {
   padding: 1.1rem;
   width: calc(100vw - 2.2rem);
@@ -194,20 +193,20 @@ body {
   font-size: 2em;
   color: #F1F0EA;
 }
-.container header {
+header {
   background-color: #474448;
   grid-area: 1 / 3 / 3 / 13;
 }
-.container nav {
+nav {
   grid-area: 1 / 1 / 11 / 3;
   background-color: #534b52;
 }
-.container main {
+main {
   grid-area: 3 / 3 / 11 / 13;
   background-color: #f1f0ea;
   color: #2d232e;
 }
-.container footer {
+footer {
   grid-area: 11 / 1 / 13 / 13;
   background-color: #534B52;
 }
@@ -225,7 +224,7 @@ body {
 
 ## Custom Properties
 
-CSS Custom properties, aka CSS Variables, are custom names that can store values to be referenced through out your code. There are some really cool features and key differences between preprocessor variables.
+CSS Custom Properties, aka CSS Variables, are custom names that can store values to be referenced throughout your code. There are some really cool features and key differences between preprocessor variables.
 
 ### CSS Custom Property vs Sass Variable
 
@@ -261,7 +260,7 @@ The advantages this gives you is runtime manipulation, adhering to the cascade r
 
 ### Runtime manipulation
 
-Custom properties are accessable via JavaScript and this is where the fun happens. Just checkout a couple of these examples
+Custom properties are accessible via JavaScript and this is where the fun happens. Just checkout a couple of these examples;
 
 - [Intro - by Monty](https://codepen.io/Shokeen/pen/ZWyvmj)
 - [Easy Dark Mode with SASS](https://codepen.io/KaioRocha/pen/MdvWmg)
