@@ -253,3 +253,57 @@ function addNumbers(one, two, ...more) {
 console.log(addNumbers(1,2,3,4,5,6,7,8,9,10)); // 55
 console.log(addNumbers(1,2)); // 3
 ```
+
+## Confusing Aspects
+
+JavaScript is a fun language. I love the aspect of "do a little, see a little". This give me a real sense of progress when building something. That is not to say there aren't WTF moments. Let's wrap this talk up with a couple of clarifications of WTF moments.
+
+### Hoisting
+
+Take a look at the following code and figure out what the log will output.
+
+```JS
+console.log(myName);
+var myName = "Jermbo";
+```
+
+The answer is `undefined`. This is because JavaScript is a compiled language, JIT to be specific. ( Just In Time ) This means, your program is read twice. First pass is setting up memory allocation, and this causes the `var`s to be hoisted to the top. The second pass is executed line by line. Which causes the log before the assignment to be `undefined`.
+
+```JS
+var myName;
+console.log(myName);
+myName = "Jermbo";
+```
+
+#### Let and Const
+
+These are the new ways of declaring variables as of ES6 and they do not act the same way. They are not hoisted in the same way and are executed on the line they were declared on. You will get a Reference error.
+
+`Uncaught ReferenceError: Cannot access 'myName' before initialization at...` 
+
+This is stating, you are trying to use a `let` or `const` before it's initialized.
+
+#### Functions
+
+Function declarations are hoisted like the variables, this is why you have the ability to call a function before it was declared. 
+
+Note, this does not work if you use a function expression. Meaning a function assigned to a `var`, `let` or `const`.
+
+Check out the examples below and see the resulting logs. This is one reason I like function declarations over function expressions. 
+
+```JavaScript
+console.log(func()); // Results in 'what up';
+function func() { 
+  return 'what up';
+}
+
+console.log(func()); // ReferenceError: Cannot access 'func' before initialization
+const func = () =>'what up';
+
+console.log(func()); // TypeError: func is not a function
+var func = () =>'what up';
+```
+
+### Function as a First Class Citizen
+
+### Bind / Call / Apply
