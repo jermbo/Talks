@@ -5,10 +5,9 @@ JavaScript is moving at a very rapid pace. Forget all the frameworks, node packa
 I would like to talk about a couple of JavaScript features that previously needed a tool or library for that are now shipped in the browser, as well as some older tools that I feel are not used enough.
 
 - jQuery APIs
-- Console API
-- LowDash APIs
-- Template Literals
-- I18n (Internationalization)
+- Console APIs
+- Lodash APIs
+- Confusing Aspects
 
 ## jQuery APIs
 
@@ -112,6 +111,11 @@ data.forEach((d, i) => {
 });
 ```
 
+### console.clear()
+
+Sometimes, there is just to much noise in the console and you want to get rid of it to see only you logs. Thankfully we have `console.clear()`. This does exactly what you think it does. It clears the console. I typically use this at the beginning of my scripts to ensure my logs will be at the top of the heap.
+
+
 ### console.table()
 
 I left the best for last. I cannot tell you how awesome the ability to see structured data in a structure is. This does have its limits, but overall it's very powerful and helpful for getting a sense of how your arrays or objects look.
@@ -134,7 +138,7 @@ console.table(arr);
 // ----------------------------
 ```
 
-## LowDash APIs
+## Lodash APIs
 
 Much like jQuery, Lodash was born out of necessity. simply put, working with data can be tricky. Lodash offers a simple api that makes difficult tasks easy and performant.
 
