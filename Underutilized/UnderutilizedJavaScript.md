@@ -345,3 +345,15 @@ console.log(example('World!')); // Hello World!
 ```
 
 ### Coercion
+
+Have you ever wondered why `3 + '3'` results in `'33'` instead of 6, but the opposite `3 - '3'` results in `0`. Or `+'3' + +'3'` results in `6`, but `'3' + +'3'` results in `'33'`
+
+What about `1 == true` is true, but `0 == true` is false? 
+
+This one got me a lot early on. `3 == '3'` is true, but `3 === '3'` is false. ( It took me way to long to realize there were three equal signs, let alone understanding what it was doing. )
+
+This is all called Coercion. This is JavaScripts way of trying to be helpful. I am not going to debate wither this is a feature or a bug in this talk. ( It's a feature. ) There are compelling arguments on both sides and will leave that for another talk. ( But, it's a feature. :P )
+
+> Type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers). Type conversion is similar to type coercion because they both convert values from one data type to another with one key difference -- type coercion is implicit where as type conversion is either implicit or explicit. - [MDN](https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion)
+
+There is a cool [Equality Table](https://dorey.github.io/JavaScript-Equality-Table/) that shows  off different items that result in a truthy statement with double equals.
