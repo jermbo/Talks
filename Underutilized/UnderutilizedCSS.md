@@ -267,7 +267,7 @@ Custom properties are accessible via JavaScript and this is where the fun happen
 - [No library emoji slider](https://codepen.io/thebabydino/pen/vwJeJN)
 - [Update CSS Variables with JS](https://codepen.io/wesbos/pen/adQjoY)
 
-### Adhere to the Cascade
+### Adhere to the cascade
 
 Being these are valid CSS properties, the scoping and cascade work as they do with any other property.
 
@@ -489,7 +489,7 @@ p:not(:empty) {
 
 Trying to get anything to scroll with the page, then stop once that element has gotten to the top and stay there has been a nightmare of JavaScript and some crazy CSS trickery. Those days are no more, `position: sticky;` to the rescue.
 
-In my [CodePen Example](https://codepen.io/jermbo/pen/JgpxZR), I made a simple list inside a scroll container. Each section of the list has a header, and as I scroll I want to see what section the current items are under. Traditionally, that would not be possible without the forementioned trickery. Now, all we need is a `position: sticky;` on the section headers.
+In my [CodePen Example](https://codepen.io/jermbo/pen/JgpxZR), I made a simple list inside a scroll container. Each section of the list has a header, and as I scroll I want to see what section the current items are under. Traditionally, that would not be possible without the aforementioned trickery. Now, all we need is a `position: sticky;` on the section headers.
 
 ```HTML
 <div class="container">
