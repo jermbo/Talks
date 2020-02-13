@@ -101,7 +101,7 @@ html {
 
 The above Sass outputs.
 
-```CSS
+```SCSS
 html {
   // some stuff
 }
@@ -176,7 +176,7 @@ Here is an example of good nesting.
 
 The above Sass outputs.
 
-```CSS
+```SCSS
 .product {
   // some stuff
 }
@@ -243,21 +243,111 @@ Let's look at the product example again.
 ```Scss
 .product {
   // some stuff
-  &--featured {
+  &.-featured {
     // some stuff
   }
 }
 .product__title {
   // some stuff
+  .-featured & {
+    // some stuff
+  }
 }
 .product__image {
   // some stuff
-}
-.button {
-  // some stuff
-  &:hover {
+  .-featured & {
     // some stuff
   }
 }
 ```
 
+The Sass above outputs.
+
+```SCSS
+.product {
+ // some stuff
+}
+.product.-featured {
+ // some stuff
+}
+.product__title {
+ // some stuff
+}
+.-featured .product__title {
+ // some stuff
+}
+.product__image {
+ // some stuff
+}
+.-featured .product__image {
+ // some stuff
+}
+```
+
+### Sass Variables
+
+Variables are a thing of beauty. My two rules are make them as complex as your project needs and names should describe what they do not what they are.
+
+For example, if your app has a bunch of colors that represent different states you should have two sets of variables. One that defines the colors and another that defines what they are used for.
+
+```Scss
+// Colors
+$rose: #f00;
+$gold: #f0aa33;
+$teal: #20f0a0;
+$black: #212121;
+$white: #f9f9f9;
+
+// Usable Vars
+$danger: $rose;
+$warning: $gold;
+$success: $teal;
+
+$text-color-light: $white;
+$text-color-dark: $black;
+$bg-light: $white;
+$bg-dark: $black;
+$border-light: $white;
+$border-dark: $black;
+
+$padding: 1.15rem;
+
+.alert {
+  background: $bg-light;
+  color: $text-color-light;
+  border: 1px solid $border-dark;
+  padding: $padding;
+
+  &.-danger {
+    background: $danger;
+    color: darken($danger, 50%);
+    border-color: darken($danger, 50%);
+  }
+
+  &.-warning {
+    background: $warning;
+    color: darken($warning, 50%);
+    border-color: darken($warning, 50%);
+  }
+
+  &.-success {
+    background: $success;
+    color: darken($success, 50%);
+    border-color: darken($success, 50%);
+  }
+}
+```
+
+The reason you want to use more meaningful names is due to the nature of change. The color `$rose` at the beginning is a rose color, the fact that happens to be the color of `danger` is irrelevant. If danger needs to change to purple for some reason, should you change the value of rose? If you do the variable name loses meaning. Danger could be what ever color your project needs.
+
+This will take a little more effort in the beginning, but the payoff will be huge in the long run. Again, make the decision based on your need and only go as complicated as necessary. Checkout my GitHub [ADD LINK HERE] for examples of starter projects.
+
+### Sass Maps
+
+### Mixins
+
+### Functions
+
+### The Problem with @extends
+
+### Differences between Mixins, Functions, and Placeholders
