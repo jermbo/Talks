@@ -240,7 +240,7 @@ There are couple major reasons I do this, less writing, reusability, programmati
 
 Let's look at the product example again.
 
-````Scss
+```Scss
 .product {
   // some stuff
   &--featured {
