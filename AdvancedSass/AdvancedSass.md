@@ -55,3 +55,176 @@ The modifier name describes its appearance ("What size?" or "Which theme?" and s
 
 The modifier name is separated from the block or element name by a single underscore (\_). \*_This is subject to interpretation. I will show you how and why I don't follow this strictly_.
 
+### Proper Nesting Techniques
+
+CSS Specificity is our friend. Generally speaking, we should keep specificity as low as possible. When done properly, your CSS will be expandable when necessary and not bleed into other areas unexpectedly.
+
+#### Example of bad nesting
+
+Here is an example of bad nesting.
+
+```Scss
+html {
+  // some stuff
+  body {
+    // some stuff
+    header.header {
+      // some stuff
+      div.header {
+        // some stuff
+        &_mod {
+          // some stuff
+        }
+        &__profile {
+          // some stuff
+          &_mod {
+            // some stuff
+          }
+        }
+        a.link {
+          // some stuff
+          &:hover {
+            // some stuff
+            span {
+              // some stuff
+            }
+          }
+          span {
+            // some stuff
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+The above Sass outputs.
+
+```CSS
+html {
+  // some stuff
+}
+html body {
+  // some stuff
+}
+html body header.header {
+  // some stuff
+}
+html body header.header div.header {
+  // some stuff
+}
+html body header.header div.header_mod {
+  // some stuff
+}
+html body header.header div.header__profile {
+  // some stuff
+}
+html body header.header div.header__profile_mod {
+  // some stuff
+}
+html body header.header div.header a.link {
+  // some stuff
+}
+html body header.header div.header a.link:hover {
+  // some stuff
+}
+html body header.header div.header a.link:hover span {
+  // some stuff
+}
+html body header.header div.header a.link span {
+  // some stuff
+}
+```
+
+There are a ton of issues with this approach. The first question I would ask would be, does this end result seem like something you would had write?
+
+Let's also talk about the other issues like specificity. Is it important to have the HTML element included with the class selector? What happens if that HTML element changes? Should you have to change the CSS to match?
+
+The nesting of the selectors increase the specificity as well. Is it important to have everything wrapped in HTML selector? I think we can safely assume everything is going onto an html page. Same question / statement as the body element.
+
+#### Example of good nesting
+
+Here is an example of good nesting.
+
+```Scss
+.product {
+  // some stuff
+  &--featured {
+    // some stuff
+  }
+}
+.product__title {
+  // some stuff
+}
+.product__image {
+  // some stuff
+}
+.button {
+  // some stuff
+  &:hover {
+    // some stuff
+  }
+  &--secondary {
+    // some stuff
+    &:hover {
+      // some stuff
+    }
+  }
+}
+```
+
+The above Sass outputs.
+
+```CSS
+.product {
+  // some stuff
+}
+.product--featured {
+  // some stuff
+}
+.product__title {
+  // some stuff
+}
+.product__image {
+  // some stuff
+}
+.button {
+  // some stuff
+}
+.button:hover {
+  // some stuff
+}
+.button--secondary {
+  // some stuff
+}
+.button--secondary:hover {
+  // some stuff
+}
+
+```
+
+#### Rules
+
+The rules you should take away from this are:
+
+1. Keep nests to 3 or less.
+2. Do not nest elements in their parent blocks.
+3. Modifiers can be nested in the required block or element.
+4. Do not over qualify selectors.
+
+#### Pros and Cons
+
+Pros:
+
+1. Very low specificity
+2. Easily modifiable
+3. Expandable
+4. Clear names
+5. Code maintainability
+
+Cons:
+
+1. Long names
+2. Have to think of names ( some times thats really hard )
+
