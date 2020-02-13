@@ -228,3 +228,36 @@ Cons:
 1. Long names
 2. Have to think of names ( some times thats really hard )
 
+### BEM Rule Tweaks
+
+After working with BEM for several years now, I have tweaked some of the rules defined above. These are strictly optional and my opinion. I will explain why I chose this style over the original. If you don't agree with my tweaks, stick to the rules defined on their site.
+
+#### Modifiers
+
+This is the biggest tweak I have made. I like to not include the name of the parent or element as a part of the modifier name. I name my modifier with a leading single dash. For example, `-featured` || `-active`.
+
+There are couple major reasons I do this, less writing, reusability, programmatic ease, and single responsibility. I also encourage this idea that the child is responsible for knowing what parent it's in and act accordingly.
+
+Let's look at the product example again.
+
+````Scss
+.product {
+  // some stuff
+  &--featured {
+    // some stuff
+  }
+}
+.product__title {
+  // some stuff
+}
+.product__image {
+  // some stuff
+}
+.button {
+  // some stuff
+  &:hover {
+    // some stuff
+  }
+}
+```
+
