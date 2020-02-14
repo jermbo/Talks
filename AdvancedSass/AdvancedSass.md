@@ -346,6 +346,10 @@ This will take a little more effort in the beginning, but the payoff will be hug
 
 ### Mixins
 
+### Sass and CSS Variables
+
+Check out my [CodePen](https://codepen.io/jermbo/pen/QWWMEea) for a working example.
+
 ### Functions
 
 ### The Problem with @extends
