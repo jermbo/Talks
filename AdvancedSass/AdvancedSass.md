@@ -286,7 +286,7 @@ The Sass above outputs.
 
 ### Sass Variables
 
-Variables are a thing of beauty. My two rules are make them as complex as your project needs and names should describe what they do not what they are.
+Variables are a thing of beauty. My two rules are, make them as complex as your project needs and names should describe what they do not what they are.
 
 For example, if your app has a bunch of colors that represent different states you should have two sets of variables. One that defines the colors and another that defines what they are used for.
 
@@ -343,6 +343,54 @@ The reason you want to use more meaningful names is due to the nature of change.
 This will take a little more effort in the beginning, but the payoff will be huge in the long run. Again, make the decision based on your need and only go as complicated as necessary. Checkout my GitHub [ADD LINK HERE] for examples of starter projects.
 
 ### Sass Maps
+
+#### Simple Example
+
+Maps are a good way to group information together. In Sass, maps are like associative arrays, they are a set of key / value pairs. To access any value, Sass provides a function called `map-get()`. You pass in the map variable name and the key you need. Let's look at an example.
+
+```Sass
+$colors: (red: #f00, green: #0f0, blue: #00F);
+
+body {
+  background: map-get($colors, red);
+}
+```
+
+Like an array, you can loop through it to get its contents. Let's loop through the colors and get it's contents.
+
+```Sass
+$colors: (red: #f00, green: #0f0, blue: #00F);
+
+@each $key, $value in $colors {
+  .#{$key} {
+    background: $value;
+  }
+}
+```
+
+```CSS
+.red {
+  background: #f00;
+}
+
+.green {
+  background: #0f0;
+}
+
+.blue {
+  background: #00f;
+}
+```
+
+In that slide you saw a lot. First is the `@each` loop. The `$key` is a made up variable for the name on the left hand side of the colon. The `$value` is a made up variable for the right hand side of the colon. Lastly, the `$colors` is the variable that contains the map you are wanting to loop through. 
+
+One other item to point out is interpolation. This is very useful throughout Sass. The syntax is pretty straight forward: `#{}`. ( If you are familiar with JavaScript, this is pretty much the same concept. `${}` ) The variable you want to render goes inside the curly brackets.
+
+Enough with theory, let's look at a practical example. [CodePen](https://codepen.io/jermbo/pen/ZEGWdpz)
+
+#### Advanced Example
+
+[CodePen](https://codepen.io/jermbo/pen/RwPazeJ)
 
 ### Mixins
 
