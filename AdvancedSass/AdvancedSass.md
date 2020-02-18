@@ -390,7 +390,54 @@ Enough with theory, let's look at a practical example. [CodePen](https://codepen
 
 #### Advanced Example
 
-[CodePen](https://codepen.io/jermbo/pen/RwPazeJ)
+As mentioned in my rules for variables, make variables only as complicated as necessary for your project. There are practical use cases for multidimensional maps. If it makes sense to group additional items together a multidimensional map is the perfect tool. For example;
+
+```Sass
+$brands: (
+  facebook: (
+    icon: "\f082",
+    color: "#00f"
+  ),
+  twitter: (
+    icon: "\f081",
+    color: "#0f0"
+  ),
+  ...
+);
+
+@each $brand, $map in $brands {
+  .#{$brand} {
+    background: map-get($map, color);
+    &:before {
+      content: map-get($map, icon);
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+```
+
+```CSS
+.facebook {
+  background: #00f;
+}
+.facebook:before {
+  content: "\f082";
+  width: 10px;
+  height: 10px;
+}
+.twitter {
+  background: #0f0;
+}
+.twitter:before {
+  content: "\f081";
+  width: 10px;
+  height: 10px;
+}
+...
+```
+
+I have put together a [CodePen](https://codepen.io/jermbo/pen/RwPazeJ) to demonstrate an example from projects I have used in production apps. 
 
 ### Mixins
 
