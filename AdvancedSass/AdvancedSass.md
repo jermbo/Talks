@@ -480,6 +480,55 @@ Let's look at some examples
 }
 ```
 
+#### Break Points
+
+A very common issue I see any in project are well defined break points. I utilize the "Adaptive Responsive Design" and the "desktop first" approach. The technique I am about to show you works with the "mobile first" approach as well. Either way, I define a set of container max widths, and break points at which I expect my screen to change. 
+
+```Scss
+$container-max-widths: (
+  xs: 90%,
+  sm: 400px,
+  md: 688px,
+  lg: 944px,
+  xl: 1194px,
+  xxl: 1468px
+);
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1274px,
+  xxl: 1548px
+);
+```
+
+```Scss
+@mixin min-screen($size) {
+  $break: map-get($grid-breakpoints, $size);
+  @if ($break) {
+    @media (min-width: #{$break}) {
+      @content;
+    }
+  } @else {
+    @error "#{$break} is not defined";
+  }
+}
+
+@mixin max-screen($size) {
+  $break: map-get($grid-breakpoints, $size);
+  @if ($break) {
+    @media (max-width: #{$break}) {
+      @content;
+    }
+  } @else {
+    @error "#{$break} is not defined";
+  }
+}
+```
+
+#### Useful Mixins
+
 There are a bunch of uses for mixins. To figure out what might be useful to you, take a look at what others are using. Take them, make a couple of your own, and or start a list of things you think are useful. Here is a small list to get you started. 
 
 1. https://w3bits.com/sass-mixins/
@@ -488,9 +537,15 @@ There are a bunch of uses for mixins. To figure out what might be useful to you,
 
 ### Sass and CSS Variables
 
-Check out my [CodePen](https://codepen.io/jermbo/pen/QWWMEea) for a working example.
+CSS Custom properties take the variable thing to the next level. Even though CSS is getting more and more powerful, I am not ready to give up some of the goodness that Sass provides. Things like, nesting, file partials, mixins, loops, etc. 
+
+Just because I am sticking with Sass does not mean I have to miss out on the goodness of CSS Custom Properties.
+
+Let's look at an example and see what we can learn. What you are about to look at is a combination of all we have talked about already. My [CodePen](https://codepen.io/jermbo/pen/QWWMEea) is an example of code that I have utilized in production websites and apps.
 
 ### Functions
+
+Functions allow you to define complex operations on SassScript values that you can re-use throughout your stylesheet. They make it easy to abstract out common formulas and behaviors in a readable way.
 
 ### The Problem with @extends
 
