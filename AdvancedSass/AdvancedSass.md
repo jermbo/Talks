@@ -348,7 +348,7 @@ This will take a little more effort in the beginning, but the payoff will be hug
 
 Maps are a good way to group information together. In Sass, maps are like associative arrays, they are a set of key / value pairs. To access any value, Sass provides a function called `map-get()`. You pass in the map variable name and the key you need. Let's look at an example.
 
-```Sass
+```Scss
 $colors: (red: #f00, green: #0f0, blue: #00F);
 
 body {
@@ -358,7 +358,7 @@ body {
 
 Like an array, you can loop through it to get its contents. Let's loop through the colors and get it's contents.
 
-```Sass
+```Scss
 $colors: (red: #f00, green: #0f0, blue: #00F);
 
 @each $key, $value in $colors {
@@ -392,7 +392,7 @@ Enough with theory, let's look at a practical example. [CodePen](https://codepen
 
 As mentioned in my rules for variables, make variables only as complicated as necessary for your project. There are practical use cases for multidimensional maps. If it makes sense to group additional items together a multidimensional map is the perfect tool. For example;
 
-```Sass
+```Scss
 $brands: (
   facebook: (
     icon: "\f082",
@@ -440,6 +440,51 @@ $brands: (
 I have put together a [CodePen](https://codepen.io/jermbo/pen/RwPazeJ) to demonstrate an example from projects I have used in production apps. 
 
 ### Mixins
+
+Mixins allow you to define styles that can be re-used throughout your stylesheet. They make it easy to avoid using non-semantic classes like `.float-left`, and to distribute collections of styles in libraries. The two key syntax items you need to know are `@mixin` and `@include`. 
+
+#### @mixin & @include
+
+You can think of a mixin as function in JavaScript, these can take arguments or not. If you choose to utilize parameters, you simply provide parenthesis and any number of variable names as you need. Yes, they can have defaults if needed.  
+
+`@mixin someMixin { ... }` 
+
+`@mixin someMixin($var) { ... }`
+
+Let's look at some examples
+
+```Scss
+@mixin box($width, $height=$width) {
+  width: $width;
+  height: $height;
+}
+
+.square {
+  @include box(50px);
+}
+
+.rectangle {
+  @include box(100px, 50px);
+}
+```
+
+```CSS
+.square {
+  width: 50px;
+  height: 50px;
+}
+
+.rectangle {
+  width: 100px;
+  height: 50px;
+}
+```
+
+There are a bunch of uses for mixins. To figure out what might be useful to you, take a look at what others are using. Take them, make a couple of your own, and or start a list of things you think are useful. Here is a small list to get you started. 
+
+1. https://w3bits.com/sass-mixins/
+2. https://www.psd2html.com/blog/5-useful-sass-mixins.html
+3. https://engageinteractive.co.uk/blog/top-10-scss-mixins
 
 ### Sass and CSS Variables
 
