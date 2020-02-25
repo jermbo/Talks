@@ -535,6 +535,23 @@ There are a bunch of uses for mixins. To figure out what might be useful to you,
 2. <https://www.psd2html.com/blog/5-useful-sass-mixins.html>
 3. <https://engageinteractive.co.uk/blog/top-10-scss-mixins>
 
+### Functions
+
+Functions are exactly what you think they are. They do something when invoked. Sass has a plethora of built in helper functions that make life easy. Let's look at a couple of examples I use often in my code.
+
+```Scss
+$blue: #00aaf2;
+.body {
+  background: darken($blue, 20%); // #00628c;
+  color: lighten($blue, 15%); // #40c6ff;
+  box-shadow: 0 0 5px rgba($blue, .5); // rgba(0, 170, 242, 0.5);
+  border: 5px solid adjust-hue($blue, 180deg); // #f24800
+  padding: 15px;
+}
+```
+
+There is a lot you can do with functions. Here is a [cheat sheet](https://gist.github.com/AllThingsSmitty/3bcc79da563df756be46) with all the functions. 
+
 ### Sass and CSS Variables
 
 CSS Custom properties take the variable thing to the next level. Even though CSS is getting more and more powerful, I am not ready to give up some of the goodness that Sass provides. Things like, nesting, file partials, mixins, loops, etc.
@@ -542,10 +559,6 @@ CSS Custom properties take the variable thing to the next level. Even though CSS
 Just because I am sticking with Sass does not mean I have to miss out on the goodness of CSS Custom Properties.
 
 Let's look at an example and see what we can learn. What you are about to look at is a combination of all we have talked about already. My [CodePen](https://codepen.io/jermbo/pen/QWWMEea) is an example of code that I have utilized in production websites and apps.
-
-### Functions
-
-Functions allow you to define complex operations on SassScript values that you can re-use throughout your stylesheet. They make it easy to abstract out common formulas and behaviors in a readable way.
 
 ### The Problem with @extends
 
@@ -603,7 +616,7 @@ The output would be:
 }
 ```
 
-If we use `@inlude` instead?
+If we use `@include` instead?
 
 ```Scss
 @mixin alertBox($color) {
@@ -656,6 +669,14 @@ The output would be:
 }
 ```
 
-Extends yields 15 lines, where as the Includes yield 20 lines.
+In this example, the `@extend` yields 15 lines, where as the `@include` yield 20 lines. When Gzip-ing, the `@include` method will result in a smaller file. The reason is due to the compression work. GZip can find the similarities and make assumptions where as a long comma separate selector list is not optimizable.
+
+Long story short, don't `@extend`.
 
 ### Differences between Mixins, Functions, and Placeholders
+
+`@function`s are blocks of code that return a single value of any Sass data type.
+
+`@mixins`s are blocks of code that output lines of Sass code that will compile directly into CSS styles.
+
+`%placeholder`s are very similar to class selectors, but instead of using a period `.` at the start, the percent character `%` is used. Placeholder selectors have the additional property that they will not show up in the generated CSS, only the selectors that extend them will be included in the output.
