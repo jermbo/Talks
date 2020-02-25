@@ -382,7 +382,7 @@ $colors: (red: #f00, green: #0f0, blue: #00F);
 }
 ```
 
-In that slide you saw a lot. First is the `@each` loop. The `$key` is a made up variable for the name on the left hand side of the colon. The `$value` is a made up variable for the right hand side of the colon. Lastly, the `$colors` is the variable that contains the map you are wanting to loop through. 
+In that slide you saw a lot. First is the `@each` loop. The `$key` is a made up variable for the name on the left hand side of the colon. The `$value` is a made up variable for the right hand side of the colon. Lastly, the `$colors` is the variable that contains the map you are wanting to loop through.
 
 One other item to point out is interpolation. This is very useful throughout Sass. The syntax is pretty straight forward: `#{}`. ( If you are familiar with JavaScript, this is pretty much the same concept. `${}` ) The variable you want to render goes inside the curly brackets.
 
@@ -437,17 +437,17 @@ $brands: (
 ...
 ```
 
-I have put together a [CodePen](https://codepen.io/jermbo/pen/RwPazeJ) to demonstrate an example from projects I have used in production apps. 
+I have put together a [CodePen](https://codepen.io/jermbo/pen/RwPazeJ) to demonstrate an example from projects I have used in production apps.
 
 ### Mixins
 
-Mixins allow you to define styles that can be re-used throughout your stylesheet. They make it easy to avoid using non-semantic classes like `.float-left`, and to distribute collections of styles in libraries. The two key syntax items you need to know are `@mixin` and `@include`. 
+Mixins allow you to define styles that can be re-used throughout your stylesheet. They make it easy to avoid using non-semantic classes like `.float-left`, and to distribute collections of styles in libraries. The two key syntax items you need to know are `@mixin` and `@include`.
 
 #### @mixin & @include
 
-You can think of a mixin as function in JavaScript, these can take arguments or not. If you choose to utilize parameters, you simply provide parenthesis and any number of variable names as you need. Yes, they can have defaults if needed.  
+You can think of a mixin as function in JavaScript, these can take arguments or not. If you choose to utilize parameters, you simply provide parenthesis and any number of variable names as you need. Yes, they can have defaults if needed.
 
-`@mixin someMixin { ... }` 
+`@mixin someMixin { ... }`
 
 `@mixin someMixin($var) { ... }`
 
@@ -482,7 +482,7 @@ Let's look at some examples
 
 #### Break Points
 
-A very common issue I see any in project are well defined break points. I utilize the "Adaptive Responsive Design" and the "desktop first" approach. The technique I am about to show you works with the "mobile first" approach as well. Either way, I define a set of container max widths, and break points at which I expect my screen to change. 
+A very common issue I see any in project are well defined break points. I utilize the "Adaptive Responsive Design" and the "desktop first" approach. The technique I am about to show you works with the "mobile first" approach as well. Either way, I define a set of container max widths, and break points at which I expect my screen to change.
 
 ```Scss
 $container-max-widths: (
@@ -529,15 +529,15 @@ $grid-breakpoints: (
 
 #### Useful Mixins
 
-There are a bunch of uses for mixins. To figure out what might be useful to you, take a look at what others are using. Take them, make a couple of your own, and or start a list of things you think are useful. Here is a small list to get you started. 
+There are a bunch of uses for mixins. To figure out what might be useful to you, take a look at what others are using. Take them, make a couple of your own, and or start a list of things you think are useful. Here is a small list to get you started.
 
-1. https://w3bits.com/sass-mixins/
-2. https://www.psd2html.com/blog/5-useful-sass-mixins.html
-3. https://engageinteractive.co.uk/blog/top-10-scss-mixins
+1. <https://w3bits.com/sass-mixins/>
+2. <https://www.psd2html.com/blog/5-useful-sass-mixins.html>
+3. <https://engageinteractive.co.uk/blog/top-10-scss-mixins>
 
 ### Sass and CSS Variables
 
-CSS Custom properties take the variable thing to the next level. Even though CSS is getting more and more powerful, I am not ready to give up some of the goodness that Sass provides. Things like, nesting, file partials, mixins, loops, etc. 
+CSS Custom properties take the variable thing to the next level. Even though CSS is getting more and more powerful, I am not ready to give up some of the goodness that Sass provides. Things like, nesting, file partials, mixins, loops, etc.
 
 Just because I am sticking with Sass does not mean I have to miss out on the goodness of CSS Custom Properties.
 
@@ -548,5 +548,114 @@ Let's look at an example and see what we can learn. What you are about to look a
 Functions allow you to define complex operations on SassScript values that you can re-use throughout your stylesheet. They make it easy to abstract out common formulas and behaviors in a readable way.
 
 ### The Problem with @extends
+
+Extends seemed like a good idea when it was created. It tried to address the code reuse issue and to DRY things up a bit. But there were a couple of unforeseen issues that came up after use in projects. What exactly are the issues with extends?
+
+> Extending is invisible. Extending doesn’t necessarily help file weight, contrary to the saying. Extending doesn’t work across media queries. Extending is not flexible. --[Source](https://www.sitepoint.com/avoid-sass-extend/)
+
+Extending is invisible? What? This is a pretty big deal when considering the cascade. If you were to create a helper sass file with a bunch of tidbits and you extend the mixin, where does that selector go? It's dependant on the order in which the files are imported and hard to predict.
+
+Extending doesn't necessarily help with file weight? If we are not repeating code, doesn't that help file size? The answer is yes and no. Let's look at an example.
+
+```Scss
+@mixin alertBox($color) {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  transition: all .24s ease;
+
+  &:hover {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.danger {
+  @extend alertBox();
+  background: #f00;
+}
+
+.warning {
+  @extend alertBox();
+  background: #ff0;
+}
+```
+
+The output would be:
+
+```CSS
+.danger, .warning {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  transition: all .24s ease;
+}
+
+.danger:hover, .warning:hover{
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+
+.danger {
+  background: #f00;
+}
+
+.warning {
+  background: #ff0;
+}
+```
+
+If we use `@inlude` instead?
+
+```Scss
+@mixin alertBox($color) {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  transition: all .24s ease;
+
+  &:hover {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.danger {
+  @include alertBox();
+  background: #f00;
+}
+
+.warning {
+  @include alertBox();
+  background: #ff0;
+}
+```
+
+The output would be:
+
+```CSS
+.danger {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  transition: all .24s ease;
+  background: #f00;
+}
+
+.danger:hover {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+
+.warning {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  transition: all .24s ease;
+  background: #ff0;
+}
+
+.warning:hover {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+```
+
+Extends yields 15 lines, where as the Includes yield 20 lines.
 
 ### Differences between Mixins, Functions, and Placeholders
