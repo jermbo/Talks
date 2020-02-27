@@ -51,9 +51,20 @@ A composite part of a block that can't be used separately from it. [-- Source](h
 
 An entity that defines the appearance, state, or behavior of a block or element. [-- Source](https://en.bem.info/methodology/quick-start/#modifier)
 
-The modifier name describes its appearance ("What size?" or "Which theme?" and so on — `size_s` or `theme_islands`), its state ("How is it different from the others?" — `disabled`, `focused`, etc.) and its behavior ("How does it behave?" or "How does it respond to the user?" — such as `directions_left-top`).
+The modifier name describes its appearance ("What size?" or "Which theme?" and so on — `size-s` or `theme-islands`), its state ("How is it different from the others?" — `disabled`, `focused`, etc.) and its behavior ("How does it behave?" or "How does it respond to the user?" — such as `direction-left-top`).
 
 The modifier name is separated from the block or element name by a single underscore (\_). \*_This is subject to interpretation. I will show you how and why I don't follow this strictly_.
+
+```HTML
+<!-- `search-form` block -->
+<form class="search-form search-form--header">
+  <!-- `input` element in the `search-form` block -->
+  <input class="search-form__input search-form__input--compact">
+
+  <!-- `button` element in the `search-form` block -->
+  <button class="search-form__button search-form__button--icon">Search</button>
+</form>
+```
 
 ### Proper Nesting Techniques
 
@@ -212,6 +223,7 @@ The rules you should take away from this are:
 2. Do not nest elements in their parent blocks.
 3. Modifiers can be nested in the required block or element.
 4. Do not over qualify selectors.
+5. If you cannot predict the output css, rewrite it. Simplify!
 
 #### Pros and Cons
 
@@ -338,9 +350,9 @@ $padding: 1.15rem;
 }
 ```
 
-The reason you want to use more meaningful names is due to the nature of change. The color `$rose` at the beginning is a rose color, the fact that happens to be the color of `danger` is irrelevant. If danger needs to change to purple for some reason, should you change the value of rose? If you do the variable name loses meaning. Danger could be what ever color your project needs.
+The reason you want to use more meaningful names is due to the nature of change. The color `$rose` at the beginning is a rose color, the fact that happens to be the color of `danger` is irrelevant. If danger needs to change to purple for some reason, should you change the value of rose? If you do the variable name loses meaning. Danger could be whatever color your project needs.
 
-This will take a little more effort in the beginning, but the payoff will be huge in the long run. Again, make the decision based on your need and only go as complicated as necessary. Checkout my GitHub [ADD LINK HERE] for examples of starter projects.
+This will take a little more effort in the beginning, but the payoff will be huge in the long run. Again, make the decision based on your need and only go as complicated as necessary. Checkout my [GitHub](https://github.com/jermbo/GenericStarterFiles) for examples of starter projects.
 
 ### Sass Maps
 
@@ -349,7 +361,7 @@ This will take a little more effort in the beginning, but the payoff will be hug
 Maps are a good way to group information together. In Sass, maps are like associative arrays, they are a set of key / value pairs. To access any value, Sass provides a function called `map-get()`. You pass in the map variable name and the key you need. Let's look at an example.
 
 ```Scss
-$colors: (red: #f00, green: #0f0, blue: #00F);
+$colors: (red: #f00, green: #0f0, blue: #00f);
 
 body {
   background: map-get($colors, red);
@@ -359,7 +371,7 @@ body {
 Like an array, you can loop through it to get its contents. Let's loop through the colors and get it's contents.
 
 ```Scss
-$colors: (red: #f00, green: #0f0, blue: #00F);
+$colors: (red: #f00, green: #0f0, blue: #00f);
 
 @each $key, $value in $colors {
   .#{$key} {
@@ -441,11 +453,11 @@ I have put together a [CodePen](https://codepen.io/jermbo/pen/RwPazeJ) to demons
 
 ### Mixins
 
-Mixins allow you to define styles that can be re-used throughout your stylesheet. They make it easy to avoid using non-semantic classes like `.float-left`, and to distribute collections of styles in libraries. The two key syntax items you need to know are `@mixin` and `@include`.
+Mixins allow you to define styles that can be re-used throughout your stylesheet. They make it easy to avoid using non-semantic classes like `.float-left` and easy to distribute collections of styles in libraries. The two key syntax items you need to know are `@mixin` and `@include`.
 
 #### @mixin & @include
 
-You can think of a mixin as function in JavaScript, these can take arguments or not. If you choose to utilize parameters, you simply provide parenthesis and any number of variable names as you need. Yes, they can have defaults if needed.
+You can think of a mixin kind of like a function in JavaScript, which can take arguments but don’t have to. If you choose to utilize parameters, you simply provide parenthesis and any number of variable names as you need. Yes, they can have defaults if needed.
 
 `@mixin someMixin { ... }`
 
@@ -482,7 +494,7 @@ Let's look at some examples
 
 #### Break Points
 
-A very common issue I see any in project are well defined break points. I utilize the "Adaptive Responsive Design" and the "desktop first" approach. The technique I am about to show you works with the "mobile first" approach as well. Either way, I define a set of container max widths, and break points at which I expect my screen to change.
+A very common issue I see any in project are lack of well defined break points. I utilize the "Adaptive Responsive Design" and the "desktop first" approach. The technique I am about to show you works with the "mobile first" approach as well. Either way, I define a set of container max widths, and break points at which I expect my screen to change.
 
 ```Scss
 $container-max-widths: (
@@ -550,7 +562,7 @@ $blue: #00aaf2;
 }
 ```
 
-There is a lot you can do with functions. Here is a [cheat sheet](https://gist.github.com/AllThingsSmitty/3bcc79da563df756be46) with all the functions. 
+There is a lot you can do with functions. Here is a [cheat sheet](https://gist.github.com/AllThingsSmitty/3bcc79da563df756be46) with all the functions.
 
 ### Sass and CSS Variables
 
@@ -602,7 +614,7 @@ The output would be:
   transition: all .24s ease;
 }
 
-.danger:hover, .warning:hover{
+.danger:hover, .warning:hover {
   padding: 15px 20px;
   margin-bottom: 10px;
 }
@@ -669,7 +681,7 @@ The output would be:
 }
 ```
 
-In this example, the `@extend` yields 15 lines, where as the `@include` yield 20 lines. When Gzip-ing, the `@include` method will result in a smaller file. The reason is due to the compression work. GZip can find the similarities and make assumptions where as a long comma separate selector list is not optimizable.
+In this example, the `@extend` yields 15 lines, where as the `@include` yield 20 lines. When Gzip-ing, the `@include` method will result in a smaller file. The reason is due to the compression work. Gzip can find the similarities and make assumptions whereas a long comma separated selector list is not optimizable.
 
 Long story short, don't `@extend`.
 
