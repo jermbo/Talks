@@ -583,7 +583,7 @@ Extending is invisible? What? This is a pretty big deal when considering the cas
 Extending doesn't necessarily help with file weight? If we are not repeating code, doesn't that help file size? The answer is yes and no. Let's look at an example.
 
 ```Scss
-@mixin alertBox($color) {
+@mixin alertBox() {
   padding: 10px 15px;
   margin-bottom: 15px;
   transition: all .24s ease;
@@ -631,7 +631,7 @@ The output would be:
 If we use `@include` instead?
 
 ```Scss
-@mixin alertBox($color) {
+@mixin alertBox() {
   padding: 10px 15px;
   margin-bottom: 15px;
   transition: all .24s ease;
