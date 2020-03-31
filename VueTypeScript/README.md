@@ -149,7 +149,7 @@ export default router;
 
 ## Vuex
 
-Vuex has gotten a bit more complex. You interact with it the same exact way, but now we need to split the files up and add types to everything. Let's start with the stores `index.ts` file. In my app's, I like everything to be their own store with a name space and very little in the global state. 
+Vuex has gotten a bit more complex. You interact with it the same exact way, but now we need to split the files up and add types to everything. Let's start with the stores `index.ts` file. In my apps, I like everything to be their own store with a name space and very little in the global state. 
 
 ### Index and RootState
 
@@ -236,7 +236,7 @@ export const state: iUserState = {
 
 ### Getters
 
-It's a common pattern to use getters to get specific information from the state without having to reference the state and dive into nested objects. Since all the key"s on this object are methods, we can add directly to the return object. Each method should have a return value as getters only return values. Let's look at the user getter file to get specific information.
+It's a common pattern to use getters to get specific information from the state without having to reference the state and dive into nested objects. Since all the keys on this object are methods, we can add directly to the return object. Each method should have a return value as getters only return values. Let's look at the user getter file to get specific information.
 
 ```JavaScript
 // store/user/getters
@@ -256,7 +256,7 @@ export const getters: GetterTree<iUserState, iRootState> = {
 
 ### Actions
 
-Actions are where we preform async tasks. Things like saving to a database, or writing to local storage, or anything that requires multiple steps. Like getters, these can be added to the object directly as they are methods. 
+Actions are where we perform async tasks. Things like saving to a database, or writing to local storage, or anything that requires multiple steps. Like getters, these can be added to the object directly as they are methods. 
 
 ```JavaScript
 // store/user/actions
@@ -276,7 +276,7 @@ export const actions: ActionTree<iUserState, iRootState> = {
 
 ### Mutations
 
-Mutations are pretty straight forward. They are called from actions and generally should only do one thing per function.
+Mutations are pretty straight forward. They are called from actions and generally should only do one thing per function. You will notice that I have uppercase letters and separated with an underscore. This is strictly a contention. It helps me identify in the dev tools which was an action and which was a mutation.
 
 ```JavaScript
 // store/user/mutations
@@ -294,7 +294,7 @@ export const mutations: MutationTree<iUserState> = {
 }
 ```
 
-### Store Index
+### User Module Index
 
 Tying this all together in the user module `index.ts`.
 
@@ -318,15 +318,15 @@ export const interview: Module<iUserState, iRootState> = {
 ```
 
 
-## Vue and TS Config Files
+## Vue and TypeScript Config Files
 
-One of the first things I figured out in a normal Vue set up, was how to get aliasing working. Nested components and relative paths is a recipe for disaster. With just the Vue Config aliasing you lose the traceability of a file. Meaning, you can no longer click an import link and follow it to its correct location. As well as you lose good auto import functionality. These were issues but something I dealt with as relative paths presented bigger issues for me at the time. 
+One of the first things I figured out in a normal Vue set up, was how to get aliasing working. Nested components and relative paths is a recipe for disaster. With just the Vue Config aliasing you lose the traceability of a file. Meaning, you can no longer click an import link and follow it to its correct location. Good auto import functionality is lost as well. These were issues but something I dealt with as relative paths presented bigger issues for me at the time. 
 
 Along comes TSConfig file and we can have the best of both worlds, custom aliases and intellisense! You just have to make sure both config files have the same paths and tell the TSConfig file where to look.
 
 ### Vue Config File
 
-Let's look at a potential set up for a Vue file. ( Please note, I am not going into all the possibilities with Vue Config, I am just showing aliasing. )
+Let's look at a potential setup for a Vue project. ( Please note, I am not going into all the possibilities with Vue Config, I am just showing aliasing. )
 
 ```JavaScript
 // vue.config.js
@@ -343,7 +343,7 @@ module.exports = {
 };
 ```
 
-The set method on the config resolver takes two arguments. What is the string as it will replace, and what is the path it will replace it with. You can now refer to a component, view, service, or interface from any where in your application without having to figure out how many folders to go up or down.
+The set method on the config resolver takes two arguments. What is the string as it will replace, and what is the path it will replace it with. You can now refer to a component, view, service, or interface from anywhere in your application without having to figure out how many folders to go up or down.
 
 ```HTML
 <script lang="ts">
@@ -361,9 +361,9 @@ export default Vue.extend({
 </script>
 ```
 
-### TS Config
+### TypeScript Config
 
-Aliases are amazing! Though I do miss the intellisense and auto complete features. Let's re-examine the `tsconfig.json` file and see how we can enhance it to be more useful.\
+Aliases are amazing! Though I do miss the intellisense and auto complete features. Let's re-examine the `tsconfig.json` file and see how we can enhance it to be more useful.
 
 ```JSON
 {
@@ -382,7 +382,7 @@ Aliases are amazing! Though I do miss the intellisense and auto complete feature
 }
 ```
 
-Now when trying to call import something manually, you can refer to the `@alias/` and have the auto complete kick in. The auto import also has helpful suggestions as well, but it will add the relative path. ( Not sure if this is something that can be fixed or even if its a big deal. )
+Now when trying to call import something manually, you can refer to the `@alias/` and have the auto complete kick in. The auto import also has helpful suggestions as well, but it will add the relative path. ( Not sure if this is something that can be fixed or even if it's a big deal. )
 
 #### CAUTION ALERT
 
@@ -390,8 +390,7 @@ Since this is a Vue application trying to be a TypeScript application, you need 
 
 ## Vue Files In Depth
 
-I mentioned Vue components briefly at the beginning. Now that the foundation has been set, let's take a closer look at Vue Components and what changes Type Script brings.
-
+I mentioned Vue components briefly at the beginning. Now that the foundation has been set, let's take a closer look at Vue Components and what changes TypeScript brings.
 
 ### Props
 
