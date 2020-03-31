@@ -157,11 +157,11 @@ Vuex is has gotten a bit more complex. You interact with it the same exact way, 
 // store/index.ts
 import Vue from "vue";
 import Vuex, { StoreOptions } from "vuex";
-import { RootState } from "./RootState";
+import { iRootState } from "./root-state";
 import { user } from "./user";
 Vue.use(Vuex);
 
-const store: StoreOptions<RootState> = {
+const store: StoreOptions<iRootState> = {
   state: {
     version: "1.0.0",
   },
@@ -169,12 +169,12 @@ const store: StoreOptions<RootState> = {
     user,
   },
 };
-export default new Vuex.Store<RootState>(store);
+export default new Vuex.Store<iRootState>(store);
 ```
 
 ```JavaScript
-// store/RootState.ts
-export interface RootState {
+// store/root-state.d.ts
+export interface iRootState {
   version: string;
 }
 ```
@@ -185,17 +185,17 @@ We need to create an interface for a User, then let"s create the files for actio
 
 ```JavaScript
 // interfaces/user.d.ts
-export interface User {
+export interface iUser {
   name: string;
   email: string;
   profileImage?: string;
 }
 
-export interface UserState {
+export interface iUserState {
   currentState: string;
   isLoggedIn: boolean;
   lastActive: string;
-  user: User;
+  user: iUser;
 }
 ```
 
@@ -219,14 +219,14 @@ With the old way, you don't get any type safety. With TypeScript, it's a little 
 
 ```JavaScript
 // store/user/state
-import { User, UserState } from "@/interfaces/user";
+import { iUser, iUserState } from "@/interfaces/user";
 
-const user: User = {
+const user: iUser = {
   name: "jerm",
   email: "jerm@jerm.jerm"
 };
 
-export const state: UserState = {
+export const state: iUserState = {
   currentState: "NOT_LOADED",
   isLoggedIn: false,
   lastActive: "yesterday",
@@ -241,10 +241,10 @@ It's a common pattern to use getters to get specific information from the state 
 ```JavaScript
 // store/user/getters
 import { GetterTree } from "vuex";
-import { UserState } from "@/interface/user";
-import { RootState} from "../RootState";
+import { iUserState } from "@/interface/user";
+import { iRootState } from "../root-state";
 
-export const getters: GetterTree<UserState, RootState> = {
+export const getters: GetterTree<iUserState, iRootState> = {
   getName({user}): string {
     return user.name
   },
@@ -261,10 +261,10 @@ Actions are where we preform async tasks. Things like saving to a database, or w
 ```JavaScript
 // store/user/actions
 import { ActionTree } from "vuex";
-import { UserState } from "@/interface/user";
-import { RootState} from "../RootState";
+import { iUserState } from "@/interface/user";
+import { iRootState } from "../root-state";
 
-export const actions: ActionTree<InterviewState, RootState> = {
+export const actions: ActionTree<iUserState, iRootState> = {
   async saveToLocal({state, commit}): void {
     commit("SET_STATUS", "SAVING_DATA");
     await storage.setItem("user", JSON.stringify(state.user));
@@ -281,10 +281,10 @@ Mutations are pretty straight forward. They are called from actions and generall
 ```JavaScript
 // store/user/mutations
 import { MutationTree } from "vuex";
-import { UserState } from "@/interface/user";
-import { RootState} from "../RootState";
+import { iUserState } from "@/interface/user";
+import { iRootState } from "../root-state";
 
-export const mutations: MutationTree<InterviewState> = {
+export const mutations: MutationTree<iUserState> = {
   SET_STATUS(state, status: string): void {
     state.status = status;
   },
@@ -301,14 +301,14 @@ Tying this all together in the user module `index.ts`.
 ```JavaScript
 // store/user/index
 import { Module } from "vuex";
-import { RootState } from "../RootState";
-import { UserState } from "@/interfaces/user";
+import { iRootState } from "../root-state";
+import { iUserState } from "@/interfaces/user";
 import { state } from "./state";
 import { getters } from "./getters";
 import { actions } from "./actions";
 import { mutations } from "./mutations";
 
-export const interview: Module<UserState, RootState> = {
+export const interview: Module<iUserState, iRootState> = {
   namespaced: true,
   state,
   getters,
@@ -386,3 +386,88 @@ Now when trying to call import something manually, you can refer to the `@alias/
 #### CAUTION ALERT
 
 Since this is a Vue application trying to be a TypeScript application, you need to specify the file type that alias is expecting. Otherwise it will assume `.ts` extension and will cause all sorts of errors, both in linting and compiling.
+
+## Vue Files In Depth
+
+I mentioned Vue components briefly at the beginning. Now that the foundation has been set, let's take a closer look at Vue Components and what changes Type Script brings.
+
+
+### Props
+
+You use props like you normally do in Vue. The only difference is you cast an object or an array as an arrow function that returns the interface. 
+
+```HTML
+<script lang="ts">
+import Vue from "vue";
+import { iUser } from "@interfaces/user";
+
+export default Vue.extend({
+  name: "SingleUser",
+  props: {
+    user: {
+      type: Object as () => iUser,
+      required: true
+    }
+  }
+});
+</script>
+```
+
+The syntax is a little jarring, but you will get used to it after a while. This article, by Mitchell Garcia, has helped me immensely. [Using a TypeScript interface or type as a prop type in VueJS](https://frontendsociety.com/using-a-typescript-interfaces-and-types-as-a-prop-type-in-vuejs-508ab3f83480)
+
+I have a feeling this will get a little better with Vue3 and the Composition API.
+
+### Computed Properties and Methods
+
+Since we spent the time to set up our stores with proper types, we can import them using the Vuex helpers like we normally would.
+
+```HTML
+<script lang="ts">
+import Vue from "vue";
+import { mapState, mapGetters, mapActions } from "vuex";
+import { iUser } from "@interfaces/user";
+
+export default Vue.extend({
+  name: "SingleUser",
+  props: { ... },
+  computed: {
+    ...mapState('user', [...]),
+    ...mapGetters('user', [...]),
+  },
+  methods: {
+    ...mapActions('user', [...])
+  }
+});
+</script>
+```
+
+Of course we can use our own and not have them a part of the store.
+
+```HTML
+<script lang="ts">
+import Vue from "vue";
+import { mapState, mapGetters, mapActions } from "vuex";
+import { iUser } from "@interfaces/user";
+
+export default Vue.extend({
+  name: "SingleUser",
+  props: { ... },
+  computed: {
+    ...mapState('user', [...]),
+    ...mapGetters('user', [...]),
+    loggedInTomorrow(): boolean {
+      return this.user.lastActive > 'today';
+    }
+  },
+  methods: {
+    ...mapActions('user', [...]),
+    formatDate(date: string): string {
+      if (!date) return "";
+
+      const [year, month, day] = date.split("-");
+      return `${month}/${day}/${year}`;
+    },
+  }
+});
+</script>
+```
