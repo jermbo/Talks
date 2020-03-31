@@ -77,7 +77,7 @@ The two differences in a `.vue` file is the script section. The tag itself has a
 
 ```HTML
 <script lang="ts">
-import Vue from "vue"
+import Vue from "vue";
 
 export default Vue.extend({
   name: "HelloWorld"
@@ -316,3 +316,73 @@ export const interview: Module<UserState, RootState> = {
   mutations,
 };
 ```
+
+
+## Vue and TS Config Files
+
+One of the first things I figured out in a normal Vue set up, was how to get aliasing working. Nested components and relative paths is a recipe for disaster. With just the Vue Config aliasing you lose the traceability of a file. Meaning, you can no longer click an import link and follow it to its correct location. As well as you lose good auto import functionality. These were issues but something I dealt with as relative paths presented bigger issues for me at the time. 
+
+Along comes TSConfig file and we can have the best of both worlds, custom aliases and intellisense! You just have to make sure both config files have the same paths and tell the TSConfig file where to look.
+
+### Vue Config File
+
+Let's look at a potential set up for a Vue file. ( Please note, I am not going into all the possibilities with Vue Config, I am just showing aliasing. )
+
+```JavaScript
+const path = require("path");
+
+module.exports = {
+  chainWebpack: config => {
+    config.resolve.alias.set("@", path.resolve("src"));
+    config.resolve.alias.set("@comps", path.resolve("src/components"));
+    config.resolve.alias.set("@views", path.resolve("src/views"));
+    config.resolve.alias.set("@services", path.resolve("src/services"));
+    config.resolve.alias.set("@interfaces", path.resolve("src/interfaces"));
+  }
+};
+```
+
+The set method on the config resolver takes two arguments. What is the string as it will replace, and what is the path it will replace it with. You can now refer to a component, view, service, or interface from any where in your application without having to figure out how many folders to go up or down.
+
+```HTML
+<script lang="ts">
+import Vue from "vue";
+import Header from "@comps/common/ui/header";
+// vs
+// import Header from "../../../../common/ui/Header";
+
+export default Vue.extend({
+  name: "HelloWorld",
+  components: {
+    Header
+  }
+});
+</script>
+```
+
+### TS Config
+
+Aliases are amazing! Though I do miss the intellisense and auto complete features. Let's re-examine the `tsconfig.json` file and see how we can enhance it to be more useful.\
+
+```JSON
+{
+  "compilerOptions": {
+    ...
+    "paths": {
+      "@/*": ["src/*"],
+      "@comps/*": ["components/*.vue"],
+      "@views/*": ["views/*.vue"],
+      "@services/*": ["services/*.ts"],
+      "@interfaces/*": ["interfaces/*.ts"],
+    },
+    ...
+  },
+  ...
+}
+```
+
+Now when trying to call import something manually, you can refer to the `@alias/` and have the auto complete kick in. The auto import also has helpful suggestions as well, but it will add the relative path. ( Not sure if this is something that can be fixed or even if its a big deal. )
+
+#### CAUTION ALERT
+
+Since this is a Vue application trying to be a TypeScript application, you need to specify the file type that alias is expecting. Otherwise it will assume `.ts` extension and will cause all sorts of errors, both in linting and compiling.
