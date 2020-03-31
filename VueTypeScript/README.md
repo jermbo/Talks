@@ -329,6 +329,7 @@ Along comes TSConfig file and we can have the best of both worlds, custom aliase
 Let's look at a potential set up for a Vue file. ( Please note, I am not going into all the possibilities with Vue Config, I am just showing aliasing. )
 
 ```JavaScript
+// vue.config.js
 const path = require("path");
 
 module.exports = {
