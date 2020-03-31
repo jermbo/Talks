@@ -69,7 +69,7 @@ At first glance, the immediate things I noticed were all the `.js` files changed
 
 ### The .ts extension
 
-In `.scss` extensions, any valid css code is acceptable in this file format. The same is true with a `.ts` extension. While looking through any of the files, there is no special TypeScript features included by default. It wasn"t until opening up the `HelloWorld.vue` component that I saw anything different in the file.
+In `.scss` extensions, any valid css code is acceptable in this file format. The same is true with a `.ts` extension. While looking through any of the files, there is no special TypeScript features included by default. It wasn't until opening up the `HelloWorld.vue` component that I saw anything different in the file.
 
 ### Vue Components
 
@@ -149,7 +149,7 @@ export default router;
 
 ## Vuex
 
-Vuex is has gotten a bit more complex. You interact with it the same exact way, but now we need to split the files up and add types to everything. Let"s start with the stores `index.ts` file. In my app"s, I like everything to be their own store with a name space and very little in the global state. 
+Vuex has gotten a bit more complex. You interact with it the same exact way, but now we need to split the files up and add types to everything. Let's start with the stores `index.ts` file. In my app's, I like everything to be their own store with a name space and very little in the global state. 
 
 ### Index and RootState
 
@@ -181,7 +181,7 @@ export interface iRootState {
 
 ### User Interface
 
-We need to create an interface for a User, then let"s create the files for actions, getters, actions, and mutations.
+We need to create an interface for a User, then let's create the files for actions, getters, actions, and mutations.
 
 ```JavaScript
 // interfaces/user.d.ts
@@ -201,7 +201,7 @@ export interface iUserState {
 
 ### User Module Index
 
-In normal Vuex, we declare a state object and assign it some values. This limits us from using types, so we have to declare variables and assign that to the state. Let"s look at an example of the old way before seeing the TypeScript way.
+In normal Vuex, we declare a state object and assign it some values. This limits us from using types, so we have to declare variables and assign that to the state. Let's look at an example of the old way before seeing the TypeScript way.
 
 ```JavaScript
 export const state = {
@@ -236,7 +236,7 @@ export const state: iUserState = {
 
 ### Getters
 
-It's a common pattern to use getters to get specific information from the state without having to reference the state and dive into nested objects. Since all the key"s on this object are methods, we can add directly to the return object. Each method should have a return value as getters only return values. Let"s look at the user getter file to get specific information.
+It's a common pattern to use getters to get specific information from the state without having to reference the state and dive into nested objects. Since all the key"s on this object are methods, we can add directly to the return object. Each method should have a return value as getters only return values. Let's look at the user getter file to get specific information.
 
 ```JavaScript
 // store/user/getters
