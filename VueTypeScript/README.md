@@ -147,3 +147,172 @@ const router = new VueRouter({
 export default router;
 ```
 
+## Vuex
+
+Vuex is has gotten a bit more complex. You interact with it the same exact way, but now we need to split the files up and add types to everything. Let"s start with the stores `index.ts` file. In my app"s, I like everything to be their own store with a name space and very little in the global state. 
+
+### Index and RootState
+
+```JavaScript
+// store/index.ts
+import Vue from "vue";
+import Vuex, { StoreOptions } from "vuex";
+import { RootState } from "./RootState";
+import { user } from "./user";
+Vue.use(Vuex);
+
+const store: StoreOptions<RootState> = {
+  state: {
+    version: "1.0.0",
+  },
+  modules: {
+    user,
+  },
+};
+export default new Vuex.Store<RootState>(store);
+```
+
+```JavaScript
+// store/RootState.ts
+export interface RootState {
+  version: string;
+}
+```
+
+### User Interface
+
+We need to create an interface for a User, then let"s create the files for actions, getters, actions, and mutations.
+
+```JavaScript
+// interfaces/user.d.ts
+export interface User {
+  name: string;
+  email: string;
+  profileImage?: string;
+}
+
+export interface UserState {
+  currentState: string;
+  isLoggedIn: boolean;
+  lastActive: string;
+  user: User;
+}
+```
+
+### User Module Index
+
+In normal Vuex, we declare a state object and assign it some values. This limits us from using types, so we have to declare variables and assign that to the state. Let"s look at an example of the old way before seeing the TypeScript way.
+
+```JavaScript
+export const state = {
+  isLoggedIn: false,
+  lastActive: "yesterday",
+  user: {
+    name: "jerm",
+    email: "jerm@jerm.jerm",
+    profileImg: null
+  }
+}
+```
+
+With the old way, you don't get any type safety. With TypeScript, it's a little more involved but worth the extra effort.
+
+```JavaScript
+// store/user/state
+import { User, UserState } from "@/interfaces/user";
+
+const user: User = {
+  name: "jerm",
+  email: "jerm@jerm.jerm"
+};
+
+export const state: UserState = {
+  currentState: "NOT_LOADED",
+  isLoggedIn: false,
+  lastActive: "yesterday",
+  user
+};
+```
+
+### Getters
+
+It's a common pattern to use getters to get specific information from the state without having to reference the state and dive into nested objects. Since all the key"s on this object are methods, we can add directly to the return object. Each method should have a return value as getters only return values. Let"s look at the user getter file to get specific information.
+
+```JavaScript
+// store/user/getters
+import { GetterTree } from "vuex";
+import { UserState } from "@/interface/user";
+import { RootState} from "../RootState";
+
+export const getters: GetterTree<UserState, RootState> = {
+  getName({user}): string {
+    return user.name
+  },
+  isUserLoggedIn(state): boolean {
+    return state.isLoggedIn
+  }
+}
+```
+
+### Actions
+
+Actions are where we preform async tasks. Things like saving to a database, or writing to local storage, or anything that requires multiple steps. Like getters, these can be added to the object directly as they are methods. 
+
+```JavaScript
+// store/user/actions
+import { ActionTree } from "vuex";
+import { UserState } from "@/interface/user";
+import { RootState} from "../RootState";
+
+export const actions: ActionTree<InterviewState, RootState> = {
+  async saveToLocal({state, commit}): void {
+    commit("SET_STATUS", "SAVING_DATA");
+    await storage.setItem("user", JSON.stringify(state.user));
+    commit("UPDATE_ACTIVE_STAMP", date.now());
+    commit("SET_STATUS", "SAVED");
+  }
+}
+```
+
+### Mutations
+
+Mutations are pretty straight forward. They are called from actions and generally should only do one thing per function.
+
+```JavaScript
+// store/user/mutations
+import { MutationTree } from "vuex";
+import { UserState } from "@/interface/user";
+import { RootState} from "../RootState";
+
+export const mutations: MutationTree<InterviewState> = {
+  SET_STATUS(state, status: string): void {
+    state.status = status;
+  },
+  UPDATE_ACTIVE_STAMP(state, time: string): void {
+    state.lastActive = time;
+  }
+}
+```
+
+### Store Index
+
+Tying this all together in the user module `index.ts`.
+
+```JavaScript
+// store/user/index
+import { Module } from "vuex";
+import { RootState } from "../RootState";
+import { UserState } from "@/interfaces/user";
+import { state } from "./state";
+import { getters } from "./getters";
+import { actions } from "./actions";
+import { mutations } from "./mutations";
+
+export const interview: Module<UserState, RootState> = {
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations,
+};
+```
