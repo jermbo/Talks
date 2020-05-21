@@ -1,12 +1,27 @@
 # Intro to Strapi
 
-* What is a Headless CMS anyway?
+* First some definitions
 * Let's meet Strapi
-* Thinking outside a blog.
 * WordPress replacement?
+* Thinking outside a blog.
 * Reasons I am excited about it.
+* Let's Demo Strapi
 
-## What is a Headless CMS anyway
+## First some definitions
+
+### JAM stack
+
+> "Fast and secure sites and apps delivered by pre-rendering files and serving them directly from a CDN, removing the requirement to manage or run web servers" - [jamstack.org](https://jamstack.org/)
+
+### Severless
+
+> "Serverless computing is a cloud computing execution model in which the cloud provider runs the server, and dynamically manages the allocation of machine resources." - [WikiPedia](https://en.wikipedia.org/wiki/Serverless_computing)
+
+Essentially, you off load logic for specific tasks to a third party service and they take care of the rest. This allows you to focus on the features and your business logic. While the third party takes care of the server maintenance, security, and service enhancements. This is typically more cost effective as you are only paying for processing time when your code is actually run.
+
+A great resource for learning more about what this is all about is [serverless.css-tricks.com](https://serverless.css-tricks.com/about/). 
+
+Chris Coyer gave a couple of really useful talks, you should absolutely checkout. [The All Powerful Front End Developer](https://www.youtube.com/watch?v=grSxHfGoaeg), [What the heck is serverless?](https://www.youtube.com/watch?v=2N_sUmpjzZk), and [Ooooops I guess we’re full-stack developers now.](https://www.youtube.com/watch?v=YiBau30kIjI)
 
 ### CMS
 
@@ -26,36 +41,42 @@ In WordPress, it's hard to use anything outside of the themes folder. ( At least
 
 The Headless CMS only responsibilities are to store, secure, and deliver structured content. This opens up the possibility to present your content with any technology you would like to consume the data and does not limit you to the web. You are building an API that can be consumed by anything. 
 
+### Headless Options
+
+[HeadlessCMS.org](https://headlesscms.org/) has an exhaustive list of what options are out there.
+
 ## Let's meet Strapi
 
 Strapi is an open source Headless CMS built in Node.js. 
 
 They boast "The open source Headless CMS Front-End Developers love." - [Strapi](https://strapi.io/)
 
+The aim for Strapi is to accelerate the delivery of modern digital experiences. They enable content-rich experiences to be created, managed and exposed to any digital product, channel or device. 
+
+Strapi aims to provide a rich experience for not only developers, but content managers, product managers, and business leaders. [Why Strapi](https://strapi.io/why-strapi)
+
 ### Strapi Features 
 
-Strapi offers a bunch of useful features and plugins that offer endless customization.
+* Open Source
+* RESTful or GraphQL
+* Customizable
+* Self-hosted
+* Authentication & Permissions
+* Multi-database support
+* Auto-generated documentation
+* Built in Emailing
 
-Out of the box you get:
+## WordPress replacement?
 
-* Customizable API interface
-* Authentication and Permissions
-* RESTful APIs
-* Plug and Play Databases
-* JWT Authentication
-* Built-in Emailing
+WordPress is the worlds most popular CMS, as it powers [35% of the web](https://hostingtribunal.com/blog/wordpress-statistics/). Anything coming for the throne has a very steep hill to climb in order to over throw the king. That doesn't mean there can't be challengers. Strapi is one competitor that I think has a good shot at coming out on top. It's going to take a while, but it could happen.
+
+If you need an eco-system like WordPress offers, Strapi might not be a good choice. 
+
+If you are looking for a straight forward CMS with customizable content types and an admin to suit, the I will attempt to convince you that Strapi is a tool worth investing some time in.
 
 ## Thinking outside a blog
 
 I would like to challenge the notion that Headless CMS are only for traditional blogs or brochure websites. I would instead like to think of these as starting places for custom APIs. Not only do you get the benefit of an admin area where you can have non-technical contributors participate. You also have a visual interface to build your you API interface with a matching endpoint, all of the CRUD you would need, and full control over the access. 
-
-## WordPress replacement?
-
-WordPress is the worlds most popular CMS as it powers [35% of the web](https://hostingtribunal.com/blog/wordpress-statistics/). Anything coming for the throne has a very steep hill to climb in order to over throw the king. That doesn't mean there can't be challengers. Strapi is one competitor that I think has a good shot at coming out on top. It's going to take a while and a paradigm shift, but it could happen.
-
-If you need the eco-system that WordPress offers, Strapi might not be a good choice. 
-
-If you are looking for a straight forward CMS with customizable content types and an admin to suit, the I will attempt to convince you that Strapi is a tool worth investing some time in.
 
 ## Reasons I am excited about Strapi
 
@@ -97,3 +118,21 @@ Strapi is secure by default. This means, any content type your create will not b
 One concept I have struggled with for a long time is Authentication. I have always been able to separate Admins from Viewers, and log people in or out. But I have always struggled with effectively making different user roles and making sure they have access only to what they are supposed to. 
 
 I was able to implement this in Strapi with in minutes of opening up the admin and testing out the REST APIs. Next talk, I will show you in more detail how I have been able to incorporate this into a project I have been working on. 
+
+## Let's Demo Strapi
+
+I will now show you in under 5 minutes how to get started with Strapi locally.
+
+Steps:
+
+1. `npx create-strapi-app my-project --quickstart`
+2. Create an admin user
+   1. Navigate to `http://localhost:1337/admin`
+3. Create a content type
+4. Update permissions
+5. View API in browser or Postman
+6. ...Profit
+
+### Part 2
+
+The next talk will be about how I have taken Strapi and expanded my Student Typer tool. I was able to create an admin area of the tool with authentication. Created a content editor that allows my admins to CRUD any lesson. And this is opening up the possibilities for individualized user experiences, taking what is currently good and making it amazing!
