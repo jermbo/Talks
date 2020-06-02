@@ -41,15 +41,17 @@ Some of features of v2 include:
 1. Pulling data from live API
 2. Offline support by storing data in local storage
 3. Tracking progress via local storage
-4. General Typing section
+4. Centralized Stores
+5. Routes
+6. Dedicated General Typing section
 
 ## Typer v2.5
 
-Things are working great in v2, but my mind keeps racing with all the possibilities of what it could be. This app would be great if it had an admin section to create new lessons. It would be awesome to have anonymous tracking user progress. Expanded user tracking. Things like typing speed, scoring, correct typing combos, or difficulty setting. User preferences would be a super addition as well. This could be as simple as light or dark mode preference. 
-
-This is where Strapi comes into play, and another re-architecture. This time, the router was the blocker. 
+Things are working great in v2, but my mind keeps racing with all the possibilities of what it could be. This app would be great if it had an admin section to create new lessons. It would be awesome to have anonymous tracking of user progress, or stats like typing speed, scoring, correct typing combos, or difficulty setting. Customizations and user preferences would be a super addition as well.
 
 ![Typer 2.5][typer-v2.5]
+
+This is where Strapi comes into play, and another re-architecture. The router that was chosen didn't provide the features I needed and needed to be replaced in order to move forward.
 
 ## Routify
 
@@ -59,9 +61,11 @@ I decided to go with [Routify](https://routify.dev/) as it gave me folder base r
 
 ### RESTful API
 
-Out of the box Strapi offers me the ability to quickly create a RESTful API for all the current features of typer. I can also iterate possible new features. The cycle to idea, test, and product is a tight loop. 
+Out of the box Strapi offered the ability to quickly create a RESTful API for all the current features of typer. With the visual builder, I can also iterate possible new features. 
 
-Another beautify thing about the visual API builder, is the ability to easily create filed validation. You can do the most common use cases: 
+The cycle of idea to test to product is a tight loop. 
+
+Another beautify thing about the visual API builder, is the ability to easily create filed validation. The most common validation is a simple text field or checkbox. 
 
 1. Required
 2. Unique
@@ -80,7 +84,7 @@ Enough with the slides, let's take a look at the code.
 
 The road to version 3 is currently in progress. Strapi has opened up a lot of possibilities and helped make some features achievable with little friction. 
 
-With the help of other community members, we have come up with a Road to v3 Map. Issues have been created in GitHub as well as a `dev` branch to branch from and merge into. 
+With the help of other community members, we have come up with a Road to v3 Map. Issues are being created in GitHub as well as a `dev` branch to branch from and merge into.
 
 If you are interested in contributing, please take a look a the issues and submit a pull request.
 
