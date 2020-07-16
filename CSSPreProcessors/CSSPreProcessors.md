@@ -7,6 +7,7 @@ This talk I will show you what features of CSS PreProcessors I cannot live witho
 3. Maps
 4. Loops
 5. Functions
+6. CSS Custom Properties
 
 
 ## Partials
@@ -28,3 +29,187 @@ If you are looking for some guidance, here are a couple that I gravitate towards
 * [The 7-1 Pattern](https://sass-guidelin.es/#the-7-1-pattern)
 * [Four Folder Organization](https://evernote.com/blog/how-evernote-handles-their-sass-architecture/)
 
+## Nesting
+
+When I stated, partials were the thing I loved most about Sass, I lied. It's really nesting. Nesting is the one thing I cannot live with out. 
+
+You tell me what you would rather write. 
+
+```Scss
+.button {
+  // some styles
+}
+.button:hover {
+  // some styles
+}
+.button span {
+  // some styles
+}
+.button:hover span { 
+  // some styles
+}
+```
+
+```Scss
+.button {
+  // some styles
+  span {
+    // some styles
+  }
+  &:hover {
+    // some styles
+    span {
+      // some styles
+    }
+  }
+}
+```
+
+### BEM 
+
+The BEM methodology has been my preference for a while now. One of the biggest reasons for the adoption is how well it goes hand in hand with Sass. 
+
+Let's consider the following markup.
+
+```HTML
+<article class="post">
+  <header class="post__head">
+    <h1 class="post__title">Post Title</h1>
+  </header>
+  <section class="post__body">
+    <p class="post__text">Lorem <strong>ipsum dolor sit</strong> amet, consectetur adipisicing elit. Molestias, numquam!</p>
+
+    <div class="social-links">
+      <a href="#" class="social-link social-link--fb">FB</a>
+      <a href="#" class="social-link social-link--tw">TW</a>
+      <a href="#" class="social-link social-link--yt">YT</a>
+    </div>
+  </section>
+</article>
+```
+
+```SCSS
+.post {
+  box-shadow: 0 15px 15px rgba(black, 0.5);
+  width: Min(25em, 50vw);
+  display: grid;
+  grid-template-areas:
+    "head"
+    "body"
+    "body";
+
+  &__head {
+    grid-area: head;
+    background: white;
+    padding: 1rem;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__body {
+    grid-area: body;
+    background: #a3a3a3;
+    padding: 1rem;
+    height: 100%;
+  }
+
+  &__text {
+    text-transform: lowercase;
+
+    strong {
+      text-transform: uppercase;
+      letter-spacing: 5px;
+    }
+  }
+}
+```
+Here is a way you could code the styles. But I am going to make an argument that there is a better way. 
+
+There are a couple of things that could go wrong here. This example is small and the styles are simple, but we are already starting to see the parent `post` scroll off screen. It will become hard to keep track of what the parent is and where you are at the further away the two become. Yeah, you could argue; "I'm in the `_post.scss` file, so this should be all related to posts". This is assuming the title of the file reflects the parent selector. This argument falls apart the more nested the selectors become. The last problem I have is the "find" functionality goes away. Say you are debugging in the dev tools, and you need to get to "post__title", can you search for that? If you search for "__title", can you guarantee you are in the correct location?
+
+ At a high level I have three simple rules to make this easier. Let's take a look at the approach I take and break down the rules I apply.
+
+```SCSS
+.post {
+  box-shadow: 0 15px 15px rgba(black, 0.5);
+  width: Min(25em, 50vw);
+  display: grid;
+  grid-template-areas:
+    "head"
+    "body"
+    "body";
+}
+
+.post__head {
+  grid-area: head;
+  background: white;
+  padding: 1rem;
+}
+
+.post__title {
+  margin: 0;
+}
+
+.post__body {
+  grid-area: body;
+  background: #a3a3a3;
+  padding: 1rem;
+  height: 100%;
+}
+
+.post__text {
+  text-transform: lowercase;
+
+  strong {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-link {
+  display: block;
+  background: goldenrod;
+  padding: 5px 25px;
+  text-decoration: none;
+  color: black;
+
+  &--fb {
+    background: blue;
+    color: white;
+  }
+
+  &--tw {
+    background: lightseagreen;
+  }
+
+  &--yt {
+    background: red;
+  }
+}
+```
+
+Scss rules. 
+1. Only use `&` for modifiers and parent selectors.
+2. Children elements should get an independent line.
+   1. Yes, you will have to write the parent name more. 
+   2. The mental over head of knowing where you are at is reduced.
+   3. As well as you will be able to search with more confidence.
+3. Nest only three levels deep. If you need more than three levels, take a moment and reevaluate the structure.
+   1. There are time nesting more is acceptable, but I take challenge the need initially to make sure it's the right move.
+
+
+## Maps
+
+## Loops
+
+## Functions
+
+## CSS Custom Properties
