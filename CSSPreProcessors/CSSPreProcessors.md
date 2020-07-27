@@ -2,6 +2,8 @@
 
 This talk I will show you what features of CSS PreProcessors I cannot live without, as well as some cool combinations that embrace the new features of CSS.
 
+In this presentation I will demonstrate the 5 features that make CSS PreProcessors a vital tool in your arsenal. At the end I will tie everything together and show a practical example how to get the benefits of Modern CSS.
+
 1. Partials
 2. Nesting
 3. Maps
@@ -232,6 +234,12 @@ body {
 
 ## Loops
 
+Maps are great for organizing our code, but outside of organization they don't offer much over standalone variables. Loops allow us to iterate over each item and output the desired item.
+
+Sass's `@each` block has two variations. The first one deals with Sass Lists and the syntax is as follows `@each <variable> in <expression> {...}`. 
+
+The other version deals with Sass Maps and the syntax is as follows `@each <keyVariable>, <valueVariable> in <expression> {...}`. ( Basically, this is a `for...in` loop in JavaScript. ) 
+
 ```Scss
 $icons: (
   html: "\f13b",
@@ -243,7 +251,19 @@ $icons: (
   angular: "\f420",
   react: "\f41b"
 );
+
+.icon {
+  // default icon styles
+
+  @each $name, $glyph in $icons {
+    &--#{$name} {
+      content: $glyph;
+    }
+  }
+}
 ```
+
+To see the full code sample, check out the [CodePen](https://codepen.io/jermbo/pen/ZEGWdpz). 
 
 ## Functions
 
