@@ -267,4 +267,32 @@ To see the full code sample, check out the [CodePen](https://codepen.io/jermbo/p
 
 ## Functions
 
+Functions have been in Sass for a while, but was not something I fully utilized until recently. Essentially, functions in Sass are just like functions any where else. They are bits of reusable code, that can take in arguments, and optionally return a value. ( I cannot think of a use case where you would not want to return something. Use a mixin if you need reusable code that doesn't return a value. )
+
+Let's look at a couple examples.
+
+```Scss
+@function makeLongShadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 40 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+
+@function invert($color, $amount: 100%) {
+  $inverse: change-color($color, $hue: hue($color) + 180);
+  @return mix($inverse, $color, $amount);
+}
+
+$primary-color: #00e8fe;
+
+h1 {
+  padding: 1rem;
+  background-color: invert($primary-color, 75%);
+  text-shadow: makeLongShadow(invert($primary-color, 50%));
+  color: $primary-color;
+}
+```
+
 ## CSS Custom Properties
