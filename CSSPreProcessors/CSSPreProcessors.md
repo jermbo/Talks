@@ -14,13 +14,11 @@ This talk I will show you what features of CSS PreProcessors I cannot live witho
 
 Partials are the feature I use and love most. By a long shot. 
 
-If you are working on a team, the chance of collision on a single file is inevitable. Why deal with it? Separate into smaller, meaningful files and the chance of collision drops to almost zero. 
+If you are working on a team, the chance of collision on a single CSS file is inevitable. Why deal with it? Separate into smaller, meaningful files and the chance of collision drops to almost zero. 
 
 Mental overhead. Have you ever tried sifting through a CSS document that is hundreds if not thousands of lines long? It's a nightmare. Grouping things together keeps the file sizes smaller and easier to reason about. 
 
 ### Folder Structure Examples
-
----- There are a hundred and one ways to organize your files. Each way has their benefits as well as their cons. Ultimately, it doesn't matter. There was a period of time where I did things differently each project. Over time a pattern emerged, but each time the projects got done and jumping back into any of them is not hard. The partials were named something relevant and the css map usually pointed me to the correct location. So, a folder structure is like anything else we like to pointlessly debate about. The goal is to come up with something you and your team agree upon, set it, enforce it, and move on with the project.  ------
 
 Picking a folder structure boils down to your project needs and what your team agrees on. Good news! You cannot go wrong with Sass folder structure. There was a period of time where I did things differently on each project. Nothing broke or went catastrophically wrong with the projects. It just took me a minute to figure out where things were. Thanks to CSS Map files, this was an easy task. 
 
@@ -67,7 +65,7 @@ You tell me what you would rather write.
 
 ### BEM 
 
-The BEM methodology has been my preference for a while now. One of the biggest reasons for the adoption is how well it goes hand in hand with Sass. 
+Using the BEM methodology has been my preference for a while now. One of the biggest reasons for the adoption is how well it goes hand in hand with Sass. 
 
 Let's consider the following markup.
 
@@ -140,11 +138,15 @@ There are a couple of things that could go wrong here. This example is small and
     "head"
     "body"
     "body";
+
+  &.-inverted {
+    background: #2e2e2e;
+  }
 }
 
 .post__head {
   grid-area: head;
-  background: white;
+  background: #e5e5e5;
   padding: 1rem;
 }
 
@@ -154,13 +156,16 @@ There are a couple of things that could go wrong here. This example is small and
 
 .post__body {
   grid-area: body;
-  background: #a3a3a3;
   padding: 1rem;
   height: 100%;
 }
 
 .post__text {
   text-transform: lowercase;
+
+  .-inverted & {
+    color: #e5e5e5;
+  }
 
   strong {
     text-transform: uppercase;
@@ -208,7 +213,37 @@ Scss rules.
 
 ## Maps
 
+Good file organization can go a long way to preserving your sanity. With Sass Maps we can further our sanity by organizing groups of relevant values. 
+
+Simply put, Sass Maps are a set of key value pairs. The syntax is straight forward, you define a variable, create `key: value` pairs, and separate pairs with a comma. To access any value in the list, Sass has a function called `map-get()` that accepts the map variable and the key you want to target.
+
+```Scss
+$fontWeights: (
+  light: 200,
+  medium: 400,
+  bold: 600,
+  thick: 900
+);
+
+body {
+  font-weight: map-get($fontWeights, bold);
+}
+```
+
 ## Loops
+
+```Scss
+$icons: (
+  html: "\f13b",
+  css: "\f38b",
+  sass: "\f41e",
+  javascript: "\f3b9",
+  gulp: "\f3ae",
+  vue: "\f41f",
+  angular: "\f420",
+  react: "\f41b"
+);
+```
 
 ## Functions
 
