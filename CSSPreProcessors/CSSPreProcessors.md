@@ -1,16 +1,13 @@
 # CSS PreProcessors
 
-This talk I will show you what features of CSS PreProcessors I cannot live without, as well as some cool combinations that embrace the new features of CSS.
-
-In this presentation I will demonstrate the 5 features that make CSS PreProcessors a vital tool in your arsenal. At the end I will tie everything together and show a practical example how to get the benefits of Modern CSS.
+In this presentation I will demonstrate the 5 features that make CSS PreProcessors a vital tool in your arsenal. At the end I will tie everything together and show a practical example how to get the benefits of Modern CSS while utilizing Sass.
 
 1. Partials
 2. Nesting
 3. Maps
 4. Loops
 5. Functions
-6. CSS Custom Properties
-
+6. Sass and Modern CSS Features
 
 ## Partials
 
@@ -18,7 +15,7 @@ Partials are the feature I use and love most. By a long shot.
 
 If you are working on a team, the chance of collision on a single CSS file is inevitable. Why deal with it? Separate into smaller, meaningful files and the chance of collision drops to almost zero. 
 
-Mental overhead. Have you ever tried sifting through a CSS document that is hundreds if not thousands of lines long? It's a nightmare. Grouping things together keeps the file sizes smaller and easier to reason about. 
+Mental overhead. Have you ever tried sifting through a CSS document that is hundreds, if not thousands, of lines long? It's a nightmare. Grouping things together keeps the file sizes smaller and easier to reason about. 
 
 ### Folder Structure Examples
 
@@ -125,6 +122,7 @@ Let's consider the following markup.
   }
 }
 ```
+
 Here is a way you could code the styles. But I am going to make an argument that there is a better way. 
 
 There are a couple of things that could go wrong here. This example is small and the styles are simple, but we are already starting to see the parent `post` scroll off screen. It will become hard to keep track of what the parent is and where you are at the further away the two become. Yeah, you could argue; "I'm in the `_post.scss` file, so this should be all related to posts". This is assuming the title of the file reflects the parent selector. This argument falls apart the more nested the selectors become. The last problem I have is the "find" functionality goes away. Say you are debugging in the dev tools, and you need to get to "post__title", can you search for that? If you search for "__title", can you guarantee you are in the correct location?
@@ -497,4 +495,7 @@ The last thing that needs to happen is to convert the Sass Maps into CSS Variabl
 }
 ```
 
-### Wrapping up
+## Wrapping up
+
+CSS has come a long way and has very interesting plans for the future. Despite all of th progress of CSS over the recent years, PreProcessors are addressing a different set of concerns. The main concern being developer experience. Variables were a small portion
+
