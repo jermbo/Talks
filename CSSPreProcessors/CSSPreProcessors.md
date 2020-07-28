@@ -349,9 +349,152 @@ div {
 
 That's it. If you want to utilize the latest CSS functions that exist but don't quite work in Sass, just capitalize the function name. 
 
+## Sass and Modern CSS Features
 
-## CSS Custom Properties
+With the reasons previously talked about, I cannot give up Sass, but I do want to utilize the newer features of CSS. Here is what I do to get the best of both worlds. 
+
+### CSS Custom Properties
 
 Quick recap of CSS Custom Properties. a.k.a. CSS Variables. They are custom defined properties that can be referenced later in CSS, utilized in CSS functions, follow the same rules of specificity, and can be manipulated by JavaScript.
 
+CSS Variables must be defined on an object and can be accessed via the `var()` function.
 
+```CSS
+:root {
+  --primaryColor: #bada55;
+  --text-color: #3d3d30;
+}
+
+body {
+  background: var(--primaryColor);
+  color: var(--text-color);
+}
+```
+
+### Sass-ification
+
+After a couple iterations, I have settled on a workflow that has been flexible and structurally sound. Typically things are broken into four broad areas.
+
+   1. Sass variable
+   2. Sass maps
+   3. Functions
+   4. Creations Loops
+
+#### Sass Variables
+
+These variable names are meant to describe the value it's holding, not where it's going to be used. The typical example is:
+
+```Scss
+// This name is specific to the color it represents
+// It is not to be used in the code base, as soon as this value changes 
+// the variable name loses meaning
+$brickRed: #a31233;
+
+// A more generic name that represents where it's going to be utilized.
+// If the value changes, the meaning of `brandPrimary` does not.
+$brandPrimary: $brickRed;
+```
+
+#### Sass Maps
+
+Before harnessing the power of Sass Maps, I used to have a long list of variables that described where they would be used. 
+
+```Scss
+$font-size-base: 1rem;
+$title-xl: $font-size-base + 2;
+$title-lg: $font-size-base + 1;
+$title-md: $font-size-base + .5;
+$title-sm: $font-size-base + .25;
+$title-xs: $font-size-base;
+// Body Text Sizes...
+// Font Weights...
+// Colors...
+// Break Points...
+// etc...
+// etc...
+```
+
+Keeping things organized was a series of small Sass files or one large file with a bunch of comments separating everything. The two major issues with this approach is the variable names loosely tie related items together and there is no way to programmatically access or manipulate variables. 
+
+Sass Maps solves both of those issues in one package.
+
+```Scss
+$font-size-base: 1rem;
+
+$font-sizes: (
+  text: (
+    xs: $font-size-base - 0.2,
+    sm: $font-size-base - 0.1,
+    md: $font-size-base,
+    lg: $font-size-base + 0.1,
+    xl: $font-size-base + 0.2,
+    xxl: $font-size-base + 0.3
+  ),
+  title:(
+    xs: $font-size-base,
+    sm: $font-size-base + 0.2,
+    md: $font-size-base + 0.4,
+    lg: $font-size-base + 0.6,
+    xl: $font-size-base + 0.8,
+    xxl: $font-size-base + 1
+  )
+);
+
+h1 {
+  font-size: map-get(map-get($font-sizes, title), xxl);
+}
+```
+
+So, we have leveled up with organization, but have taken a huge step backwards in readability and developer experience. 
+
+#### Functions
+
+Functions come to the rescue. Let's use the font map in the previous example and make this more usable.
+
+```Scss
+@function font($category: text, $font-size: md) {
+  @return var(--font-#{$category}-#{$font-size});
+}
+
+h1 {
+  font-size: font(title, xl); // var(--font-title-xl)
+}
+```
+
+Wait! I haven't defined a CSS Variable yet. How is this going to work?
+
+#### Creation Loops
+
+The last thing that needs to happen is to convert the Sass Maps into CSS Variables. With the `@each` loop, this is a straight forward process. 
+
+```Scss
+// Sass Item
+:root {
+  @each $name, $size in $font-sizes {
+    /*** #{capitalize($name)} - Sizes ***/
+    @each $n, $s in $size {
+      --font-#{$name}-#{$n}: #{$s};
+    }
+  }
+}
+
+// Outputs ( comments and all )
+:root {
+  /*** Text - Sizes ***/
+  --font-text-xs: 0.8rem;
+  --font-text-sm: 0.9rem;
+  --font-text-md: 1rem;
+  --font-text-lg: 1.1rem;
+  --font-text-xl: 1.2rem;
+  --font-text-xxl: 1.3rem;
+  /*** Title - Sizes ***/
+  --font-title-xs: 1rem;
+  --font-title-sm: 1.2rem;
+  --font-title-md: 1.4rem;
+  --font-title-lg: 1.6rem;
+  --font-title-xl: 1.8rem;
+  --font-title-xxl: 2rem;
+}
+```
+
+### Wrapping up
