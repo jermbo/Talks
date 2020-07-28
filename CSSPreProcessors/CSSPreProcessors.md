@@ -295,4 +295,63 @@ h1 {
 }
 ```
 
+### Sass vs CSS functions
+
+As CSS evolves, there are new functions being added that conflict with existing Sass functions. The issue is Sass is a PreProcessor, meaning it takes some syntax and converts it to normal CSS. With the additions or enhancements of CSS functions, Sass has kept up with making sure the Sass version matches as closely as possible to the spec. But there are cases where that is not possible. If you are trying to utilize the CSS functions in Sass, you will run into some problems. 
+
+There is a brilliant article by Ana Tudor on CSS-Tricks that tackles this topic in detail. [When Sass and New CSS Features Collide](https://css-tricks.com/when-sass-and-new-css-features-collide/). Below is an excerpt from this article. 
+
+#### Min and Max
+
+In Sass, the `min()` and `max()` functions can only accept numbers with the same units.
+
+```Scss
+div {
+  width: min(20em, 50vh); // Incompatible units: 'vh' and 'em'
+}
+
+div {
+  width: min(calc(20em + 7px), 50vh); // "calc(20em + 7px) is not a number for 'min'
+}
+```
+
+#### Color functions and CSS Vars
+
+Since Sass is meant to output to CSS, it does not quite understand what CSS Variables are and causes errors when used in functions.
+
+```Scss
+div {
+  background: hsl(9, var(--sl, 95%, 65%)); // wrong number of arguments (2 for 3) for 'hsl'
+  color: rgba(var(--rgb, 128, 64,64), .7); // $color: "var(--rgb, 128, 64,64)" is not a color of 'rgba'
+}
+```
+
+#### Simple Solution
+
+The Ana Tudor article continues to show majority, if not all, the issues with Sass and CSS functions. She also explains a pretty elegant solution to the problem. Since Sass is case sensitive and CSS isn't, just uppercase the function you want to use and Sass will not try to use their version of the functions. 
+
+What?!
+
+```Scss
+div {
+  background: HSL(9, var(--sl, 95%, 65%));
+  color: RGBa(var(--rgb, 128, 64,64), .7);
+}
+
+div {
+  width: MIN(20em, 50vh);
+}
+
+div {
+  width: Min(calc(20em + 7px), 50vh);
+}
+```
+
+That's it. If you want to utilize the latest CSS functions that exist but don't quite work in Sass, just capitalize the function name. 
+
+
 ## CSS Custom Properties
+
+Quick recap of CSS Custom Properties. a.k.a. CSS Variables. They are custom defined properties that can be referenced later in CSS, utilized in CSS functions, follow the same rules of specificity, and can be manipulated by JavaScript.
+
+
