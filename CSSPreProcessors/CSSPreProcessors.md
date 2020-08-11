@@ -350,14 +350,12 @@ Let's look at a couple examples.
   }
   @return $val;
 }
-
 @function invert($color, $amount: 100%) {
   $inverse: change-color($color, $hue: hue($color) + 180);
   @return mix($inverse, $color, $amount);
 }
 
 $primary-color: #00e8fe;
-
 h1 {
   padding: 1rem;
   background-color: invert($primary-color, 75%);
@@ -378,11 +376,10 @@ In Sass, the `min()` and `max()` functions can only accept numbers with the same
 
 ```Scss
 div {
-  width: min(20em, 50vh); // Incompatible units: 'vh' and 'em'
-}
-
-div {
-  width: min(calc(20em + 7px), 50vh); // "calc(20em + 7px) is not a number for 'min'
+  width: min(20em, 50vh);
+  // Incompatible units: 'vh' and 'em'
+  height: min(calc(20em + 7px), 50vh); 
+  // "calc(20em + 7px) is not a number for 'min'
 }
 ```
 
@@ -392,8 +389,10 @@ Since Sass is meant to output to CSS, it does not quite understand what CSS Vari
 
 ```Scss
 div {
-  background: hsl(9, var(--sl, 95%, 65%)); // wrong number of arguments (2 for 3) for 'hsl'
-  color: rgba(var(--rgb, 128, 64,64), .7); // $color: "var(--rgb, 128, 64,64)" is not a color of 'rgba'
+  background: hsl(9, var(--sl, 95%, 65%));
+  // wrong number of arguments (2 for 3) for 'hsl'
+  color: rgba(var(--rgb, 128, 64,64), .7); 
+  // $color: "var(--rgb, 128, 64,64)" is not a color of 'rgba'
 }
 ```
 
@@ -407,14 +406,8 @@ What?!
 div {
   background: HSL(9, var(--sl, 95%, 65%));
   color: RGBa(var(--rgb, 128, 64,64), .7);
-}
-
-div {
   width: MIN(20em, 50vh);
-}
-
-div {
-  width: Min(calc(20em + 7px), 50vh);
+  height: Min(calc(20em + 7px), 50vh);
 }
 ```
 
@@ -422,7 +415,7 @@ That's it. If you want to utilize the latest CSS functions that exist but don't 
 
 ## Sass and Modern CSS Features
 
-With the reasons previously talked about, I cannot give up Sass, but I do want to utilize the newer features of CSS. Here is what I do to get the best of both worlds. 
+With the feature previously talked about, I cannot give up Sass, but I do want to utilize the newer features of CSS. Here is what I do to get the best of both worlds. 
 
 ### CSS Custom Properties
 
