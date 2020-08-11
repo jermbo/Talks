@@ -1,13 +1,22 @@
-# CSS PreProcessors
+# CSS and the PreProcessors
 
-In this presentation I will demonstrate the 5 features that make CSS PreProcessors a vital tool in your arsenal. At the end I will tie everything together and show a practical example how to get the benefits of Modern CSS while utilizing Sass.
+Historically, writting CSS was a pain. Building a system of any size or complexity, you would have CSS files that were hundreds or thousands of lines long. This made things hard to find, potential for duplication and specificity clashes were way higher, and working with a team meant overwrites were a part of daily life. That doesn't even start to touch our pain with vendor prefixes.
+
+CSS PreProcessors came to save the day. In a nutshell, they augmented your authoring experience, but came with a couple of initial drawbacks. For the first time, front end needed to have a build pipeline. Some early versions of PreProcessors took away semi-colons and curly brackets and was tab depenant. This was a difficult pill to swallow, espeically without proper editor support. Lastly, adding logic to your styles seemed weird. At first, not many people understood how these should even be used properly.
+
+With the advancements of CSS over the years, there has been a lot of debate over the necessity of PreProcessors, things like Sass, Less, and Stylus. While the new features are amazing and should be utilized, I will demonstrate the top 5 features that make CSS PreProcessors a vital tool in your arsenal. At the end I will tie everything together and show a practical example on how to get the benefits of Modern CSS while utiliing a PreProcessor.
+
+> Quick note; I will be using Sass for the examples, but the principles I will be demonstrating will apply to any PreProcess.
+
+## The Top 5 PreProcessor Features
+
+After some consideration, these are the top 5 features I cannot live without. The order listed represents their importance and how much I utilize them on any given project. 
 
 1. Partials
 2. Nesting
 3. Maps
 4. Loops
 5. Functions
-6. Sass and Modern CSS Features
 
 ## Partials
 
@@ -25,6 +34,8 @@ If you are looking for some guidance, here are a couple that I gravitate towards
 
 * [The 7-1 Pattern](https://sass-guidelin.es/#the-7-1-pattern)
 * [Four Folder Organization](https://evernote.com/blog/how-evernote-handles-their-sass-architecture/)
+* [Component Structure](https://angular.io/guide/styleguide#file-structure-conventions)
+* [The Config / Content Structure](https://medium.com/@elad/css-architecture-folders-files-structure-f92b40c78d0b)
 
 ## Nesting
 
@@ -45,6 +56,12 @@ You tell me what you would rather write.
 .button:hover span { 
   // some styles
 }
+.button i {
+  // some styles
+}
+.button:hover i { 
+  // some styles
+}
 ```
 
 ```Scss
@@ -53,9 +70,15 @@ You tell me what you would rather write.
   span {
     // some styles
   }
+  i{
+    // some styles
+  }
   &:hover {
     // some styles
     span {
+      // some styles
+    }
+    i {
       // some styles
     }
   }
@@ -74,7 +97,8 @@ Let's consider the following markup.
     <h1 class="post__title">Post Title</h1>
   </header>
   <section class="post__body">
-    <p class="post__text">Lorem <strong>ipsum dolor sit</strong> amet, consectetur adipisicing elit. Molestias, numquam!</p>
+    <p class="post__text">Lorem <strong>ipsum dolor sit</strong> 
+    amet, consectetur adipisicing elit. Molestias, numquam!</p>
 
     <div class="social-links">
       <a href="#" class="social-link social-link--fb">FB</a>
@@ -143,23 +167,19 @@ There are a couple of things that could go wrong here. This example is small and
     background: #2e2e2e;
   }
 }
-
 .post__head {
   grid-area: head;
   background: #e5e5e5;
   padding: 1rem;
 }
-
 .post__title {
   margin: 0;
 }
-
 .post__body {
   grid-area: body;
   padding: 1rem;
   height: 100%;
 }
-
 .post__text {
   text-transform: lowercase;
 
@@ -178,7 +198,6 @@ There are a couple of things that could go wrong here. This example is small and
   justify-content: space-between;
   align-items: center;
 }
-
 .social-link {
   display: block;
   background: goldenrod;
@@ -204,18 +223,31 @@ There are a couple of things that could go wrong here. This example is small and
 Scss rules. 
 1. Only use `&` for modifiers and parent selectors.
 2. Children elements should get an independent line.
-   1. Yes, you will have to write the parent name more. 
-   2. The mental over head of knowing where you are at is reduced.
-   3. As well as you will be able to search with more confidence.
-3. Nest only three levels deep. If you need more than three levels, take a moment and reevaluate the structure.
-   1. There are time nesting more is acceptable, but I take challenge the need initially to make sure it's the right move.
+   * Yes, you will have to write the parent name more. 
+   * The mental over head of knowing where you are at is reduced.
+   * As well as you will be able to search with more confidence.
+3. Nest only three levels deep. 
+   * There are times where nesting more is acceptable, but take a moment to reevaluate and make sure it’s the correct move to make.
 
 
-## Maps
+## Lists and Maps
 
-Good file organization can go a long way to preserving your sanity. With Sass Maps we can further our sanity by organizing groups of relevant values. 
+Good file organization can go a long way to preserving your sanity. With Lists and Maps, we can go further and organize groups of relevant values. 
 
-Simply put, Sass Maps are a set of key value pairs. The syntax is straight forward, you define a variable, create `key: value` pairs, and separate pairs with a comma. To access any value in the list, Sass has a function called `map-get()` that accepts the map variable and the key you want to target.
+### Lists
+
+Sass Lists are essentially arrays, they hold a list of values. The individual elements are encased in parenthesis and separated by commas. 
+
+```Scss
+$fontWeights: (200, 400, 600, 900);
+$spacings: (.25rem, .5rem, .75rem, 1rem);
+$color: (#ff0000, #00ff00, #0000ff);
+$sizes: 40px, 50px, 80px;
+```
+
+### Maps
+
+Simply put, Sass Maps are a set of key value pairs. The syntax is straight forward, you define a variable, create `key: value` pairs, and separate pairs with a comma. 
 
 ```Scss
 $fontWeights: (
@@ -224,21 +256,56 @@ $fontWeights: (
   bold: 600,
   thick: 900
 );
+$spacings: (
+  xs: .25rem,
+  sm: .5rem,
+  md: .75rem,
+  lg: 1rem
+);
+$color: (
+  primary: #ff0000, 
+  secondary: #00ff00,
+  accent: #0000ff
+);
+$sizes: (
+  sm: 40px, 
+  md: 50px, 
+  lg: 80px
+);
+```
 
+### Accesing Values
+
+To access any value in a list, you can utilize `list.nth()` that accepts the list variable and the index you want to target.
+
+To access any value in a map, you can utilize `map-get()` that accepts the map variable and the key you want to target.
+
+```Scss
 body {
   font-weight: map-get($fontWeights, bold);
+  color: map-get($colors, primary);
+  margin: map-get($spacings, md);
+}
+.icon-sm {
+  width: list.nth($sizes, 1);
+  height: list.nth($sizes, 1);
 }
 ```
 
 ## Loops
 
-Maps are great for organizing our code, but outside of organization they don't offer much over standalone variables. Loops allow us to iterate over each item and output the desired item.
+Lists and Maps are great for organizing your code, but outside of organization they don't offer much over standalone variables. Loops allow us to iterate over each item and output the desired value.
 
 Sass's `@each` block has two variations. The first one deals with Sass Lists and the syntax is as follows `@each <variable> in <expression> {...}`. 
 
 The other version deals with Sass Maps and the syntax is as follows `@each <keyVariable>, <valueVariable> in <expression> {...}`. ( Basically, this is a `for...in` loop in JavaScript. ) 
 
 ```Scss
+$sizes: (
+  sm: 40px, 
+  md: 50px, 
+  lg: 80px
+);
 $icons: (
   html: "\f13b",
   css: "\f38b",
@@ -252,6 +319,12 @@ $icons: (
 
 .icon {
   // default icon styles
+  @each $size in $sizes {
+    &--#{$size} {
+      width: $size;
+      height: $size;
+    }
+  }
 
   @each $name, $glyph in $icons {
     &--#{$name} {
@@ -261,7 +334,7 @@ $icons: (
 }
 ```
 
-To see the full code sample, check out the [CodePen](https://codepen.io/jermbo/pen/ZEGWdpz). 
+To see the full code sample, check out this [CodePen](https://codepen.io/jermbo/pen/ZEGWdpz). 
 
 ## Functions
 
