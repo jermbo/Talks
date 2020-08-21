@@ -1,10 +1,10 @@
 # CSS and the PreProcessors
 
-Historically, writting CSS was a pain. Building a system of any size or complexity, you would have CSS files that were hundreds or thousands of lines long. This made things hard to find, potential for duplication and specificity clashes were way higher, and working with a team meant overwrites were a part of daily life. That doesn't even start to touch our pain with vendor prefixes.
+Historically, writing CSS was a pain. Building a system of any size or complexity, you would have CSS files that were hundreds or thousands of lines long. This made things hard to find, the potential for duplication and specificity clashes were higher, and working with a team meant overwrites and merge conflicts were a part of daily life. That doesn't even start to touch our pain with vendor prefixes.
 
-CSS PreProcessors came to save the day. In a nutshell, they augmented your authoring experience, but came with a couple of initial drawbacks. For the first time, front end needed to have a build pipeline. Some early versions of PreProcessors took away semi-colons and curly brackets and was tab depenant. This was a difficult pill to swallow, espeically without proper editor support. Lastly, adding logic to your styles seemed weird. At first, not many people understood how these should even be used properly.
+CSS PreProcessors came to save the day. In a nutshell, they augmented your authoring experience, but came with a couple of initial drawbacks. For the first time, front end needed to have a build pipeline. Some early versions of PreProcessors took away semi-colons and curly brackets and were tab dependant. This was a difficult pill to swallow, especially without proper editor support. The introduction of partials and variables made us think a little differently about our CSS. Lastly, adding logic to your styles seemed weird. At first, not many people understood what these were for nor how these should even be used properly.
 
-With the advancements of CSS over the years, there has been a lot of debate over the necessity of PreProcessors, things like Sass, Less, and Stylus. While the new features are amazing and should be utilized, I will demonstrate the top 5 features that make CSS PreProcessors a vital tool in your arsenal. At the end I will tie everything together and show a practical example on how to get the benefits of Modern CSS while utiliing a PreProcessor.
+With the advancements of CSS over the years, there has been a lot of debate over the necessity of PreProcessors, things like Sass, Less, and Stylus. While the new features are amazing and should be utilized, I will demonstrate the top 5 features that make CSS PreProcessors a vital tool in your arsenal. At the end I will tie everything together and show a practical example on how to get the benefits of Modern CSS while utilizing a PreProcessor.
 
 > Quick note; I will be using Sass for the examples, but the principles I will be demonstrating will apply to any PreProcess.
 
@@ -24,7 +24,12 @@ Partials are the feature I use and love most. By a long shot.
 
 If you are working on a team, the chance of collision on a single CSS file is inevitable. Why deal with it? Separate into smaller, meaningful files and the chance of collision drops to almost zero. 
 
-Mental overhead. Have you ever tried sifting through a CSS document that is hundreds, if not thousands, of lines long? It's a nightmare. Grouping things together keeps the file sizes smaller and easier to reason about. 
+Mental overhead. Have you ever tried sifting through a CSS document that is hundreds, if not thousands, of lines long? It's a nightmare. Grouping things together keeps the file sizes smaller and easier to reason about.
+
+Developer experience gains a little boost with map files. When in browser dev tools, knowing where a style came from, file and line, improves the process and helps make developers more productive. 
+
+We know sending the smallest size through the wire is best for user experience, load times, and bandwidth consumptions. By utilizing a PreProcessor we get these options out of the box.
+
 
 ### Folder Structure Examples
 
@@ -274,7 +279,7 @@ $sizes: (
 );
 ```
 
-### Accesing Values
+### Accessing Values
 
 To access any value in a list, you can utilize `list.nth()` that accepts the list variable and the index you want to target.
 
@@ -563,5 +568,4 @@ The last thing that needs to happen is to convert the Sass Maps into CSS Variabl
 
 ## Wrapping up
 
-CSS has come a long way and has very interesting plans for the future. Despite all of th progress of CSS over the recent years, PreProcessors are addressing a different set of concerns. The main concern being developer experience. Variables were a small portion
-
+CSS has come a long way had has very interesting plans for the future. I hope I have demonstrated why I think PreProcessors still have a place and should be utilized to augment your developer experience.
