@@ -247,7 +247,7 @@ Sass Lists are essentially arrays, they hold a list of values. The individual el
 $fontWeights: (200, 400, 600, 900);
 $spacings: (.25rem, .5rem, .75rem, 1rem);
 $color: (#ff0000, #00ff00, #0000ff);
-$sizes: 40px, 50px, 80px;
+$sizes: (40px, 50px, 80px);
 ```
 
 ### Maps
@@ -324,8 +324,8 @@ $icons: (
 
 .icon {
   // default icon styles
-  @each $size in $sizes {
-    &--#{$size} {
+  @each $name, $size in $sizes {
+    &--#{$name} {
       width: $size;
       height: $size;
     }
