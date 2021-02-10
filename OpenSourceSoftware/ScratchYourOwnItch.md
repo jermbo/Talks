@@ -24,11 +24,17 @@ Why personal projects are useful tools for your success. Let’s learn how Sampl
 
 ## Industry moves at a rapid pace
 
-2004 - 2008(ish) I was building static sites in tables. ( Think of Google Sheets, build a site in that!)
+Technology is always getting better, smaller, faster, and cheaper. This is not going to change in the near future. 
 
-2008 - 2011(ish), I was building sites, games, interactive ads using Flash and ActionScript 3.
+### Personal Tech History
 
-2010 - 2017, I was building sites with regular ol HTML and CSS. Other sites with WordPress and jQuery.
+2000 - 2006(ish) I was designing print materials, using PhotoShop, Illustrator, Quark. Brochures, business cards, logos, product packages, etc.
+
+2003 - 2008(ish) I was building static sites in tables. ( Think of Google Sheets, build a site in that!)
+
+2007 - 2011(ish), I was building sites, games, interactive ads using Flash and ActionScript 3.
+
+2010 - 2017, I was building some sites with regular ol HTML and CSS. Other sites with WordPress and jQuery.
 
 2012, I started getting more involved with build pipelines. Started learning Gulp to get my Sass to compile.
 
@@ -42,13 +48,65 @@ Why personal projects are useful tools for your success. Let’s learn how Sampl
 
 2020 - I am building sites using Vue or React to statically generate a site. ( Basically vanilla HTML and CSS I was building in 2004, but without the tables)
 
+2020 RIP Flash Player 
+
 2021 - Future, probably not doing the same thing I am doing today.
 
 ### Apps Over the Years
 
+* PhotoShop +
+* Illustrator +
+* CoralDraw
+* Quark
+* 3D Studio Max
+* Flash
+* Flex
+* DreamWeaver
+* TextMate
+* NotePad++
+* WebStorm
+* PHPStorm
+* Coda
+* Sublime Text
+* Atom
+* VS Code +
+* InDesign
+* AdobeXD
+* Figma +
+* LightRoom +
+* MicroSoft Sweet ( Word and Excel mainly )
+* Google Sweet ( Docs, Pages and Slides mainly ) +
+* CodePen +
+* ...
+  
 ### Technologies Over the Years
 
+* ActionScript 2 & 3
+* HTML / CSS +
+* JavaScript +
+* WordPress
+* Sass +
+* Gulp
+* CakePHP
+* CodeIgniter
+* Node +
+* MeteorJS
+* Express +
+* Mongo
+* Angular 1.x
+* Angular 8
+* Vue +
+* React +
+* Svelte 3 +
+* Snowpack
+* Firebase +
+* ...
+
 ### Then versus now
+
+When I first stated my career, I hated web. Wanted nothing to do with it. The tooling sucked. Not a lot of good information out there. Having to deal with browser incapabilities made things 100 times worse. 
+
+Now, I cannot get enough of it. Tooling has come along way. ( Still room for improvement, but improvements being made all the time. ) More information than we know what to do with. ( Both a good and bad thing. ) Web standards have made things more consistent across platforms. ( We can now focus on features of the site instead of making sure it looks the same across the platforms. )
 
 ## How does one keep up
 
