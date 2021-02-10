@@ -3,13 +3,24 @@
 Why personal projects are useful tools for your success. Let’s learn how Sample APIs solved a problem I had. How it’s evolved over the years. And why I’m passionate about it. We will take a look under the hood and see how the system is built, what technologies are used, and learn how to contribute to open source.
 
 * Industry moves at a rapid pace
-* Stuck in tutorial hell
-* Meaningful projects
-* Battle Grounds
+  * Personal Tech History
+  * Apps Over the Years
+  * Technologies Over the Years
+  * Then versus now
+* How does one keep up
+  * Boot Camps
+  * Tutorials
+  * Beware of Tutorial Hell
+  * Personal Projects
+  * Playgrounds
 * History Sample APIs
-* How it's evolved
-* Scratch your own itch
+  * How it solved a problem
+  * How it's evolved
+  * Where it's currently at
+  * Where it's going
 * Does this directly lead to success
+  * Success is what you make it
+  * Impostor Syndrome
 
 ## Industry moves at a rapid pace
 
@@ -33,16 +44,36 @@ Why personal projects are useful tools for your success. Let’s learn how Sampl
 
 2021 - Future, probably not doing the same thing I am doing today.
 
-## Stuck in tutorial hell
+### Apps Over the Years
 
-## Meaningful projects
+### Technologies Over the Years
 
-## Battle Grounds
+### Then versus now
 
-## History Sample APIs
+## How does one keep up
 
-## How it's evolved
+### Boot Camps
 
-## Scratch your own itch
+### Tutorials
+
+### Beware of Tutorial Hell
+
+### Personal Projects
+#### Some Ideas
+### Playgrounds
+## History of SampleAPIs
+
+### How it solved a problem
+
+### How it's evolved
+
+### Where it's currently at
+
+### Where it's going
+
+### How can you contribute
 
 ## Does this directly lead to success
+### Success is what you make it
+
+### Impostor Syndrome
