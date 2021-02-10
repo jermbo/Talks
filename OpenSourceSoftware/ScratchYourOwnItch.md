@@ -149,15 +149,45 @@ These personal projects are great playgrounds for you to test these aspects. You
 
 ## History of SampleAPIs
 
+While I was teaching at a boot camp, we had 2 days set aside for learning RESTful APIs. How to CRUD. What HTTP Verbs Meant. The first time I taught this class, I thought it would be cool to let the students pick any API they wanted. ( From a curated list, of course. ) And even with that we spent an entire day, just getting authenticated. 
+
+Authentication is an important part of the process, but does not matter when learning the basics.
+
 ### How it solved a problem
+
+Sample APIs started off as FuturamaDB. This had multiple endpoints for characters, actors, quiz questions, and general info. From here, I was able to teach the students how to build a Futurama Quiz. There was no need for authentication so we could purely focus on the API and quiz functionality.
 
 ### How it's evolved
 
+Once I got Futurama down, I started thinking about other popular shows or books that I could build to help offer variety. So I created, SimpsonsDB, Game Of Thrones DB, Harry Potter DB, and Bobs Burger DB.
+
+After taking a step back, I questioned the expense of having a domain for each random database I wanted to create. Instead, I figured it would make more sense to have one spot for any number of databases one could utilize. 
+
+Sample APIs was born.
+
 ### Where it's currently at
+
+We are currently on version 3.0 of the application. The front end is built in React and TypeScript. The back end is built with Node, Express, JSON-Server, and various utility tools. This lives in a mono-repo in my [GitHub](https://github.com/jermbo/SampleAPIs).
+
+Version 2.0 of the application was a server rendered application using the Pug engine for Node. There was a bit of Vue to power the home page. I decided to decouple the front from the back and build in React. This allowed me to simplify the configuration needed to power the front end vs the back end. As well as opening up the possibilities for features I've been wanting to add.
 
 ### Where it's going
 
+The rest of version 3 is about documentation and examples. The heart of this tool is learning, playing, and having fun. We need to expand on explanations. Provide fun examples to help inspire usage.
+
+Future versions of this will include playgrounds for anyone to quickly start a temporary API. User profiles and the ability to have more permanent playgrounds.
+
+Also, open for ideas!
+
 ### How can you contribute
+
+There are a couple of ways to contribute. 
+
+First, create a data set that you find interesting. The more data sets the merrier.
+
+Create example applications using the data from the endpoints. My goal is to have a CodePen for every endpoint on the system.
+
+Add or modify documentation. Collaborating on a better way to explain something is how this tool succeeds. 
 
 ## Does this directly lead to success
 
