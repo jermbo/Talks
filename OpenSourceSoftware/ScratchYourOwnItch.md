@@ -160,6 +160,27 @@ These personal projects are great playgrounds for you to test these aspects. You
 ### How can you contribute
 
 ## Does this directly lead to success
+
+Some say, success is being in the right place at the right time. While I agree that luck is involved, I would like to add that being prepared is very crucial. If the right opportunity comes up and your are not prepared for it, that opportunity will pass you by.
+
+I firmly believe the opportunities have presented themselves to me because of my preparation.
+
 ### Success is what you make it
 
+Personally, I believe success is what you make it. If you always compare yourself to the top players and wonder "what if", you will not be a success. 
+
+If you take a step back, look at where you came from, where you currently are, and where you want to go, then you will be a success. 
+
+It's not bad to have goals and aim for the stars. But if all you focus on is "I have not reached the stars", then things will be disappointing.
+
+Take a moment, celebrate the small wins, acknowledge the growth, learn from your mistakes, grow yourself, and success will follow. 
+
 ### Impostor Syndrome
+
+"Impostor Syndrome is a psychological pattern in which an individual doubts their skills, talents or accomplishments and has a persistent internalized fear of being exposed as a "fraud". Despite external evidence of their competence, those experiencing this phenomenon remain convinced that they are frauds, and do not deserve all they have achieved." - [Wikipedia](https://en.wikipedia.org/wiki/Impostor_syndrome)
+
+I believe a small dose of this is healthy. This means you are aware of what you don't know and strive to know more. Striving to be better is a good thing.
+
+This is a very slippery slope. One can quickly slip into down and never try anything new or challenge themselves. 
+
+I bring this up to so you can be aware of what's this is called, not to scare you. You will feel this way multiple times in your career. It's ok. Things will click and understanding will happen.
