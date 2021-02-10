@@ -112,13 +112,41 @@ Now, I cannot get enough of it. Tooling has come along way. ( Still room for imp
 
 ### Boot Camps
 
+If you are not sure where to start, Boot Camps are a great kick in the pants. It's a crash corse to get you started on the right path. Boot Camps are the start of your journey. They are the dock master who unties your boat from the pier and nudges your boat into the open ocean. There is a lot more for you to do.
+
 ### Tutorials
+
+Keeping up with industry trends and standards is not unique to our industry. Doctors, nurses, massage therapists, psychiatrists, mechanics, all have to have continual education credits per year in order to keep their certification or license or insurance. 
+
+The web industry has no set mandate, but do have to keep up. Tutorials are a great way to get a lot of information in a short amount of time. You can find one on any topic you are interested in. With as much depth as you are interested in. If you want just the basics, there is a YouTube video or blog article on it. If you need more in depth understanding, there are whole courses on various platforms on that topic.
 
 ### Beware of Tutorial Hell
 
+It's typically recommended to follow along with the tutorial and build the thing at the same time. Nothing better than seeing then doing. 
+
+The problem comes in when you watch a tutorial, and don't see how to apply it to your projects. Or you watch tutorial after tutorial after tutorial and don't know how to get out of that.
+
+This is called Tutorial Hell. It's a downward spiral that will happen multiple times in your career. Especially when you are picking up something completely new. It's OK. Recognize when it's happening and start working your way out of it.
+
 ### Personal Projects
+
+The best way I get out of Tutorial Hell is by having personal projects. These projects do not need to be huge, grandiose, all encompassing project that is going to take over the world. Rather, smaller projects with a narrow focus that can be iterated on, rebuilt, redesigned, on a regular basis. It could be something that already exists. It just needs to be in your repository.
+
 #### Some Ideas
+
+* Personal Blog
+* Personal Inventor System
+* HoneyDo List
+* Personal Budget Tracker
+* Movie / Book / Game Suggestion List
+* Workout Tracker
+
 ### Playgrounds
+
+When working on client projects, you need to get the job done. It is hard to argue to use a new technology. Especially if it's new to you and your team. Offers no tangible improvement to your process or the end result. It offers an immature ecosystem, things like; plugins, pre-built solutions, examples, reference docs, tutorial articles and or videos. Or you are unaware of the "gotchas" due to lack of experience. 
+
+These personal projects are great playgrounds for you to test these aspects. Your playground is a safe place to learn the "gotchas", figure out how mature the ecosystem is, and learn how to possibly train your team on this tech. 
+
 ## History of SampleAPIs
 
 ### How it solved a problem
