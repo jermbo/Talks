@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.sampleapis.com/movies/";
+const BASE_URL = "https://api.sampleapis.com/movies";
 
 // ---------------------------------
 // DELETE
