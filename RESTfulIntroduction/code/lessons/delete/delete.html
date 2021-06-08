@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RESTful Intro - Delete</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- ---------------------------------
+			INTRO 
+			----------------------------------- -->
+      <section class="content intro">
+        <a href="/" class="back">&lt; Back</a>
+        <h1 class="intro-title">
+          Delete - Intro to
+          <abbr title="REpresentational State Transfer">REST</abbr>
+          <abbr title="Application Programming Interface">APIs</abbr>.
+        </h1>
+
+        <p class="desc"></p>
+      </section>
+
+      <!-- ---------------------------------
+			DELETE 
+			----------------------------------- -->
+      <section class="content">
+        <h2>Delete</h2>
+        <p class="desc">
+          DELETE accepts and ID and removes and entriy in the database.
+        </p>
+
+        <div class="content-inner">
+          <p class="desc">Let's update an existing movie item.</p>
+
+          <form class="delete-form">
+            <div class="form-group">
+              <label for="delete-movie-id">Movie ID</label>
+              <input
+                required
+                type="number"
+                id="delete-movie-id"
+                placeholder="Movie ID"
+              />
+            </div>
+            <button type="submit">Delete Record</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="delete.js"></script>
+  </body>
+</html>
