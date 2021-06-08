@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RESTful Intro - Read</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- ---------------------------------
+			INTRO 
+			----------------------------------- -->
+      <section class="content intro">
+        <a href="/" class="back">&lt; Back</a>
+        <h1 class="intro-title">
+          Read - Intro to
+          <abbr title="REpresentational State Transfer">REST</abbr>
+          <abbr title="Application Programming Interface">APIs</abbr>.
+        </h1>
+
+        <p class="desc"></p>
+      </section>
+
+      <!-- ---------------------------------
+			READ 
+			----------------------------------- -->
+      <section class="content">
+        <h2>Read</h2>
+        <p class="desc">
+          GET calls and endpoint and brings back data. This could be for a
+          single item, or a series of items.
+        </p>
+        <div class="content-inner">
+          <p>
+            Let's hook up each button to pull their corresponding categories
+            from the movie endpoint.
+          </p>
+          <nav class="api-endpoints">
+            <button data-category="action-adventure" class="btn">
+              Action Adventure
+            </button>
+            <button data-category="animation" class="btn">Animation</button>
+            <button data-category="classic" class="btn">Classic</button>
+            <button data-category="comedy" class="btn">Comedy</button>
+            <button data-category="drama" class="btn">Drama</button>
+            <button data-category="horror" class="btn">Horror</button>
+            <button data-category="family" class="btn">Family</button>
+            <button data-category="mystery" class="btn">Mystery</button>
+            <button data-category="scifi-fantasy" class="btn">
+              SciFi / Fantasy
+            </button>
+            <button data-category="western" class="btn">Western</button>
+          </nav>
+          <div class="output category-display">
+            <p>Category: <span></span></p>
+            <pre></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="read.js"></script>
+  </body>
+</html>

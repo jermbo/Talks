@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RESTful Intro - Create</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- ---------------------------------
+			INTRO 
+			----------------------------------- -->
+      <section class="content intro">
+        <a href="/" class="back">&lt; Back</a>
+        <h1 class="intro-title">
+          Create - Intro to
+          <abbr title="REpresentational State Transfer">REST</abbr>
+          <abbr title="Application Programming Interface">APIs</abbr>.
+        </h1>
+
+        <p class="desc">
+          Let's focus on creating a single movie. The endpoint we will be using
+          is from
+          <a
+            href="https://sampleapis.com/api-list/movies"
+            target="_blank"
+            rel="noreferrer"
+          >
+            SampleAPis Movie Collection.
+          </a>
+          <br />
+          Specifically:
+          <a
+            href="https://api.sampleapis.com/movies/action-adventure"
+            target="_blank"
+            rel="noreferrer"
+          >
+            https://api.sampleapis.com/movies/action-adventure
+          </a>
+        </p>
+      </section>
+
+      <!-- ---------------------------------
+			CREATE 
+			----------------------------------- -->
+      <section class="content">
+        <h2>Create</h2>
+        <p class="desc">
+          POST accepts data and creates an entry in the database with the
+          provided information.
+        </p>
+        <div class="content-inner">
+          <p class="desc">
+            Let's create an Action Adventure movie to the database.
+          </p>
+          <form class="create-form">
+            <div class="form-group">
+              <label for="movie-title">Movie Title</label>
+              <input
+                required
+                type="text"
+                id="movie-title"
+                placeholder="Movie Title"
+              />
+            </div>
+            <div class="form-group">
+              <label for="movie-poster">Movie Poster URL</label>
+              <input
+                required
+                type="text"
+                id="movie-poster"
+                placeholder="Poster URL"
+              />
+            </div>
+            <div class="form-group">
+              <label for="imdb-id">IMDB Id</label>
+              <input required type="text" id="imdb-id" placeholder="IMDB ID" />
+            </div>
+            <button type="submit">Add Record</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="create.js"></script>
+  </body>
+</html>
